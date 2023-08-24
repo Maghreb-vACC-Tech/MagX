@@ -1,0 +1,29 @@
+.SideBar{
+    width: 15vw;
+    min-height: 100vh;
+    height: auto;
+    background: #0C0C0E; 
+    float: left;
+    box-shadow: 15px 15px 15px #ffffff;
+    color: #DDD;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.SideBar-Logo{
+    width: 100%;
+    text-align: center;
+    /* background: #6d6db1; */
+    height: 15vh;
+}
+.SideBar-Logo img{
+    translate: 0 3vh;
+    width: 40%;
+}
+
+
+.SideBar-Links{
+    width: 15vw;
+    height: auto;
+}
+

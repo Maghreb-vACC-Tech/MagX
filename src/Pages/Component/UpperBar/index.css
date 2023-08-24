@@ -1,0 +1,46 @@
+.UpperBar{
+    width: 84vw;
+    height: 15vh;
+    background-color: #121216;
+    box-shadow: 1px 1px 35px #0f0f0f;
+}
+.UpperBarSettings{
+    width: 15vw;
+    height: 15vh;
+    float: right;
+}
+.UpperBarSettings > div {
+    float: left;
+}
+.UpperBarSettingsIcon{
+    width: 6vw;
+    height: 15vh;
+}
+.UpperBarSettingsIcon img {
+    width: 4.5vw;
+    border-radius: 100px;
+    translate: 0 2vh;
+}
+.UpperBarSettingsText{
+    width: 9vw;
+    
+}
+.UpperBarSettingsText a , .UpperBarSettingsText p{
+    translate: 1vw;
+    width: 9vw;
+    display: inline-block;
+    color: #DDD;
+}
+.UpperBarSettingsText p{
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+} 
+
+.UpperBarSettingsText a{
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration-line: underline;
+} 

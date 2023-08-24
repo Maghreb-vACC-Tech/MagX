@@ -1,0 +1,27 @@
+
+.SideBarLink{
+    width: 14vw;
+    height: 10vh;
+    margin: auto;  
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.SideBarLink:hover{
+    background-color: #16161a;
+}
+
+.SideBarLink > a{
+    color: #DDD;
+    text-decoration: none;
+    display: inline-block;
+    translate: 2vw ;
+}
+
+.SideBarLink > svg{
+    color: #DDD;
+    text-decoration: none;
+    display: inline-block;
+    translate: 1vw ;
+}
+
