@@ -76,7 +76,9 @@ function SideBar(){
                 <SideBarLink
                     Link = "DashBoard"
                     Icon = {DashboardIcon}
-                    LinkRedirect = "/dashboard"
+                    LinkRedirect = "/Dashboard"
+                    QuerySelector = ".DashBoardClass"
+                    LinkClassName = "DashBoardClass"
                 />
 
                 <SideBarLink
@@ -94,7 +96,7 @@ function SideBar(){
                 <SideBarLink
                     Link = "Booking"
                     Icon = {BookingIcon}
-                    LinkRedirect = "/booking"
+                    LinkRedirect = "/Booking"
                 />
 
                 <SideBarLink

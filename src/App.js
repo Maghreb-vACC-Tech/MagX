@@ -10,8 +10,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/booking" element={<Booking />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Booking" element={<Booking />} />
         <Route path="/extractor" element={<LocationExtractor />} />
       </Routes>
     </Router>

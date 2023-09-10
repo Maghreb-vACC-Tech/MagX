@@ -1,0 +1,23 @@
+.DashboardEvent{
+    width: 100%;
+    height: 50%; 
+     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.DashboardEvent div a img{
+    width: 80%;
+    border-radius: 15px;    
+    box-shadow: -5px 15px 50px #000;
+}
+
+.DashboardEvent div a img:hover{
+    transform: scale(1.05);
+}
+
+.DashboardEvent div {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+}

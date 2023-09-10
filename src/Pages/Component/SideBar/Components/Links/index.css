@@ -1,27 +1,28 @@
 
 .SideBarLink{
-    width: 14vw;
+    width: 100%;
     height: 10vh;
     margin: auto;  
     display: flex;
     align-items: center;
     cursor: pointer;
+    border-radius: 100px;
 }
 .SideBarLink:hover{
     background-color: #16161a;
+    border-radius: 100px;
 }
 
 .SideBarLink > a{
     color: #DDD;
     text-decoration: none;
     display: inline-block;
-    translate: 2vw ;
 }
 
 .SideBarLink > svg{
     color: #DDD;
     text-decoration: none;
     display: inline-block;
-    translate: 1vw ;
+    translate: 115% ;
 }
 

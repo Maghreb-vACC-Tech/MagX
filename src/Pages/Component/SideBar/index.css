@@ -1,14 +1,15 @@
 .SideBar{
-    width: 15vw;
+    width: 5vw;
     min-height: 100vh;
     height: auto;
     background: #0C0C0E; 
     float: left;
-    box-shadow: 15px 15px 15px #ffffff;
+    /* box-shadow: 15px 15px 15px #ffffff; */
     color: #DDD;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    transition:  all 0.3s ease;
 }
 .SideBar-Logo{
     width: 100%;
@@ -23,7 +24,16 @@
 
 
 .SideBar-Links{
-    width: 15vw;
+    width: 5vw;
     height: auto;
+    
+    animation-duration: 0.5s;
 }
+
+
+.SideBarLink > a{
+    translate: 6vw;
+    display: none!important;
+}
+
 

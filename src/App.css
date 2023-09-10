@@ -1,9 +1,11 @@
 .PagesContainer{
   float: left;
   background-color: #121216;
-  width: 85vw;
+  width: 95vw;
   height: 100vh;
   overflow-y: auto;
+  transition:  all 0.3s ease;
+  color: #DDD;
 }
 
 /* ScrollBar */

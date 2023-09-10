@@ -1,13 +1,22 @@
+import React, { useState } from 'react';
+import { useNavigate  } from 'react-router-dom';
+
 import "./index.css"
 
 function SideBarLink(props){
 
+    const navigate = useNavigate();
+
+    const handleRedirect = () => {
+      navigate(props.LinkRedirect);
+    };
+  
     return(
 
         
-        <div className="SideBarLink">
+        <div className="SideBarLink" onClick={handleRedirect}>
             {props.Icon}
-            <a href={props.LinkRedirect}>{props.Link}</a>
+            {/* <a href={props.LinkRedirect} className={props.LinkClassName + " animate__fadeInLeft"}>{props.Link}</a> */}
         </div>
 
     )
