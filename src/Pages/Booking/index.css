@@ -1,0 +1,41 @@
+
+.Bookings{
+}
+.Bookings-Container{
+    width: 80%;
+    height: 80vh;
+    background-color: #0C0C0E;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: -5px 15px 50px #000;
+    overflow-y: auto;
+    translate: 0 5vh;
+}
+.Bookings-Container-Title{
+    text-align: center;
+    padding-top: 1%;
+}
+.Bookings-Container-Name div{
+    width: 33%;
+    float: left;
+    text-align: center;
+    border-bottom: 1px solid #D4D4D4;
+}
+.Bookings-Container-DIV{
+    width: 100%;
+}
+.Bookings-Container-DIV div{
+    
+    width: 33%;
+    float: left;
+    text-align: center;
+    border-radius: 15px;
+}
+.Bookings-Container-DIV-color p{
+    background-color: #7923BC;
+    border-radius: 5px;
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    translate: 0 2vh;
+}

@@ -21,8 +21,8 @@ function Dashboard(){
     // Access the data
     console.log(stateData);
   
-    // Rest of your component code
-
+    
+    
     // Usefull functions
     function millisecondsToHoursMinutes(ms , minstate) {
         const seconds = ms / 1000;
@@ -41,7 +41,7 @@ function Dashboard(){
 
 
     // Get Your Stats
-    console.log(JSON.stringify(stateData.cid))
+    // console.log(JSON.stringify(stateData.cid))
 
 
     function LastFlightTimeCalculations(Start , End){
@@ -74,8 +74,8 @@ function Dashboard(){
             const atchours = millisecondsToHoursMinutes(data.atc * 3600000)
 
             
-            // setPilotStat(data.pilot)
-            // setATCStat(data.atc)
+            setPilotStat(data.pilot)
+            setATCStat(data.atc)
 
             setPilotStat(pilothours)
             setATCStat(atchours)
@@ -114,6 +114,8 @@ function Dashboard(){
 
     } ,[])
 
+    const test = sessionStorage.getItem("CID")
+
 
     return(
         <>
@@ -122,7 +124,7 @@ function Dashboard(){
 
             <div className="Dashboard PagesContainer">
                 <UpperBar
-                    Username = { stateData.personal.name_full}
+                    Username = { sessionStorage.getItem("FullName")}
                 />
                 <DashboardEvents
                 
@@ -131,29 +133,20 @@ function Dashboard(){
                 
                 />
                 <StatisticComponent
-                    Name = { stateData.personal.name_full}
-                    LongRating = {stateData.vatsim.rating.long}
+                    Name = { sessionStorage.getItem("FullName") }
+                    LongRating = {sessionStorage.getItem("LongATCRating")}
                     // ATC PROPS
-                    ShortAtcRating = {stateData.vatsim.rating.short}
+                    ShortAtcRating = {sessionStorage.getItem("ShortATCRating")}
                     ATCTime = {ATCStat}
                     LastPosition = {LastPosition}
                     // PilotProps
                     PilotTime = {PilotStat}
-                    ShortPilotRating = {stateData.vatsim.pilotrating.short}
+                    ShortPilotRating = {sessionStorage.getItem("ShortPilotRating")}
                     LastFlownHours = {LastHoursFlown}
                
                />
 
 
-
-
-
-
-
-
-                
-                <p>{JSON.stringify(stateData)}</p>
-                <p>{stateData.cid}</p>
                 
             </div>
 

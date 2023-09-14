@@ -22,7 +22,7 @@ function DashboardEvents(){
 
 
     return(
-            <div className="DashboardEvent">
+            <div className="DashboardEvent animate__fadeInDown">
                 {/* {JSON.stringify(event)} */}
                 <div>
                     <a href={EventLink} target="blank">
@@ -30,7 +30,7 @@ function DashboardEvents(){
                         <img src="https://vatsim-my.nyc3.digitaloceanspaces.com/events/YQfA7qAOrMvMH9f4QBILdxqrHAYX8v8lpaiyENqF.jpg"></img>
                     </a>
                 </div>
-                <div>
+                <div className="animate__fadeInDown">
                     <a href={EventLink} target="blank">
                         {/* <img src={EventBanner}></img> */}
                         <img src="https://vatsim-my.nyc3.digitaloceanspaces.com/events/YQfA7qAOrMvMH9f4QBILdxqrHAYX8v8lpaiyENqF.jpg"></img>

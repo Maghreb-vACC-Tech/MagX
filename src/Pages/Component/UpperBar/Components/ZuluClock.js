@@ -8,7 +8,6 @@ function ZuluTimeComponent(){
     useEffect(()=>{
         const interval = setInterval(() => {
             const d = new Date();
-            d.setUTCHours(15);
 
             const seconds = d.getUTCSeconds().toString().padStart(2, '0');
             const Minutes = d.getUTCMinutes().toString().padStart(2, '0');
