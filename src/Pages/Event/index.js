@@ -5,19 +5,20 @@ import "./index.css"
 
 function Event() {
 
-  const [MagEvent , SetMagEvent] = useState([])
+  // const [MagEvent , SetMagEvent] = useState([])
 
-  useEffect(()=>{
-    fetch("http://127.0.0.1:1000/MaghrebEvents")
-    .then(res => res.json())
-    .then(res => SetMagEvent(res))
+  // useEffect(()=>{
+  //   fetch("http://127.0.0.1:1000/MaghrebEvents")
+  //   .then(res => res.json())
+  //   .then(res => SetMagEvent(res))
     
-    sessionStorage.setItem("EventBanner" , MagEvent.banner )
-    sessionStorage.setItem("EventLink" , MagEvent.link )
+  //   sessionStorage.setItem("EventBanner" , MagEvent.banner )
+  //   sessionStorage.setItem("EventLink" , MagEvent.link )
   
-  })
+  // })
 
-
+  const MagEvent = JSON.parse(sessionStorage.getItem("MagEvent"));
+  
   return (
     <>
       <SideBar />
@@ -58,14 +59,21 @@ function Event() {
           </div>
         </div> */}
         {/* {JSON.stringify(MagEvent)} */}
+
         {MagEvent.map((item) => (
               <div className="Events">
               <div className="Event-Container">
                 <div className="Event-Container-IMG">
                   <img src={item.banner}></img>
                 </div>
-                <div className="Event-Container-Description" dangerouslySetInnerHTML={{__html: item.description}}>
-
+                <div className="Event-Container-Description" >
+                  <div className="Event-Container-Description-text" dangerouslySetInnerHTML={{__html: item.description}}></div>
+                  <div className="Event-Container-Description-Links">
+                    <div>
+                      <div className="Event-Container-Description-Links-save"><a href="#"><i class="fa-regular fa-bell"></i> Reminder</a></div>
+                      <div className="Event-Container-Description-Links-view"><a href={item.link} target="blank"><i class="fa-regular fa-eye"></i> View</a></div>
+                    </div>
+                  </div>
                 </div>
                 
               </div>

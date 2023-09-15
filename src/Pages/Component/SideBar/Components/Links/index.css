@@ -7,6 +7,7 @@
     align-items: center;
     cursor: pointer;
     border-radius: 100px;
+    position: relative;
 }
 .SideBarLink:hover{
     background-color: #16161a;
@@ -23,6 +24,17 @@
     color: #DDD;
     text-decoration: none;
     display: inline-block;
-    translate: 115% ;
+    translate: -115% ;
+    position: absolute;
+    right: 0;
+}
+.SideBarLink div{
+    display: none;
+    animation-duration:1s
 }
 
+.SideBarLink:hover div{
+    translate: 6vw;
+    display: block;
+    animation-duration:1s
+}

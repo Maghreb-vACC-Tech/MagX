@@ -1,6 +1,6 @@
 import "./index.css"
 // Import Logo
-import Logo from "../../../Ressources/Logo/logo-big.svg"
+import Logo from "../../../Ressources/Logo/logo.svg"
 
 // Import Component
 import SideBarLink from "./Components/Links"
@@ -114,7 +114,7 @@ function SideBar(){
                 <SideBarLink
                     Link = "Admin"
                     Icon = {AdminIcon}
-                    LinkRedirect = "/Admin"
+                    LinkRedirect = "/Staff"
                 />
 
             </div>

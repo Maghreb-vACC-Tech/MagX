@@ -8,12 +8,17 @@ import Event from './Pages/Event';
 import Announcement from './Pages/Announcement';
 import LocationExtractor from './LocationExtractor';
 import Rooster from './Pages/Rooster';
+import AdminPage from './Pages/Admin';
 
 function App() {
+
+
+  
   return (
     <Router>
       <Routes>
         <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Staff" element={<AdminPage/>}/>
         <Route path="/Booking" element={<Booking />} />
         <Route path="/Event" element={<Event />} />
         <Route path="/Announcement" element={<Announcement />} />
