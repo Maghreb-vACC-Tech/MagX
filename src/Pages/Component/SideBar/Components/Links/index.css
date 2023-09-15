@@ -30,11 +30,10 @@
 }
 .SideBarLink div{
     display: none;
-    animation-duration:1s
+    animation-duration:0.3s
 }
 
 .SideBarLink:hover div{
     translate: 6vw;
     display: block;
-    animation-duration:1s
 }
