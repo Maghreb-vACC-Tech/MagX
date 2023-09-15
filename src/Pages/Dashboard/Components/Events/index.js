@@ -4,7 +4,7 @@ import "./index.css"
 
 function DashboardEvents(){
 
-    const [event,setevent] = useState("")
+    // const [event,setevent] = useState("")
     const [EventBanner,setEventBanner] = useState("")
     const [EventLink,setEventLink] = useState("")
 
@@ -17,25 +17,24 @@ function DashboardEvents(){
     // })
   
     // Rest of your component code
+    const event = JSON.parse(sessionStorage.getItem("MagEvent"));
 
-
+    console.log(event[0].banner)
 
 
     return(
             <div className="DashboardEvent animate__fadeInDown">
                 {/* {JSON.stringify(event)} */}
-                <div>
-                    <a href={EventLink} target="blank">
-                        {/* <img src={EventBanner}></img> */}
-                        <img src="https://vatsim-my.nyc3.digitaloceanspaces.com/events/YQfA7qAOrMvMH9f4QBILdxqrHAYX8v8lpaiyENqF.jpg"></img>
-                    </a>
-                </div>
-                <div className="animate__fadeInDown">
-                    <a href={EventLink} target="blank">
-                        {/* <img src={EventBanner}></img> */}
-                        <img src="https://vatsim-my.nyc3.digitaloceanspaces.com/events/YQfA7qAOrMvMH9f4QBILdxqrHAYX8v8lpaiyENqF.jpg"></img>
-                    </a>
-                </div>
+                {event.map((item) => (
+                    <div>
+                        <a href={item.link} target="blank">
+                            {/* <img src={EventBanner}></img> */}
+                            <img src={item.banner}></img>
+                        </a>
+                    </div>
+                ))}
+                
+
             </div>
 
     )

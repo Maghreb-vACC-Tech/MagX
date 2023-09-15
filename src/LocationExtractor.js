@@ -1,5 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect , useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+
+import LoadingSpinner from './Pages/Component/LoadingSpinner';
 
 function LocationExtractor() {
   const navigate = useNavigate();
@@ -33,6 +35,10 @@ function LocationExtractor() {
     const LongSubdivision = Data.vatsim.subdivision.name
     // OAuth
     const OAuth = Data.oauth
+
+
+  // Events Extraction
+  const [MagEvent , SetMagEvent] = useState([])
   
   
   useEffect(() => {
@@ -55,9 +61,27 @@ function LocationExtractor() {
     sessionStorage.setItem("OAuth" , OAuth)
 
 
-    navigate('/dashboard');
+    // Get Event
+    fetch("http://127.0.0.1:1000/MaghrebEvents")
+    .then(res => res.json())
+    .then(res => {
+      SetMagEvent(res)
+      
+      sessionStorage.setItem("MagEvent" , JSON.stringify(MagEvent) )
+      console.log(sessionStorage.getItem("MagEvent"))
+
+      setTimeout(()=>{navigate('/dashboard');},2000)
+      // navigate('/dashboard')
+    })
+    
 
   }, [Data]);
+
+
+
+  return(
+    <LoadingSpinner/>
+  )
 
 }
 
