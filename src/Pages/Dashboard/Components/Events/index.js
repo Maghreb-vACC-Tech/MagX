@@ -29,6 +29,13 @@ function DashboardEvents(){
                         </a>
                     </div>
                 ))}
+                {event.map((item) => (
+                    <div>
+                        <a href="/Event">
+                            <img src={item.banner}></img>
+                        </a>
+                    </div>
+                ))}
                 
 
             </div>

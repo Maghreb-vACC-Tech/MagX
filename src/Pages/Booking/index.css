@@ -15,11 +15,13 @@
     text-align: center;
     padding-top: 1%;
 }
+.Bookings-Container-Name {
+    height: 15vh;
+}
 .Bookings-Container-Name div{
-    width: 33%;
+    width: 100%;
     float: left;
     text-align: center;
-    border-bottom: 1px solid #D4D4D4;
 }
 .Bookings-Container-DIV{
     width: 100%;
@@ -115,3 +117,93 @@
     color: white;
     background-color: #0C0C0E!important;
 }
+
+/* BOOKINGS */
+.Booking-container{
+ 
+}
+.Booking-container-Date{
+    width: 95%;
+    height: 7vh;
+    background-color: #1D1D20 ;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+}
+.Booking-container-Date h1{
+    align-items: center;
+    justify-content: center; 
+    padding: 2vw;
+    font-size: 1.2vw;
+
+}
+.Booking-container-Event{
+    width: 90%;
+    height: 7vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: rgb(63,94,251); */
+    /* background-color: rgba(252,70,107,1); */
+    /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
+    border-radius: 15px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+
+}
+.Booking-container-Booking-Name{
+    width: 15%;
+}
+.Booking-container-Booking-CID{
+    width: 20%;
+}
+.Booking-container-Booking-Start{
+    width: 15%;
+}
+.Booking-container-Booking-Seperation{
+    
+    width: 15%;
+}
+.Booking-container-Booking-End{
+    width: 15%;
+}
+.Booking-container-Booking-Action{
+    width: 10%;
+}
+/* EVENTS IN BOOKING PAGE */
+
+.Event-container-Event{
+    width: 90%;
+    height: 7vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: rgb(63,94,251); */
+    background: rgb(21, 53, 216);
+    /* background-color: rgba(252,70,107,1); */
+    /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
+    border-radius: 15px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+.Event-container-Event > div {
+    /* width: 20%; */
+    height: 7vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+}
+.Event-container-Event-Name{
+    /* background-color: #0C0C0E; */
+    width: 30%;
+}
+.Event-container-Event-Action > a > svg{
+    cursor: pointer;
+}
+
+

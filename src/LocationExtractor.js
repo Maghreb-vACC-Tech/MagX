@@ -71,6 +71,7 @@ function LocationExtractor() {
       console.log(sessionStorage.getItem("MagEvent"))
 
       setTimeout(()=>{navigate('/dashboard');},2000)
+      
       // navigate('/dashboard')
     })
     

@@ -7,7 +7,7 @@ import Booking from './Pages/Booking';
 import Event from './Pages/Event';
 import Announcement from './Pages/Announcement';
 import LocationExtractor from './LocationExtractor';
-import Rooster from './Pages/Rooster';
+import Roster from './Pages/Roster';
 import AdminPage from './Pages/Admin';
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
         <Route path="/Booking" element={<Booking />} />
         <Route path="/Event" element={<Event />} />
         <Route path="/Announcement" element={<Announcement />} />
-        <Route path="/Rooster" element={<Rooster />} />
+        <Route path="/Roster" element={<Roster />} />
         <Route path="/extractor" element={<LocationExtractor />} />
       </Routes>
     </Router>

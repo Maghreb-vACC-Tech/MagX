@@ -3,7 +3,7 @@ import SideBar from "../Component/SideBar";
 import UpperBar from "../Component/UpperBar";
 import "./index.css"
 
-function Rooster() {
+function Roster() {
   const [res, setRes] = useState([]);
 
   useEffect(() => {
@@ -23,4 +23,4 @@ function Rooster() {
   );
 }
 
-export default Rooster;
+export default Roster;

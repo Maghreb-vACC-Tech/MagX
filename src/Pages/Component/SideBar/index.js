@@ -70,6 +70,7 @@ function SideBar(){
         </svg>
     )
 
+
     return(
         <div className="SideBar">
 
@@ -106,9 +107,9 @@ function SideBar(){
                 />
 
                 <SideBarLink
-                    Link = "Rooster"
+                    Link = "Roster"
                     Icon = {RoosterIcon}
-                    LinkRedirect = "/Rooster"
+                    LinkRedirect = "/Roster"
                 />
                 
                 <SideBarLink
