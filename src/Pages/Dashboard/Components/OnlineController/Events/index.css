@@ -1,0 +1,22 @@
+
+.DashboardOnlineController{
+    width: 40vw;
+    height:60vh ;
+    background-color: #0C0C0E;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: -5px 15px 50px #000;
+    float:left;
+    margin-left: 5vw;
+}
+.DashboardOnlineControllerTitle{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8vw;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}

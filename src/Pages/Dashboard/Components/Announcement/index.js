@@ -5,7 +5,7 @@ function AnnouncementComponent(){
 
 
     return(
-        <div className="DashboardAnnouncement">
+        <div className="DashboardAnnouncement animate__fadeInLeft">
             <div className="DashboardAnnouncementTitle"><h1>Latest Announcement</h1></div>
             <div className="DashboardAnnouncementInfos">
                 <div className="DashboardAnnouncementInfosName"><p>John Doe</p></div>

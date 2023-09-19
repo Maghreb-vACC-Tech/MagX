@@ -4,6 +4,8 @@ import UpperBar from "../Component/UpperBar";
 import DashboardEvents from "./Components/Events";
 import AnnouncementComponent from "./Components/Announcement";
 import StatisticComponent from "./Components/Statistic";
+import BookingComponent from "./Components/Booking/Announcement";
+import DashboardOnlineControllers from "./Components/OnlineController/Events";
 
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from "react";
@@ -60,15 +62,15 @@ function Dashboard(){
     useEffect(()=>{
     
     // ATC-Pilot Stats
-        fetch("http://127.0.0.1:1000/stats" , {
+    fetch("http://127.0.0.1:1000/stats" , {
             method: "POST",
             headers: {
             "Content-Type": "application/json"
             },
             body: JSON.stringify({cid: 1674212})
         })
-        .then(data => data.json())
-        .then(data => {
+    .then(data => data.json())
+    .then(data => {
 
             const pilothours = millisecondsToHoursMinutes(data.pilot * 3600000)
             const atchours = millisecondsToHoursMinutes(data.atc * 3600000)
@@ -79,7 +81,7 @@ function Dashboard(){
 
             setPilotStat(pilothours)
             setATCStat(atchours)
-        })
+       })
 
     // Observing Hours
     // http://127.0.0.1:1000/AllStats
@@ -114,7 +116,7 @@ function Dashboard(){
 
     } ,[])
 
-    const test = sessionStorage.getItem("CID")
+    
 
 
     return(
@@ -146,7 +148,8 @@ function Dashboard(){
                
                />
 
-                
+                <BookingComponent/>
+                <DashboardOnlineControllers/>
             </div>
 
         </>

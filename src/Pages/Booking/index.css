@@ -57,6 +57,7 @@
     translate: 0 5vh;
     margin-bottom: 10vh;
     overflow-y: hidden;
+    animation-duration: 0.3s;
 }
 .Bookings-Add-Title{
     width: 100%;
@@ -154,24 +155,50 @@
 
 }
 .Booking-container-Booking-Name{
-    width: 15%;
+    width: 20%;
+    text-align: left;
 }
 .Booking-container-Booking-CID{
     width: 20%;
+    text-align: center;
 }
 .Booking-container-Booking-Start{
     width: 15%;
+    text-align: center;
 }
 .Booking-container-Booking-Seperation{
     
+    text-align: center;
     width: 15%;
 }
 .Booking-container-Booking-End{
+    text-align: center;
     width: 15%;
 }
 .Booking-container-Booking-Action{
+    text-align: center;
     width: 10%;
 }
+.Booking-container-Booking-Action svg{
+    cursor: pointer;
+}
+
+.twr {
+    color: red; 
+  }
+  
+  .gnd {
+    color: blue;
+  }
+  
+  .ctr {
+    color: green;  
+  }
+  
+  .app {
+    color: purple;
+  }
+
 /* EVENTS IN BOOKING PAGE */
 
 .Event-container-Event{

@@ -2,49 +2,21 @@
 
 function MenuIconComponent(){
     let index = true
-    function MenuIconAnimation(){
-        if(index){
-            // document.querySelector(".SideBar").style.width = "5vw"
-            // // document.querySelector(".SideBarLink").style.width = "5vw"
-            // // document.querySelectorAll(".SideBarLink").style.width = "5vw"
-            // document.querySelector(".SideBar-Links").classList.remove("animate__fadeInLeft")
-            // // document.querySelector(".SideBar-Links").style.display = "none"
-            // document.querySelector(".PagesContainer").style.width = "95vw"
-            // document.querySelector(".UpperBar").style.width = "95vw"
-            // animate__fadeInLeft
-
-            
-            index = !index
-        }
-        else{
-            // document.querySelector(".SideBar").style.width = "15vw"
-            // document.querySelector(".SideBar-Links").classList.add("animate__fadeInLeft")
-            // // document.querySelector(".SideBar-Links").style.display = "block"
-            // document.querySelector(".PagesContainer").style.width = "85vw"
-            // document.querySelector(".UpperBar").style.width = "84vw"
-            index = !index
-
-        }
-    }
+  
 
 
-    
-    const svgIcon = (
-        <svg xmlns="http://www.w3.org/2000/svg" className="MenuIconComponentIconSVG" onClick={MenuIconAnimation} width="30" height="48" viewBox="0 0 48 48" fill="none">
-        <g clip-path="url(#clip0_53_14)">
-        <path d="M6 36H42V32H6V36ZM6 26H42V22H6V26ZM6 12V16H42V12H6Z" fill="white"/>
-        </g>
-        <defs>
-        <clipPath id="clip0_53_14">
-        <rect width="48" height="48" fill="white"/>
-        </clipPath>
-        </defs>
+    const BellIcon = (
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="40" viewBox="0 0 34 46" fill="none">
+            <path d="M17 45.3773C19.3375 45.3773 21.25 43.3015 21.25 40.7644H12.75C12.75 43.3015 14.6625 45.3773 17 45.3773ZM29.75 31.5385V20.0061C29.75 12.9253 26.2862 6.99767 20.1875 5.42927V3.86087C20.1875 1.9465 18.7638 0.401169 17 0.401169C15.2362 0.401169 13.8125 1.9465 13.8125 3.86087V5.42927C7.735 6.99767 4.25 12.9022 4.25 20.0061V31.5385L0 36.1514V38.4579H34V36.1514L29.75 31.5385ZM25.5 33.845H8.5V20.0061C8.5 14.2861 11.7087 9.62704 17 9.62704C22.2913 9.62704 25.5 14.2861 25.5 20.0061V33.845Z" fill="white"/>
         </svg>
     )
 
     return (
         <>
-            {svgIcon}
+            {BellIcon}
+            <div>
+                
+            </div>
         </>
     );
 

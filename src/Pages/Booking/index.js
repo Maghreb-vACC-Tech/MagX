@@ -3,25 +3,40 @@ import SideBar from "../Component/SideBar";
 import UpperBar from "../Component/UpperBar";
 import "./index.css"
 
+// Toatstify ( for notification )
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function Booking() {
-  const [vatsimEvents, setvatsimEvents] = useState([]);
+  const notify = (e) => toast( e , {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    });;
+  // const [vatsimEvents, setvatsimEvents] = useState([]);
   const [maghrebBookings, setmaghrebBookings] = useState([]);
 
-  useEffect(() => {
-    // fetch("http://127.0.0.1:1000/VatmenaEvents")
-    fetch("http://127.0.0.1:1000/MaghrebEvents")
-      .then((response) => response.json())
-      .then((response) => setvatsimEvents(response));
-  }, []);
-
-  useEffect(() => {
+  function MaghrebFetching(){
     fetch("http://127.0.0.1:1000/MaghrebBooking")
     // fetch("http://127.0.0.1:1000/MagBookTest")
       .then((response) => response.json())
       .then((response) => {
         setmaghrebBookings(response)
       });
+  }
+
+  useEffect(() => {
+    MaghrebFetching()
   }, []);
+  
+  const data = sessionStorage.getItem("MagEvent")
+  const vatsimEvents = JSON.parse(data)
 
   const allEvents = [
     ...vatsimEvents.map(event => ({
@@ -33,6 +48,7 @@ function Booking() {
       type: 'booking'
     }))
   ];
+
 
   function AddBooking(){
 
@@ -48,7 +64,8 @@ function Booking() {
       "division": "MENA",
       "subdivision": "MAG"
     }
-    alert(JSON.stringify(Data))
+
+    // alert(JSON.stringify(Data))
 
     fetch('http://127.0.0.1:1000/AddMaghrebBooking', {
       method: 'POST',
@@ -58,7 +75,9 @@ function Booking() {
       body: JSON.stringify({
         Data
       })
-    });
+    })
+    .then(MaghrebFetching())
+    .then(notify("Booking Added"))
   }
 
 
@@ -86,6 +105,14 @@ function Booking() {
 
 
   function DateGroup({ date, items }) {  
+
+    const bookingPositions = {
+      TWR: 'twr',
+      GND: 'gnd', 
+      CTR: 'ctr',
+      APP: 'app'
+    };
+
     const ReminderIcon = (
       <svg xmlns="http://www.w3.org/2000/svg" width="1vw" height="46" viewBox="0 0 34 46" fill="none">
         <path d="M17 45.3773C19.3375 45.3773 21.25 43.3015 21.25 40.7644H12.75C12.75 43.3015 14.6625 45.3773 17 45.3773ZM29.75 31.5385V20.0061C29.75 12.9253 26.2862 6.99767 20.1875 5.42927V3.86087C20.1875 1.9465 18.7638 0.401169 17 0.401169C15.2362 0.401169 13.8125 1.9465 13.8125 3.86087V5.42927C7.735 6.99767 4.25 12.9022 4.25 20.0061V31.5385L0 36.1514V38.4579H34V36.1514L29.75 31.5385ZM25.5 33.845H8.5V20.0061C8.5 14.2861 11.7087 9.62704 17 9.62704C22.2913 9.62704 25.5 14.2861 25.5 20.0061V33.845Z" fill="white"/>
@@ -103,6 +130,24 @@ function Booking() {
         hour: 'numeric',
         minute: 'numeric'
       }).format(date);
+    }
+
+    function DeleteBooking(id){
+
+      // alert(id)
+
+      fetch("http://127.0.0.1:1000/DeleteMaghrebBooking" , {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: id,
+        })
+      })
+      .then(MaghrebFetching())
+      .then(notify("Booking Deleted"))
+      
     }
 
     return (
@@ -127,7 +172,13 @@ function Booking() {
   
               {item.type === 'booking' &&  
                 <div className="Booking-container-Event">
-                    <div className="Booking-container-Booking-Name"><p>{item.callsign}</p></div>
+                    {/* //bookingPositions */}
+                    <div 
+                    // className="Booking-container-Booking-Name"
+                    className={`Booking-container-Booking-Name ${
+                      bookingPositions[item.type] ? bookingPositions[item.type] : ''  
+                    }`}
+                    ><p>{item.callsign}</p></div>
                     <div className="Booking-container-Booking-CID"><a>{item.cid}</a></div>
                     <div className="Booking-container-Booking-Start"><p>{formatTime(new Date(item.start))}  </p></div>
                     <div className="Booking-container-Booking-Seperation"><p> - </p></div>
@@ -135,7 +186,7 @@ function Booking() {
                     {/* <div className="Booking-container-Booking-Action"><a>{TrashIcon}</a></div> */}
                     {item.cid == "1674212" && (//sessionStorage.getItem("CID")
                       <div className="Booking-container-Booking-Action">
-                        <a>{TrashIcon}</a>  
+                        <a onClick={() => {DeleteBooking(item.id)}}>{TrashIcon}</a>  
                       </div>
                     )}
                 </div>
@@ -162,7 +213,7 @@ function Booking() {
 
 
         <div className="Bookings">
-          <div className="Bookings-Add">
+          <div className="Bookings-Add animate__fadeIn">
             <div className="Bookings-Add-Title"><h1>New Booking</h1></div>
 
             <div className="Bookings-Add-Inputs">
@@ -220,26 +271,6 @@ function Booking() {
               </div>
             </div>
 
-
-
-            {/* {Object.entries(formattedEvents).map(([date, events]) => (
-              <div className="Booking-container" key={date}>
-                <div className="Booking-container-Date"><h1>{date}</h1></div>
-                
-                
-                {events.map(event => (
-                  <div className="Booking-container-Event">
-                    <div><p>{event.name}</p></div>
-                    <div><p>{event.start_time}</p></div>
-                    <div><p> - </p></div>
-                    <div><p>{event.end_time}</p></div>
-                    <div><p>{event.start_time}</p></div>
-                  </div>
-                ))}
-                
-              </div>
-            ))} */}
-
             {Object.entries(formattedEvents).map(([date, items]) => (  
                   <DateGroup
                     date={date}
@@ -247,26 +278,12 @@ function Booking() {
                   />
                 ))}
 
-
-            {/* <div  className="Bookings-Container-DIV">
-              <div className="Bookings-Container-DIV-color"><p>GMMN_TWR</p></div>
-              <div><p>2023-11-25T13:00:00Z</p></div>
-              <div><p>1674212</p></div>
-            </div>
-
-     
-            {res.map((item) => (
-              <div  className="Bookings-Container-DIV">
-                <div className="Bookings-Container-DIV-color"><p>{item.callsign}</p></div>
-                <div><p>{item.start}</p></div>
-                <div><p>{item.cid}</p></div>
-              </div>
-            ))} */}
           </div>
         </div>
         
 
       </div>
+      <ToastContainer />
     </>
   );
 }

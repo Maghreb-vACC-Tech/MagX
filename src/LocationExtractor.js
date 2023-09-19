@@ -9,7 +9,13 @@ function LocationExtractor() {
   const encodedData = new URLSearchParams(location.search).get('data');
   const jsonData = JSON.parse(decodeURIComponent(encodedData || ''));
   const Data = JSON.parse(jsonData).data;
-  // Data CONST   
+
+  // Events Extraction
+  const [MagEvent , SetMagEvent] = useState([])
+  
+  function SavePersonalData(){
+
+      // Data CONST   
     // CID
     const CID = Data.cid
     // Fullname
@@ -37,13 +43,7 @@ function LocationExtractor() {
     const OAuth = Data.oauth
 
 
-  // Events Extraction
-  const [MagEvent , SetMagEvent] = useState([])
-  
-  
-  useEffect(() => {
-    // Personal Sessions
-
+    // Set Sessions
     sessionStorage.setItem("CID" , CID)
     sessionStorage.setItem("FullName" , FullName)
     sessionStorage.setItem("Email" , Email)
@@ -61,7 +61,9 @@ function LocationExtractor() {
     sessionStorage.setItem("OAuth" , OAuth)
 
 
-    // Get Event
+  }
+
+  function GetEventsAndRedirect(){
     fetch("http://127.0.0.1:1000/MaghrebEvents")
     .then(res => res.json())
     .then(res => {
@@ -70,11 +72,18 @@ function LocationExtractor() {
       sessionStorage.setItem("MagEvent" , JSON.stringify(MagEvent) )
       console.log(sessionStorage.getItem("MagEvent"))
 
-      setTimeout(()=>{navigate('/dashboard');},2000)
+      setTimeout(()=>{navigate('/dashboard');},100)
       
       // navigate('/dashboard')
     })
     
+  }
+  
+  useEffect(() => {
+
+    SavePersonalData()
+    
+    GetEventsAndRedirect()
 
   }, [Data]);
 
