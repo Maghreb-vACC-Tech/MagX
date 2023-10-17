@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import SideBar from "../Component/SideBar";
 import UpperBar from "../Component/UpperBar";
+
+import Navigator from "./Navigator";
 import "./index.css"
 
 function AdminPage() {
@@ -11,7 +13,7 @@ function AdminPage() {
         <SideBar />
         <div className="AdminPage PagesContainer">
           <UpperBar Username={sessionStorage.getItem("FullName")} />
-          <h1>AdminPage Comming Soon</h1>
+          <Navigator/>
         </div>
       </>
     );

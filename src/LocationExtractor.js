@@ -42,8 +42,9 @@ function LocationExtractor() {
     // OAuth
     const OAuth = Data.oauth
 
-
+    console.log(JSON.stringify(Data))
     // Set Sessions
+    sessionStorage.setItem("Data" , Data)
     sessionStorage.setItem("CID" , CID)
     sessionStorage.setItem("FullName" , FullName)
     sessionStorage.setItem("Email" , Email)
@@ -61,6 +62,7 @@ function LocationExtractor() {
     sessionStorage.setItem("OAuth" , OAuth)
 
 
+
   }
 
   function GetEventsAndRedirect(){
@@ -70,14 +72,17 @@ function LocationExtractor() {
       SetMagEvent(res)
       
       sessionStorage.setItem("MagEvent" , JSON.stringify(MagEvent) )
-      console.log(sessionStorage.getItem("MagEvent"))
+      // console.log(sessionStorage.getItem("MagEvent"))
 
-      setTimeout(()=>{navigate('/dashboard');},100)
+      setTimeout(()=>{
+        navigate('/dashboard');
+      },100)
       
       // navigate('/dashboard')
     })
     
   }
+  // GetEventsAndRedirect 
   
   useEffect(() => {
 

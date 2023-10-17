@@ -15,17 +15,9 @@ function SideBar(){
         </svg>
     )
 
-    const AnnouncementIcon = (
-        <svg xmlns="http://www.w3.org/2000/svg"  width="1.5vw" height="31" viewBox="0 0 34 31" fill="none">
-        <g clip-path="url(#clip0_5_93)">
-        <path d="M12.75 16.7917C15.8797 16.7917 18.4167 14.4785 18.4167 11.625C18.4167 8.77154 15.8797 6.45834 12.75 6.45834C9.62043 6.45834 7.08337 8.77154 7.08337 11.625C7.08337 14.4785 9.62043 16.7917 12.75 16.7917Z" fill="white"/>
-        <path d="M12.75 19.375C8.96746 19.375 1.41663 21.1058 1.41663 24.5417V27.125H24.0833V24.5417C24.0833 21.1058 16.5325 19.375 12.75 19.375ZM23.7433 6.92334L21.3633 9.10626C22.5533 10.6304 22.5533 12.6067 21.3633 14.1308L23.7433 16.3138C26.605 13.7046 26.605 9.76501 23.7433 6.92334ZM28.4325 2.58334L26.1233 4.68876C30.0475 8.58959 30.0475 14.4538 26.1233 18.5613L28.4325 20.6667C33.9575 15.6421 33.9716 7.81459 28.4325 2.58334Z" fill="white"/>
-        </g>
-        <defs>
-        <clipPath id="clip0_5_93">
-        <rect width="34" height="31" fill="white"/>
-        </clipPath>
-        </defs>
+    const TrainingIcon = (
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.5vw" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 21L5 17.2V11.2L1 9L12 3L23 9V17H21V10.1L19 11.2V17.2L12 21ZM12 12.7L18.85 9L12 5.3L5.15 9L12 12.7ZM12 18.725L17 16.025V12.25L12 15L7 12.25V16.025L12 18.725Z" fill="black"/>
         </svg>
     )
 
@@ -89,9 +81,9 @@ function SideBar(){
                 />
 
                 <SideBarLink
-                    Link = "Announcement"
-                    Icon = {AnnouncementIcon}
-                    LinkRedirect = "/Announcement"
+                    Link = "Training"
+                    Icon = {TrainingIcon}
+                    LinkRedirect = "/Training"
                 />
 
                 <SideBarLink

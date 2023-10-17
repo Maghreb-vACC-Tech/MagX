@@ -6,6 +6,7 @@
     border-radius: 15px;
     box-shadow: -5px 15px 50px #000;
     animation-duration: 0.3s;
+    margin-top: 5vh;
 }
 .DashboardAnnouncementTitle{
     width: 100%;

@@ -2,7 +2,7 @@ import "./index.css"
 
 function StatisticComponent(props){
     return(
-        <div className="DashboardStatistic">
+        <div className="DashboardStatistic animate__fadeIn">
             <div className="DashboardStatisticTitle">
                 <h1>{props.Name}</h1>
             </div>

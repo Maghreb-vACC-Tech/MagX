@@ -1,0 +1,409 @@
+/** Navigator Stylesheet */
+nav{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border-bottom: 1px solid rgb(133, 133, 133); */
+    padding-bottom: 10vh;
+    margin-top: 10vh;
+    animation-duration: 0.3s;
+}
+nav > div {
+    width: 10%;
+    margin: auto;
+    float: left;
+
+}
+nav > div > a{
+    width: 15vw;
+    color: white;
+    text-decoration: none;
+    padding-left:2vw ;
+    padding-right:2vw ;
+    padding-top:1vw ;
+    padding-bottom:1vw ;
+    border-radius: 50px;
+}
+
+.NavigatorTrainingBTN{background-color: rgba(16, 64, 80, 0.87);}
+.NavigatorBookingBTN{background-color: rgba(119, 97, 180, 0.87);}
+.NavigatorAnnouncementBTN{background-color: rgba(97, 180, 145, 0.87);}
+.NavigatorStaffBTN{background-color: rgba(191, 193, 97, 0.87);}
+
+
+.NavigatorTrainingBTN:hover{background-color: rgba(23, 104, 131, 0.87);}
+.NavigatorBookingBTN:hover{background-color: rgba(163, 144, 218, 0.87);}
+.NavigatorAnnouncementBTN:hover{background-color: rgba(71, 235, 166, 0.87);}
+.NavigatorStaffBTN:hover{background-color: rgba(252, 255, 72, 0.87);}
+
+
+/* *Training */
+.TrainingAdmin{
+    width: 80%;
+    margin: auto;
+    display: block;
+    padding-top: 5vh;
+}
+.TrainingTopBar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    translate: 5vw ;
+}
+.TrainingTopBar > div{
+    /* float: left; */
+    width: 30%;
+}
+.TrainingSearch{
+    /* width: 10%; */
+    display: block;
+}
+.TrainingSearch input{
+    background-color: #0C0C0E;
+    border: none;
+    border-radius: 50px;
+    width: 20vw;
+    height: 5vh;
+    padding-left: 1vw;
+    color: white;
+}
+.TrainingSearchBTN button{
+    border-radius: 50px;
+    width: 5vw;
+    height: 5vh;
+    background-color: #0C0C0E;
+    border: none;
+}
+.TrainingSearchBTN button:hover{
+    border-radius: 50px;
+    width: 5vw;
+    height: 5vh;
+    background-color: #39393a;
+    border: none;
+    cursor: pointer;
+}
+.TrainingAddBTN a{
+    float: right;
+    background-color: #0c8eb9;
+    color: white;
+    border: none;
+    width: 5vw;
+    height: 5vh;
+    border-radius: 50px;
+    cursor: pointer;
+    translate: -5vw ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.TrainingAddBTN a:hover{
+    float: right;
+    background-color: #45D2FF;
+    color: white;
+    border: none;
+    width: 5vw;
+    height: 5vh;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+/* *Cards */
+/* Card StyleSheet */
+
+.CardAdmin{
+    background-color: #0C0C0E;
+    border-radius: 15px;
+    width: 30%;
+    padding: 1vw;
+    font-size: 1vw;
+    padding-bottom: 5vh;
+}
+.CardAdmin > section1 {
+    width: 95%;
+    height: 7vh;
+    margin: auto;
+    border-radius: 50px;
+    background-color: rgba(16, 64, 80);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+}
+.CardAdmin > section1 > div{
+    width: 50%;
+    background-color: transparent;
+}
+.CardAdmin > section1 > div > p{
+    padding-left: 1vw;
+}
+.CardAdmin > section1 > div > p1{
+    padding-right: 1vw;
+    float: right;
+}
+
+.CardAdmin > section {
+    width: 90%;
+    margin: auto;
+    margin-top: 5vh;
+    display: block;
+    padding-top: 5vh;
+}
+.CardAdmin > section > line {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.CardAdmin > section > line1{
+    padding-bottom: 5vh;
+    display: block;
+}
+.CardAdmin > section > line1 > div{
+    width: 90%;
+    margin: auto;
+}
+.CardAdmin > section > line > div{
+    width: 50%;
+    margin: auto;
+    display: flex;
+}
+.CardAdmin > section > line > div > a{
+    width: 50%;
+    margin: auto;
+    color: white;
+    padding: 1vw;
+    text-decoration:none ;
+    text-align: center;
+    border-radius: 15px;
+}
+.CardDeleteBTN{
+    background-color: #b81a1a;
+}
+.CardModifyBTN{
+    background-color: #8ba5b6;
+}
+.CardDeleteBTN:hover{
+    background-color: #6d2929;
+}
+.CardModifyBTN:hover{
+    background-color: #375970;
+}
+.CardAdmin {
+    background-color: #0C0C0E;
+    border-radius: 15px;
+    width: 30%;
+    padding: 1vw;
+    font-size: 1vw;
+    padding-bottom: 5vh;
+    float: left;
+    animation-duration: 0.5s;
+    display: flex;
+    flex-wrap: wrap; 
+    max-width: 400px;
+    margin: .3%;
+    margin-top: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: c;
+}
+.CardAdmin > section1{
+    background-color: rgba(16, 64, 80, 0.87);
+    margin: auto;
+    width: 90%;
+    height: 5vh;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    border-radius: 15px;
+}
+.CardAdmin > section1 > div{
+    margin: auto;
+    width: 50%;
+    height: 5vh;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.CardAdmin > section{
+    width: 90%;
+    border-radius: 15px;
+    margin: auto;
+}
+.CardAdmin > section > line > div{
+    margin: auto;
+    width: 50%;
+    height: 5vh;
+    float: left;
+}
+
+
+/* *Add Trainee  */
+.addTrainee{
+    /* width: 80vw;
+    height: 100vh; */
+    margin: auto;
+    background-color: #0d0d0f;
+    /* border-radius: 15px; */
+    /* margin-top: 10vh; */
+    /* position: absolute;
+    z-index: 1; */
+    animation-duration: 0.5s;
+    /* backdrop-filter: contrast(150%) saturate(230%) blur(23px) brightness(110%); */
+}
+.addTraineeTitle{
+    /* width: 100%;
+    height: 20%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+}
+.addTrainee section{
+    /* width: 94.3vw; */
+    /* height: 80%;  */
+    padding-top: 5vh;
+    /* display: flex; */
+    
+}
+
+.addTrainee section  > div{
+    width: 30%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 80%;  */
+}
+
+.addTrainee section > div *{
+    /* width: 100%; */
+    /* height: 80%;  */
+}
+  
+.addTrainee section div > div {
+    width: 30%;
+    margin-left: 5vw;
+    color : white
+}
+
+.addTrainee section > div input {
+    width: 80%;
+    height: 5vh;
+    border-radius: 5px;
+    color: white;
+    background-color: #121216;
+    border: none;
+    padding-left: 1vw;
+    display: block;
+  }
+.addTrainee section > div select {
+    width: 80%;
+    height: 5vh;
+    border-radius: 5px;
+    color: white;
+    background-color: #121216;
+    border: none;
+    padding-left: 1vw;
+    display: block;
+  }
+
+  .addTrainee section section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 94%
+  }
+  .addTrainee section section button{
+    background-color: #0c8eb9;
+    color: white;
+    border: none;
+    width: 10vw;
+    height: 5vh;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  .addTrainee section section button{
+    background-color: #0c8eb9;
+    color: white;
+    border: none;
+    width: 10vw;
+    height: 5vh;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  .addTrainee section section button:hover{
+    background-color: #0fc3ff;
+  }
+/* .addTrainee  */
+
+/* .addTrainee section div {
+    width: 33%;
+    height: 20vh;
+    display: flex;
+    float: left;
+    flex-direction: column;
+    align-items: center; 
+  }
+  
+.addTrainee section div p {
+    float: left;
+}
+  
+.addTrainee section div input {
+    width: 80%;
+    height: 5vh;
+    border-radius: 5px;
+    color: white;
+    background-color: #121216;
+    border: none;
+    padding-left: 1vw;
+    display: block;
+  }
+  .addTrainee section div select {
+    width: 80%;
+    height: 5vh;
+    border-radius: 5px;
+    color: white;
+    background-color: #121216;
+    border: none;
+    padding-left: 1vw;
+    display: block;
+  }
+  .addTrainee section footer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  .addTrainee section footer button{
+    background-color: #0c8eb9;
+    color: white;
+    border: none;
+    width: 10vw;
+    height: 5vh;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  .addTrainee section footer button{
+    background-color: #0c8eb9;
+    color: white;
+    border: none;
+    width: 10vw;
+    height: 5vh;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  .addTrainee section footer button:hover{
+    background-color: #0fc3ff;
+  } */

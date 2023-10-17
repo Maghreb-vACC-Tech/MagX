@@ -17,30 +17,33 @@ function DashboardEvents(){
     // Rest of your component code
     const event = JSON.parse(sessionStorage.getItem("MagEvent"));
 
+    if (event == null){ 
+        return(
+        <div className="DashboardEvent animate__fadeIn">
+            {JSON.stringify(event)}
+            {event.map((item) => (
+                <div>
+                    <a href="/Event">
+                        <img src={item.banner}></img>
+                    </a>
+                </div>
+            ))}
+            {event.map((item) => (
+                <div>
+                    <a href="/Event">
+                        <img src={item.banner}></img>
+                    </a>
+                </div>
+            ))}
+            
 
+        </div>
 
-    return(
-            <div className="DashboardEvent animate__fadeInDown">
-                {/* {JSON.stringify(event)} */}
-                {event.map((item) => (
-                    <div>
-                        <a href="/Event">
-                            <img src={item.banner}></img>
-                        </a>
-                    </div>
-                ))}
-                {event.map((item) => (
-                    <div>
-                        <a href="/Event">
-                            <img src={item.banner}></img>
-                        </a>
-                    </div>
-                ))}
-                
+)
 
-            </div>
+    }
 
-    )
+   
 }
 
 export default DashboardEvents

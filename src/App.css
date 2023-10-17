@@ -1,7 +1,7 @@
 .PagesContainer{
   float: left;
   background-color: #121216;
-  width: 95vw;
+  width: 94vw;
   height: 100vh;
   overflow-y: auto;
   transition:  all 0.3s ease;

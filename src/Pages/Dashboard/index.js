@@ -116,6 +116,8 @@ function Dashboard(){
 
     } ,[])
 
+                    
+    console.log("DATA : " , sessionStorage.getItem("Data"))
     
 
 
@@ -127,7 +129,8 @@ function Dashboard(){
             <div className="Dashboard PagesContainer">
                 <UpperBar
                     Username = { sessionStorage.getItem("FullName")}
-                />
+                    />
+
                 <DashboardEvents
                 
                 />
