@@ -49,10 +49,10 @@ function AddTraineeComponent(){
         fetch(`http://127.0.0.1:1000/GetTrainee/${TraineeConstructor.cid}`)
         .then(res => res.json())
         .then(res => {
-            console.log(res[0].cid)
-            alert(res[0].cid)
+            console.log(res.cid)
+            alert(res.cid)
             alert(TraineeConstructor.cid)
-            if (res[0].cid == TraineeConstructor.cid){
+            if (res.cid == TraineeConstructor.cid){
                 alert("user exists")
             }
             else{

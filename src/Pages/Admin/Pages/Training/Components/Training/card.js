@@ -1,6 +1,7 @@
 function Cards(props){
     let URLDeleteID = `/StaffDeleteTrainee?id=${props.id}`
     let URLModifyID = `/StaffAddTrainee?id=${props.id}`
+    let URLShowID = `/StaffShowTrainee?id=${props.id}`
     return(
         
         <div className="CardAdmin animate__fadeIn">
@@ -35,8 +36,9 @@ function Cards(props){
                 </line1>
                 
                 <line>
-                    <div><a href={URLDeleteID} className="CardDeleteBTN">Delete </a></div>
-                    <div><a href={URLModifyID} className="CardModifyBTN">Modify </a></div>
+                    <div><a href={URLDeleteID} className="CardDeleteBTN"><i class="fa-solid fa-trash"></i></a></div>
+                    <div><a href={URLShowID} className="CardShowBTN"><i class="fa-solid fa-eye"></i></a></div>
+                    <div><a href={URLModifyID} className="CardModifyBTN"><i class="fa-solid fa-pen"></i></a></div>
                 </line>
 
             </section>

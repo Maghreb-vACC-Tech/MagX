@@ -31,12 +31,14 @@ nav > div > a{
 .NavigatorBookingBTN{background-color: rgba(119, 97, 180, 0.87);}
 .NavigatorAnnouncementBTN{background-color: rgba(97, 180, 145, 0.87);}
 .NavigatorStaffBTN{background-color: rgba(191, 193, 97, 0.87);}
+.NavigatorMembershipBTN{background-color: rgba(189, 26, 61, 0.87);}
 
 
 .NavigatorTrainingBTN:hover{background-color: rgba(23, 104, 131, 0.87);}
 .NavigatorBookingBTN:hover{background-color: rgba(163, 144, 218, 0.87);}
 .NavigatorAnnouncementBTN:hover{background-color: rgba(71, 235, 166, 0.87);}
 .NavigatorStaffBTN:hover{background-color: rgba(252, 255, 72, 0.87);}
+.NavigatorMembershipBTN:hover{background-color: rgba(95, 29, 43, 0.87);}
 
 
 /* *Training */
@@ -186,11 +188,17 @@ nav > div > a{
 .CardModifyBTN{
     background-color: #8ba5b6;
 }
+.CardShowBTN{
+    background-color: #21922b;
+}
 .CardDeleteBTN:hover{
     background-color: #6d2929;
 }
 .CardModifyBTN:hover{
     background-color: #375970;
+}
+.CardShowBTN:hover{
+    background-color: #3c7741;
 }
 .CardAdmin {
     background-color: #0C0C0E;
@@ -208,7 +216,7 @@ nav > div > a{
     margin-top: 3vw;
     display: flex;
     justify-content: center;
-    align-items: c;
+    align-items: center;
 }
 .CardAdmin > section1{
     background-color: rgba(16, 64, 80, 0.87);

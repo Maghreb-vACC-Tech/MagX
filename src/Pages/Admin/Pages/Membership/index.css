@@ -1,0 +1,94 @@
+.MembersContrainer{
+    width: 80%;
+    margin: auto;
+    display: block;
+    /* background-color: aliceblue; */
+    background-color: #0C0C0E;
+    border-radius: 15px;
+    box-shadow: -5px 15px 50px #000;
+}
+.MembersContrainerHeader{
+    width: 100%;
+    height: 20vh;
+    /* background-color: blue; */
+}
+.MembersContrainerHeader section{
+    display: flex;
+    width: 90%;
+    margin: auto;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.MembersContrainerHeadertitle{ 
+    width: 70%;
+}
+.MembersContrainerHeaderSearch{ 
+    width: 30%;
+}
+.MembersContrainerHeaderTitles{
+    width: 100%;
+    display: flex!important;
+}
+.MembersContrainerHeaderTitles div{
+    width: 20%!important;
+    display: flex!important;
+    align-items: center!important;
+    justify-content: center!important;
+}
+
+.MembersContrainerHeaderSearch input{ 
+    background-color: #121216;
+    border: none;
+    border-radius: 50px;
+    /* width: 20vw; */
+    height: 5vh;
+    padding-left: 1vw;
+    color: white;
+}
+
+.MembersContrainerHeaderSearch button{ 
+    border-radius: 50px;
+    width: 5vw;
+    height: 5vh;
+    background-color: #121216;
+    border: none;
+    margin-left: 1vw;
+    color: white;
+    cursor: pointer;
+}
+.MembersContrainerHeaderBar{
+    width: 90vw;
+    height: 1px;
+    background-color: rgb(158, 158, 158);
+}
+.Member{
+    width: 90%;
+    background-color: #0C0C0E;
+    margin: auto;
+    border-radius: 15px;
+    animation-duration: 0.3s;
+    display: flex;
+    height: 10vh;
+}
+.Member div{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border-right: 1px solid white; */
+}
+.Member div a{
+    padding: 1vw;
+    border-radius: 100vw;
+    color: white;
+}
+.Member div a:hover{
+    background-color: #121216;
+    padding: 1vw;
+    border-radius: 100vw;
+    color: white;
+}
+.Member div p{
+    padding-left: 1vw;
+}
