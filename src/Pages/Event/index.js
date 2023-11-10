@@ -69,7 +69,6 @@ function Event() {
                         <div className="Event-Container-Description-Links-save"><a href="#"><i class="fa-regular fa-bell"></i> Reminder</a></div>
                         <div className="Event-Container-Description-Links-view"><a href={item.link} target="blank"><i class="fa-regular fa-eye"></i> View</a></div>
                       </div>
-                      <>rohyg9irt</>
                     </div>
                   </div>
                   
