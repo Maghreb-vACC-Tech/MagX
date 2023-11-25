@@ -1,9 +1,25 @@
 import Cards from "./card"
 import { useEffect, useState } from "react"
 
+// Toatstify ( for notification )
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function TrainingAdmin(){
+
+    const notify = (e) => toast( e , {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
     
     const [ TraineeData , setTraineeData ]=useState()
+
 
     const SearchIcon = (
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="32" viewBox="0 0 32 32" fill="none">
@@ -11,28 +27,25 @@ function TrainingAdmin(){
         </svg>
     )
 
-    const AddIcon = (
-        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19" viewBox="0 0 20 19" fill="none">
-            <g clip-path="url(#clip0_191_235)">
-                <path d="M24.362 11.303H11.623V22.1212H7.37669V11.303H-5.3623V7.69697H7.37669V-3.12122H11.623V7.69697H24.362V11.303Z" fill="white"/>
-            </g>
-            <defs>
-                <clipPath id="clip0_191_235">
-                <rect width="18.2919" height="17.8182" fill="white" transform="translate(0.735352 0.590881)"/>
-                </clipPath>
-            </defs>
-        </svg>
-    )
+    // const AddIcon = (
+    //     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19" viewBox="0 0 20 19" fill="none">
+    //         <g clip-path="url(#clip0_191_235)">
+    //             <path d="M24.362 11.303H11.623V22.1212H7.37669V11.303H-5.3623V7.69697H7.37669V-3.12122H11.623V7.69697H24.362V11.303Z" fill="white"/>
+    //         </g>
+    //         <defs>
+    //             <clipPath id="clip0_191_235">
+    //             <rect width="18.2919" height="17.8182" fill="white" transform="translate(0.735352 0.590881)"/>
+    //             </clipPath>
+    //         </defs>
+    //     </svg>
+    // )
 
 
     // Fetching Data
 
         fetch("http://127.0.0.1:1000/GetTrainee")
                 .then(res => res.json())
-                .then(res => {
-                    setTraineeData(res)
-                    // console.log(res[0].Name)
-                } )
+                .then(res => {setTraineeData(res)})
                 .catch(err => console.log(err))
 
 
@@ -45,9 +58,6 @@ function TrainingAdmin(){
                 </div>
                 <div className="TrainingSearchBTN">
                     <button>{SearchIcon}</button>
-                </div>
-                <div className="TrainingAddBTN">
-                    <a href="/StaffAddTrainee">{AddIcon}</a>
                 </div>
             </section> 
             <section className="TrainingMainContainer">
@@ -71,6 +81,8 @@ function TrainingAdmin(){
 
             
             
+            {/* notify(`Trainee ${TraineeConstructor.Name} Already Exists`) */}
+      <ToastContainer />
         </all>
     )
 }

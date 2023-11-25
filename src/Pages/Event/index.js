@@ -25,7 +25,7 @@ function Event() {
   
 
 
-  if(MagEvent.data == null){
+  if(MagEvent == null){
     return (
       <>
         <SideBar />

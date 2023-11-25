@@ -1,10 +1,10 @@
-function SearchAddTraining(){
-    return(
+// function SearchAddTraining(){
+//     return(
         
-            <></>
+//             <></>
         
         
-    )
-}
+//     )
+// }
 
-export default SearchAddTraining
+// export default SearchAddTraining

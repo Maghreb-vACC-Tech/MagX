@@ -41,7 +41,7 @@ function ShowTrainee(){
             }
 
         })
-        .catch( err => alert(err))
+        // .catch( err => alert(err))
     }
 
     useEffect(()=>{
@@ -96,7 +96,7 @@ function ShowTrainee(){
                     </line>
                 </div>
                 <div className="TrainingDivSecondLink">
-                    <div><a href="">Book Session</a></div>
+                    {/* <div><a href="">Book Session</a></div> */}
                 </div>
             </div>
 

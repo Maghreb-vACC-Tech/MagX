@@ -9,7 +9,7 @@ import Training from './Pages/Training';
 import LocationExtractor from './LocationExtractor';
 import Roster from './Pages/Roster';
 import AdminPage from './Pages/Admin';
-import AddTraineeComponent from './Pages/Admin/Pages/Training/Components/Training/addTraineeComponent';
+import ModifyTrainee from './Pages/Admin/Pages/Training/Components/Training/ModifyTrainee';
 // admin Components
 import StaffTrainingPage from './Pages/Admin/Pages/Training';
 import StaffDeleteTrainee from './Pages/Admin/Pages/Training/DeleteTrainee';
@@ -17,9 +17,10 @@ import ShowTrainee from './Pages/Admin/Pages/Training/Components/Training/ShowTr
 
 // Membership
 import ShowMember from './Pages/Admin/Pages/Membership/Component/showMember';
-
+// import ShowMemberConnectionLog from './Pages/Admin/Pages/Membership/Component/showMemberConnectionLogMore';
 import StaffMembershipPage from './Pages/Admin/Pages/Membership';
-
+import ShowMemberConnectionLog from './Pages/Admin/Pages/Membership/Component/showMemberConnectionLog';
+import ShowMemberLogConnectionMore from './Pages/Admin/Pages/Membership/Component/ShowMemberLogConnectionMore';
 function App() {
 
 
@@ -38,11 +39,14 @@ function App() {
         {/* Training */}
         <Route path="/StaffTraining" element={<StaffTrainingPage/>}/>
         <Route path="/StaffDeleteTrainee" element={<StaffDeleteTrainee/>}/>
-        <Route path="/StaffAddTrainee" element={<AddTraineeComponent/>}/>
+        <Route path="/ModifyTrainee" element={<ModifyTrainee/>}/>
         <Route path="/StaffShowTrainee" element={<ShowTrainee/>}/>
         {/* Membership Routing */}
         <Route path="/StaffMembership" element={<StaffMembershipPage/>}/>
         <Route path="/StaffShowMember" element={<ShowMember/>}/>
+        <Route path="/ShowMemberLog" element={<ShowMemberConnectionLog/>}/>
+        <Route path="/ShowMemberLog" element={<ShowMemberConnectionLog/>}/>
+        <Route path="/ShowMemberLogMore" element={<ShowMemberLogConnectionMore/>}/>
 
         <Route path="/StaffBooking" element={<AdminPage/>}/>
         <Route path="/StaffAnnouncement" element={<AdminPage/>}/>

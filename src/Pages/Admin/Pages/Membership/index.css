@@ -92,3 +92,87 @@
 .Member div p{
     padding-left: 1vw;
 }
+
+
+.TrainingBannedDiv{
+    background-color: red;
+    font-size: 1vw;
+    padding: 1vw;
+    display: none;
+}
+
+
+/* LOGS */
+.Log{    
+    background-color: #0C0C0E;
+    border-radius: 15px;
+    box-shadow: -5px 15px 50px #000;
+    margin: auto;
+    width: 80vw;
+}
+.LogTitle{
+    text-align: center;
+    border-bottom: 1px white solid;
+}
+.MemberLogTitle{
+    width: 80vw;
+    display: flex;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+.MemberLogTitle > div{
+    width: 80vw;
+    text-align: center;
+}
+.MemberLog{
+    width: 80vw;
+    display: flex;
+    margin: auto;
+    overflow-y: auto;
+}
+.MemberLog {
+    width: 80vw;
+    text-align: center;
+    display: flex;
+    color: white;
+    text-decoration: none;
+    height: 10vh;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.MemberLog:hover {
+    color: grey;
+    transition: all 0.3s ease;
+}
+.MemberLog > div{
+    /* text-align: center;
+    display: flex; */
+    width: 80vw;
+    text-align: center;
+}
+.MemberLogStats{
+    width: 80vw;
+    text-align: center;
+    display: none;
+    color: white;
+    text-decoration: none;
+    height: 10vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #111169;
+    animation-duration: 0.3s;
+}
+.MemberLogStats div{
+    text-align: center;
+    display: flex;
+    color: white;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2vw;
+
+
+}
+

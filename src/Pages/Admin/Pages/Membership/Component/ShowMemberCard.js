@@ -19,8 +19,8 @@ function ShowMemberCard(props){
                     <div><p>{props.Location}</p></div>
                 </line>
                 <line>
-                    <div><p>Registration Date : </p></div>
-                    <div><p>{props.Registration_Date}</p></div>
+                    <div><p>Pilot Rating : </p></div>
+                    <div><p>{props.Pilotrating}</p></div>
                 </line>
                 <line>
                     <div><p>Subdivision : </p></div>

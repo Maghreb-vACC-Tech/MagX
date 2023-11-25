@@ -10,9 +10,23 @@ import { useSearchParams } from 'react-router-dom'
 
 import params from "../../../../../JsonData/TrainingPrams"
 
+// Toatstify ( for notification )
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function ShowMember(){
+
+    const notify = (e) => toast( e , {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
 
     const [MemberData, setMemberData] = useState([])
 
@@ -21,6 +35,8 @@ function ShowMember(){
     const id = urlParams.get('id');
 
     const [ATCRemainingHoursCalcProp , setATCRemainingHoursCalcProp] = useState("")
+
+    
 
     useEffect(()=>{
         fetch("http://127.0.0.1:1000/members")
@@ -32,17 +48,36 @@ function ShowMember(){
             })
             // setMemberData(filteredData)
             setMemberData(filteredData[0])
+            
+            console.log(filteredData[0])
+            
+            if (filteredData[0].rating == 0)
+                document.querySelector(".TrainingBannedDiv").style.display = "block"
 
         })
     },[])
     function RatingConversionFromNumbertoString(ratingNum){
-        const Rating = ["OBS" , "S1" , "S2" , "S3" , "C1" , "C3" , "" , "I1" , "I3"]
-        return Rating[ratingNum-1]
+        const ratingMap = {
+            '-1': 'INA',
+            1: 'OBS',
+            2: 'S1',
+            3: 'S2',
+            4: 'S3',
+            5: 'C1',
+            6: 'C2',
+            7: 'C3',
+            8: 'I1',
+            9: 'I2',
+            10: 'I3',
+            11: 'SUP',
+            12: 'ADM',
+          };
+        return ratingMap[ratingNum]
     }
 
     function RatingConversionFromNumbertoPosition(ratingNum){
         const Position = ["GND" , "TWR" , "APP" , "Center"]
-        alert(Position[ratingNum])
+        // alert(Position[ratingNum])
         return Position[ratingNum]
     }
 
@@ -54,28 +89,22 @@ function ShowMember(){
             //! Solo Rating if u for example try to update or modify it van modify the 
             //! initial values
             "cid" : MemberData.id,
-            "Name" : MemberData.name_first + MemberData.name_last,
-            "Rating" : RatingConversionFromNumbertoString(MemberData.rating),
+            "Name" : MemberData.name_first + " "+ MemberData.name_last,
+            "Rating" : RatingConversionFromNumbertoString(MemberData.rating + 1),
             "Facility" : "GMMN",
             "Position" : RatingConversionFromNumbertoPosition(MemberData.rating),
             "Mentor" : "",
-            "Status" : "",
-            "RemainingATCHours" :"Testing",
-            "RatingStart" :  "Testing",
-            "SoloStart":"Testing", 
-            "Comment" : "Testing",
+            "Status" : "Theory",
+            "Comment" : "From Membership",
           }
 
-        //   fetch(`http://127.0.0.1:1000/GetTrainee/${TraineeConstructor.cid}`)
-        //   .then(res => res.json())
-        //   .then(res => alert(JSON.stringify(res)))
 
           fetch(`http://127.0.0.1:1000/GetTrainee/${TraineeConstructor.cid}`)
           .then(res => res.json())
           .then(res => {
               try {
                 if (res[0].cid == TraineeConstructor.cid){
-                    alert("user exists")
+                    notify(`Trainee ${TraineeConstructor.Name} Already Exists`)
                 }
 
                 else{
@@ -86,16 +115,18 @@ function ShowMember(){
                     },
                     body: JSON.stringify(TraineeConstructor) 
                     })
+                    .then(notify(`Trainee ${TraineeConstructor.Name} Added`))
+                    
                     // alert(JSON.stringify(TraineeConstructor))
-                    console.log(JSON.stringify(TraineeConstructor))
+                    // console.log(JSON.stringify(TraineeConstructor))
                 }
               } catch (error) {
-                    alert(`CID FROM DB: ${res.cid}`)
-                    alert(TraineeConstructor.cid)
+                    // alert(`CID FROM DB: ${res.cid}`)
+                    // alert(TraineeConstructor.cid)
 
-                    alert("My Test")
+                    
                     if (res.cid == TraineeConstructor.cid){
-                        alert("user exists")
+                        notify(`Trainee ${TraineeConstructor.Name} Already Exists`)
                     }
 
                     else{
@@ -106,31 +137,37 @@ function ShowMember(){
                         },
                         body: JSON.stringify(TraineeConstructor) 
                         })
-                        alert(JSON.stringify(TraineeConstructor))
-                        console.log(JSON.stringify(TraineeConstructor))
+                        .then(notify(`Trainee ${TraineeConstructor.Name} Added`))
+                        // console.log(JSON.stringify(TraineeConstructor))
                     }
               }
   
           })
+          
 
     }
+
+
+
 
     return(
         <>
         <SideBar />
         <div className="Training PagesContainer">
             <UpperBar Username={sessionStorage.getItem("FullName")} />
-
+            <div className="TrainingBannedDiv animate__fadeIn">
+                <h1>This user is banned</h1>
+            </div>
             <div className="TrainingDiv animate__fadeIn">
 
                 <ShowMemberCard
                     Rating = {RatingConversionFromNumbertoString(MemberData.rating)}
                     Email = {MemberData.email}
                     Location = {MemberData.countystate + " ( " + MemberData.country + " ) " }
-                    Registration_Date = {MemberData.reg_date}
+                    Pilotrating = {MemberData.pilotrating}
                     Subdivision_ID = {MemberData.subdivision_id}
                     CID = {MemberData.id}
-                    Name = {MemberData.name_first + MemberData.name_last}
+                    Name = {MemberData.name_first + " " + MemberData.name_last}
                 />
 
             </div>
@@ -138,12 +175,14 @@ function ShowMember(){
             <div className="TrainingDiv animate__fadeIn">
                 <div className="TrainingDivSecond">
                     <line>
-                        <div><p>Remaining ATC Hours : </p></div>
+                        <div><p>Registration Date : </p></div>
                         <div><p>{MemberData.reg_date}</p></div>
+                        {/* .split("T")[0].replaceAll("-", "/") + " " + MemberData.reg_date.split("T")[1].split(":")[0]+":"+MemberData.reg_date.split("T")[1].split(":")[1] */}
                     </line>
                     <line>
                         <div><p>Recent Rating Change : </p></div>
                         <div><p>{MemberData.lastratingchange}</p></div>
+                        {/* .split("T")[0].replaceAll("-", "/") + " " + MemberData.lastratingchange.split("T")[1].split(":")[0]+":"+MemberData.lastratingchange.split("T")[1].split(":")[1] */}
                     </line>
                     <line>
                         <div><p>Suspention State : </p></div>
@@ -157,6 +196,8 @@ function ShowMember(){
             </div>
  
         </div>
+        
+      <ToastContainer />
         </>
     )
     

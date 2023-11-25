@@ -7,20 +7,16 @@ import { useEffect, useState } from "react";
 
 function StaffMembershipPage(){
     const [MembershipRes , setMembershipRes] = useState([])
+
     useEffect(()=>{
-      fetch("http://127.0.0.1:1000/members")
+      fetch("http://127.0.0.1:1000/MembersGetDB")
       .then(res => res.json())
-      .then(res => setMembershipRes(res))
+      .then(res => {
+        setMembershipRes(res)
+        console.log(res)
+      })
     },[])
 
-    function MembershipFilterCID(){
-      // const members = data.filter(member => member.id === '1674212');
-
-        fetch("http://127.0.0.1:1000/members")
-        .then(res => res.json())
-        .then(res => setMembershipRes(()=>{ res.filter(member => member.id === '1674212') }))
-
-    }
     if(sessionStorage.getItem("CID") == "10000008") {
 
       
@@ -29,7 +25,7 @@ function StaffMembershipPage(){
             <SideBar />
             <div className="AdminPage PagesContainer">
               <UpperBar Username={sessionStorage.getItem("FullName")} />
-              <div className="MembersContrainer">
+              <div className="MembersContrainer"> 
                 <div className="MembersContrainerHeader">
                   <section>
                     <div className="MembersContrainerHeadertitle">
@@ -52,10 +48,10 @@ function StaffMembershipPage(){
                 </div>
                 {MembershipRes.map(member => (
                   <MemberComponent
-                    Name = {member.name_first + " "+ member.name_last}
-                    CID = {member.id}
-                    Email = {member.email}
-                    Country = {member.country}
+                    Name = {member.Name}
+                    CID = {member.CID}
+                    Email = {member.Email}
+                    Country = {member.Location}
                   />
                 ))}
               </div>

@@ -8,6 +8,7 @@ import "./index.css"
 function AdminPage() {
 
   if(sessionStorage.getItem("CID") == "10000008") {
+    fetch("http://localhost:1000/MembershipDBRefresh")
     return (
       <>
         <SideBar />
