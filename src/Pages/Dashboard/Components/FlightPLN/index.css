@@ -1,0 +1,44 @@
+
+.FlightPLN{
+    width: 90%;
+    height: 80%;
+    background-color: #0C0C0E;
+    background-image: url('../../../../Ressources/FlightPlnIMG.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: -5px 15px 50px #000;
+    float:left;
+    margin-left: 5vw;
+}
+
+.FlightPLN > section{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    backdrop-filter: blur(2px) ;
+    border-radius: 15px;
+    margin: auto;
+}
+
+.FlightPLNtitle{
+    width:90%;
+    height: 10%;
+    text-align: center;
+    margin: auto;
+}
+.FlightPLNtitle h1{
+    font-size: 2vw;
+
+}
+.FlightPLNtitle p{
+    color:#5FBE3E;
+    font-size: 1vw;
+}
+.FlightPLNBody{
+    display: flex;
+}
+.FlightPLNBody div{
+    width: 50%;
+}

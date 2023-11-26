@@ -6,6 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function TrainingAdmin(){
+    const [ TraineeData , setTraineeData ] = useState()
+    const [ TraineeDataFetched , setTraineeDataFetched ] = useState()
 
     const notify = (e) => toast( e , {
         position: "top-right",
@@ -18,7 +20,6 @@ function TrainingAdmin(){
         theme: "dark",
         });
     
-    const [ TraineeData , setTraineeData ]=useState()
 
 
     const SearchIcon = (
@@ -27,46 +28,48 @@ function TrainingAdmin(){
         </svg>
     )
 
-    // const AddIcon = (
-    //     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19" viewBox="0 0 20 19" fill="none">
-    //         <g clip-path="url(#clip0_191_235)">
-    //             <path d="M24.362 11.303H11.623V22.1212H7.37669V11.303H-5.3623V7.69697H7.37669V-3.12122H11.623V7.69697H24.362V11.303Z" fill="white"/>
-    //         </g>
-    //         <defs>
-    //             <clipPath id="clip0_191_235">
-    //             <rect width="18.2919" height="17.8182" fill="white" transform="translate(0.735352 0.590881)"/>
-    //             </clipPath>
-    //         </defs>
-    //     </svg>
-    // )
-
 
     // Fetching Data
 
-        fetch("http://127.0.0.1:1000/GetTrainee")
-                .then(res => res.json())
-                .then(res => {setTraineeData(res)})
-                .catch(err => console.log(err))
+    fetch("http://127.0.0.1:1000/GetTrainee")
+        .then(res => res.json())
+        .then(res => {
+            setTraineeData(res)
+            setTraineeDataFetched(res)
+        })
+        .catch(err => console.log(err))
 
+
+    const TraineeLookupCallback = (e) => {
+        const value = e.target.value;
+        console.log(TraineeData)
+
+        const filteredData = TraineeDataFetched.filter(trainee => {
+            return JSON.stringify(trainee.cid).includes(value); 
+          });
+        
+        console.log(`Filtered data of ${value}:`);
+        
+        
+        setTraineeDataFetched(filteredData); 
+    }
 
 
     return(
         <all className="TrainingAdmin animate__fadeIn">
             <section className="TrainingTopBar">
                 <div className="TrainingSearch">
-                    <input type="text" placeholder="CID"></input>
+                    <input type="text" placeholder="CID" onChange={TraineeLookupCallback}></input>
                 </div>
                 <div className="TrainingSearchBTN">
                     <button>{SearchIcon}</button>
                 </div>
             </section> 
             <section className="TrainingMainContainer">
-
                 {
-                TraineeData && 
-                TraineeData.map(trainee => (
+                TraineeDataFetched && 
+                TraineeDataFetched.map(trainee => (
                     <Cards 
-                        key={trainee.id}
                         name={trainee.Name}
                         cid={trainee.cid}
                         rating={trainee.Rating}
@@ -74,7 +77,6 @@ function TrainingAdmin(){
                         position={trainee.Position}
                         mentor={trainee.Mentor}
                         comment={trainee.comment}
-                        id = {trainee.id}
                     />
                 ))}
             </section>

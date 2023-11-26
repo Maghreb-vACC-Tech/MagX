@@ -11,9 +11,17 @@ function ShowTrainee(){
     const [Data , setData ] = useState("")
     const [ATCDate , setATCDate ] = useState("")
     const [RemainingATCHours , setRemainingATCHours] = useState("")
+    const [TraineeStats,setTraineeStats] = useState("")
     const ID = new URL(window.location).searchParams.get("id");
+    const CID = new URL(window.location).searchParams.get("cid");
     const url = `http://127.0.0.1:1000/GetTraineeid/${ID}`
 
+    function GetTraineeStats(){
+        const url = `http://127.0.0.1:1000/GetTraineeATC/${CID}`
+        fetch(url)
+        .then(res => res.json())
+        .then(res=> setTraineeStats(res))
+    }
 
     function RemainingATCHoursCalculation(){
         fetch(`http://127.0.0.1:1000/GetTraineeid/ATC`)
@@ -54,6 +62,7 @@ function ShowTrainee(){
             })
             .catch(err => console.log(err))
             
+            GetTraineeStats()
             
             
             // 
@@ -64,7 +73,7 @@ function ShowTrainee(){
         <>
         <SideBar />
         <div className="Training PagesContainer">
-            {/* {JSON.stringify(Data)} */}
+            {JSON.stringify(TraineeStats)}
             <UpperBar Username={sessionStorage.getItem("FullName")} />
 
             <div className="TrainingDiv animate__fadeIn">

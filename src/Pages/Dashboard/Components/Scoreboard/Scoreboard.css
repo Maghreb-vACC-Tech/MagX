@@ -1,0 +1,74 @@
+.ScoreboardContainer{
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+}
+.ScoreBoard{
+    width: 30%;
+    height: 30%;
+    background-color: #0C0C0E;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: -5px 15px 50px #000;
+    animation-duration: 0.3s;
+    margin-top: 5vh;
+    padding-bottom:1vw ;
+}
+.ATCOfMonth{
+    background-color: #343729;
+}
+.ARPTOfMonth{
+    background-color: #1b1b43;
+}
+.PilotOfMonth{
+    background-color: #4d2020;
+}
+.ScoreBoardTitle {
+    width: 80%;
+    height: 35%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+.ScoreBoardTitle > h1{
+    font-size: 1.5vw;
+    font-weight: 500;
+}
+.ScoreBoardBody{
+    width: 90%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+/* .ScoreBoardBody div{
+    width: 50%;
+} */
+.ScoreBoardBodySVG{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.ScoreBoardBody h2{
+    color: #DDD;
+    font-size: 1.5vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+}
+.ScoreBoardBody p{
+    color: #DDD;
+    font-size: 1.2vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+}
+

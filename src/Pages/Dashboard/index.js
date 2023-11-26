@@ -1,6 +1,10 @@
 import SideBar from "../Component/SideBar"
 import UpperBar from "../Component/UpperBar";
 
+import ControllerOfMonth from "./Components/Scoreboard/ControllerOfMonth";
+import TopAirports from "./Components/Scoreboard/TopAirports";
+import TopPilots from "./Components/Scoreboard/TopPilots";
+import FlightPLN from "./Components/FlightPLN";
 import DashboardEvents from "./Components/Events";
 import AnnouncementComponent from "./Components/Announcement";
 import StatisticComponent from "./Components/Statistic";
@@ -130,6 +134,12 @@ function Dashboard(){
                 <UpperBar
                     Username = { sessionStorage.getItem("FullName")}
                     />
+                    <FlightPLN></FlightPLN>
+                <div className="ScoreboardContainer">
+                    <ControllerOfMonth></ControllerOfMonth>
+                    <TopAirports></TopAirports>
+                    <TopPilots></TopPilots>
+                </div>
 
                 <DashboardEvents
                 

@@ -9,6 +9,7 @@ import LoadingSpinner from "../../../../../Component/LoadingSpinner";
 function ModifyTrainee(){
     
     // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [TrainneModify , setTrainneModify] = useState()
     const urlParams = new URLSearchParams(window.location.search);
@@ -34,8 +35,7 @@ function ModifyTrainee(){
                     //! Caution here if some value needs to be rethinked like Rating Start and 
                     //! Solo Rating if u for example try to update or modify it van modify the 
                     //! initial values
-                    "cid" : document.getElementById("AddTraineeCID").value,
-                    "Name" : document.getElementById("AddTraineeName").value,
+                    "CID":id,
                     "Rating" : document.getElementById("AddTraineeRating").value,
                     "Facility" : document.getElementById("AddTraineeFacility").value,
                     "Position" : document.getElementById("AddTraineePosition").value,
@@ -43,15 +43,17 @@ function ModifyTrainee(){
                     "Status" : document.getElementById("AddTraineeStatus").value,
                     "Comment" : document.getElementById("AddTraineeComments").value,
                   }
-            
-        fetch(`/AlterTrainee/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'  
-            },
-            body: JSON.stringify(TraineeConstructor)
-            })
-        .catch(err => console.log(err))
+                  
+            fetch(`http://127.0.0.1:1000/AlterTrainee/`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'  
+                },
+                body: JSON.stringify(TraineeConstructor)
+                })
+            .catch(err => console.log(err))
+            .then(navigate('/StaffTraining'))
+            /* alert(JSON.stringify(TraineeConstructor)) */
     }
     
     if(loading) return <LoadingSpinner/>
@@ -68,7 +70,7 @@ function ModifyTrainee(){
                 <div>
                     <div><p>Rating : </p></div>
                     
-                    <select id="AddTraineeRating" value={TrainneModify.Rating}>
+                    <select id="AddTraineeRating" defaultValue={TrainneModify.Rating}>
                         <option selected>None</option>
                         <option>S1</option>
                         <option>S2</option>
@@ -80,37 +82,37 @@ function ModifyTrainee(){
                 <div>
                     <div><p>Facility : </p></div>
                     
-                    <input id="AddTraineeFacility" type="text" placeholder="Facility" value={TrainneModify.Facility}></input>
+                    <input id="AddTraineeFacility" type="text" placeholder="Facility" defaultValue={TrainneModify.Facility}></input>
                 </div>
 
                 <div>
                     <div><p>Position : </p></div>
                     
-                    <input id="AddTraineePosition" type="text" placeholder="Position" value={TrainneModify.Position}></input>
+                    <input id="AddTraineePosition" type="text" placeholder="Position" defaultValue={TrainneModify.Position}></input>
                 </div>
                 
                 <div>
                     <div><p>Mentor : </p></div>
                     
-                    <input id="AddTraineeMentor" type="text" placeholder="Mentor" value={TrainneModify.Mentor}></input>
+                    <input id="AddTraineeMentor" type="text" placeholder="Mentor" defaultValue={TrainneModify.Mentor}></input>
                 </div>
                 
                 
                 <div>
                     <div><p>Status  : </p></div>
                     
-                    <select id="AddTraineeSolo" value={TrainneModify.Status}>
+                    <select id="AddTraineeStatus" defaultValue={TrainneModify.Status}>
                         <option selected>Theory</option>
                         <option>SweatBox</option>
                         <option>Online Sessions</option>
-                        <option>SweatBox</option>
+                        <option>Solo</option>
                     </select>
                 </div>
 
                 <div>
                     <div><p>Comment : </p></div>
                     
-                    <input id="AddTraineeComments" type="Comments" placeholder="Comment" value={TrainneModify.comment}></input>
+                    <input id="AddTraineeComments" type="Comments" placeholder="Comment" defaultValue={TrainneModify.comment}></input>
                 </div>
                 
                     <section>
@@ -126,72 +128,3 @@ function ModifyTrainee(){
 }
 
 export default ModifyTrainee
-
-
-    // // Get Training Params
-    // const requiredTime = params.RequiredATCTime;
-    // const RequiredATCDays = params.RequiredATCDays;
-    // const RequiredSOLODays = params.RequiredSOLODays;
-
-    // // Get Todays Date
-    // const todayDate = format(new Date(), 'yyyy-MM-dd');
-
-
-    // const [ATCRemainingHoursCalcProp , setATCRemainingHoursCalcProp] = useState("") 
-    // function addTrainee(){
-
-
-
-
-    //     fetch("http://127.0.0.1:1000/GetTraineeATC/1674212")
-    //         .then(res => res.json())
-    //         .then(res => setATCRemainingHoursCalcProp(res.s1))
-
-        
-    //     const TraineeConstructor = {
-    //         //! Caution here if some value needs to be rethinked like Rating Start and 
-    //         //! Solo Rating if u for example try to update or modify it van modify the 
-    //         //! initial values
-    //         "cid" : document.getElementById("AddTraineeCID").value,
-    //         "Name" : document.getElementById("AddTraineeName").value,
-    //         "Rating" : document.getElementById("AddTraineeRating").value,
-    //         "Facility" : document.getElementById("AddTraineeFacility").value,
-    //         "Position" : document.getElementById("AddTraineePosition").value,
-    //         "Mentor" : document.getElementById("AddTraineeMentor").value,
-    //         "Status" : document.getElementById("AddTraineeStatus").value,
-    //         "RemainingATCHours" : requiredTime - ATCRemainingHoursCalcProp > 0 ? JSON.stringify(requiredTime - ATCRemainingHoursCalcProp) : "Eligible",
-    //         "RatingStart" :  document.getElementById("AddTraineeSolo").value == "No" ? todayDate : "NULL",
-    //         "SoloStart": document.getElementById("AddTraineeSolo").value == "Yes" ? todayDate : "NULL", 
-    //         "Comment" : document.getElementById("AddTraineeComments").value,
-    //       }
-        
-    //     fetch(`http://127.0.0.1:1000/GetTrainee/${TraineeConstructor.cid}`)
-    //     .then(res => res.json())
-    //     .then(res => {
-    //         console.log(res.cid)
-    //         alert(res.cid)
-    //         alert(TraineeConstructor.cid)
-    //         if (res.cid == TraineeConstructor.cid){
-    //             alert("user exists")
-    //         }
-    //         else{
-    //             fetch("http://127.0.0.1:1000/SetTrainee",{
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(TraineeConstructor) 
-    //             })
-    //             .then(navigate("/StaffTraining"))
-    //             alert(JSON.stringify(TraineeConstructor))
-    //             console.log(JSON.stringify(TraineeConstructor))
-    //         }
-
-    //     })
-          
-    // }
-
-    // const id = new URL(window.location).searchParams.get("id");
-
-    
-    

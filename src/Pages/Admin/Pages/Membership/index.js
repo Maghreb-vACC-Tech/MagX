@@ -7,18 +7,30 @@ import { useEffect, useState } from "react";
 
 function StaffMembershipPage(){
     const [MembershipRes , setMembershipRes] = useState([])
+    const [MemberFetched , setMemberFetched] = useState([])
 
-    useEffect(()=>{
+    function FetchMembershipData(){
       fetch("http://127.0.0.1:1000/MembersGetDB")
       .then(res => res.json())
       .then(res => {
         setMembershipRes(res)
-        console.log(res)
+        setMemberFetched(res)
       })
+    }
+    useEffect(()=>{
+      FetchMembershipData()
     },[])
 
     if(sessionStorage.getItem("CID") == "10000008") {
 
+    const CIDLookupCallback = (e) => {
+      const value = e.target.value;
+      const filteredData = MembershipRes.filter(member => {
+        return JSON.stringify(member.CID).includes(value);
+      });
+      console.log(`filtered Data of ${value}:`) 
+      setMemberFetched(filteredData)
+    }
       
         return (
           <>
@@ -32,7 +44,7 @@ function StaffMembershipPage(){
                       <h1>Members</h1>
                     </div>
                     <div className="MembersContrainerHeaderSearch">
-                      <input placeholder="CID"  ></input>
+                      <input placeholder="CID" onChange={CIDLookupCallback} ></input>
                       <button><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                   </section>
@@ -46,7 +58,7 @@ function StaffMembershipPage(){
                   </section>
                   
                 </div>
-                {MembershipRes.map(member => (
+                {MemberFetched.map(member => (
                   <MemberComponent
                     Name = {member.Name}
                     CID = {member.CID}
