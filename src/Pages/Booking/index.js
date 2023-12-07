@@ -18,13 +18,13 @@ function Booking() {
     draggable: true,
     progress: undefined,
     theme: "dark",
-    });;
-  // const [vatsimEvents, setvatsimEvents] = useState([]);
+    });
+
+    
   const [maghrebBookings, setmaghrebBookings] = useState([]);
 
   function MaghrebFetching(){
     fetch("http://127.0.0.1:1000/MaghrebBooking")
-    // fetch("http://127.0.0.1:1000/MagBookTest")
       .then((response) => response.json())
       .then((response) => {
         setmaghrebBookings(response)
@@ -77,7 +77,9 @@ function Booking() {
       })
     })
     .then(MaghrebFetching())
+    // .then(res => res.json())
     .then(notify("Booking Added"))
+    
   }
 
 

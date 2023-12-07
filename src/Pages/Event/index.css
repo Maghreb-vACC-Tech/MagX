@@ -20,6 +20,7 @@
     height: 100%;
     float: left;
     animation-duration: 0.3s;
+    overflow-y: auto;
 }
 .Event-Container-Description p{
     width: 80%;
@@ -63,7 +64,7 @@
 }
 .Event-Container-Description-Links > div > div{
     float: left;
-    width: 20%;
+    width: 25%;
     text-align: center;
     padding: 1vw;
     border-radius: 15px;
@@ -85,6 +86,10 @@
     background-color: #aa5d14;
 
 }
+.Event-Container-Description-Links-roster{
+    background-color: #1499aa;
+    margin-left: 1vw;
+}
 
 .Event-Container-Description-Links-view:hover{
     margin-left: 1vw;
@@ -93,5 +98,9 @@
 }
 .Event-Container-Description-Links-save:hover{
     background-color: #68421e;
+    transition: all 0.3s ease;
+}
+.Event-Container-Description-Links-roster:hover{
+    background-color: #135861;
     transition: all 0.3s ease;
 }

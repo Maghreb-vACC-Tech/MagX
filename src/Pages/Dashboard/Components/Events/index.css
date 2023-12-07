@@ -1,24 +1,91 @@
+.dashboard-container {
+    display: flex;
+    margin-top: 5vh;
+  }
+  
+.DashboardEvent,.DashboardWeather {
+    width: 50%;
+    height: 40vh;
+  }
+
+
+
+
+
 .DashboardEvent{
-    width: 100%;
-    height: 50%; 
+    width: 50%;
      display: flex;
     justify-content: center;
     align-items: center;
     animation-duration: 0.5s
 }
 
-.DashboardEvent div a img{
+.DashboardEvent > div a img{
     width: 75%;
     border-radius: 15px;    
     box-shadow: -5px 15px 50px #000;
 }
 
-.DashboardEvent div a img:hover{
+.DashboardEvent > div a img:hover{
     transform: scale(1.05);
 }
 
-.DashboardEvent div {
+.DashboardEvent > div {
     display: inline-block;
-    width: 50%;
+    width: 100%;
     text-align: center;
+}
+
+
+
+
+
+
+
+.DashboardWeather{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation-duration: 0.5s;
+}
+.DashboardWeather > div{
+    width: 75%;
+    height: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    animation-duration: 0.5s;
+    background-image: url("../../../../Ressources/weather.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    border-radius: 15px;
+    filter: saturate(250%) contrast(90%) brightness(80%);
+    background-attachment: fixed;
+}
+.DashboardWeather > div a img:hover{
+    transform: scale(1.05);
+}
+.DashboardWeather > div * {
+    color: white;
+}
+.DashboardWeather > div > div {
+    text-align: center;
+}
+.DashboardWeather > div > div > p {
+    font-size: 1.2vw;
+    padding-bottom: 1vh;
+    padding-bottom: 2vh;
+}
+.DashboardWeather > div > div > h1 {
+    font-size: 2.5vw;
+}
+.DashboardWeather > div > div > a {
+    padding: 1vw;
+    background-color: #8ea4b1;
+    text-decoration: none;
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
 }

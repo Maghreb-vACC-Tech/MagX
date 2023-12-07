@@ -1,15 +1,19 @@
 .SideBar{
     width: 5vw;
-    min-height: 100vh;
-    height: auto;
-    background: #0C0C0E; 
-    float: left;
-    /* box-shadow: 15px 15px 15px #ffffff; */
+    height: 90vh;
+    /* background: rgb(12, 12, 14 , 0.2);  */
+    background: rgb(12, 12, 14 , 0.5); 
+    backdrop-filter: blur(15px);
     color: #DDD;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
     transition:  all 0.3s ease;
+    border-radius: 15px;
+    margin-right: 1vw;
+    position: fixed;
+    left: 1.5vw;
+    top: 1;
 }
 .SideBar-Logo{
     width: 100%;

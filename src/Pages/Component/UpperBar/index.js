@@ -9,7 +9,7 @@ function UpperBar(props){
     return(
         <div className="UpperBar">
             <div className="UpperBarMenu">
-                <MenuIconComponent/>
+                {/* <MenuIconComponent/> */}
             </div>
             <div className="UpperBarZuluTime">
                 <ZuluTimeComponent/>

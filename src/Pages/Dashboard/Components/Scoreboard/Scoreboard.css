@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     margin: auto;
-
+    animation-duration: 0.3s;
 }
 .ScoreBoard{
     width: 30%;

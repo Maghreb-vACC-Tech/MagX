@@ -1,49 +1,43 @@
 import { useState } from "react"
+import WeatherIMG from "../../../../Ressources/weather.jpg"
 import "./index.css"
 
 
-function DashboardEvents(){
+function DashboardEventsWeather(){
 
-    // const [event,setevent] = useState("")
-
-    // fetch("http://127.0.0.1:1000/MaghrebEvents")
-    // .then(data => data.json())
-    // .then(data => {
-    //     setevent(data[0])
-    //     setEventBanner(data[0].banner)
-    //     setEventLink(data[0].link)
-    // })
-  
     // Rest of your component code
-    const event = JSON.parse(sessionStorage.getItem("MagEvent"));
+    const event = JSON.parse(sessionStorage.getItem("Events"));
+    console.log(`Events : ${JSON.stringify(event)}`)
 
-    if (event == null){ 
-        return(
-        <div className="DashboardEvent animate__fadeIn">
-            {JSON.stringify(event)}
-            {event.map((item) => (
+    return(
+        <div className="dashboard-container">
+
+            <div className="DashboardEvent animate__fadeIn">
                 <div>
                     <a href="/Event">
-                        <img src={item.banner}></img>
+                        <img src={event[Math.floor(Math.random() * event.length) + 1].banner}></img>
                     </a>
                 </div>
-            ))}
-            {event.map((item) => (
+            </div>  
+
+            <div className="DashboardWeather animate__fadeIn">
                 <div>
-                    <a href="/Event">
-                        <img src={item.banner}></img>
-                    </a>
+                    <div>
+                        <h1>GMMN</h1>
+                        <p>24014kt<br />Q1010</p>
+                        
+                        <a href="#">See More</a>
+                    </div>
                 </div>
-            ))}
+            </div>
             
-
         </div>
+        
 
 )
 
-    }
 
    
 }
 
-export default DashboardEvents
+export default DashboardEventsWeather

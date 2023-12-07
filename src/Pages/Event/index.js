@@ -5,25 +5,7 @@ import "./index.css"
 
 function Event() {
 
-  // const [MagEvent , SetMagEvent] = useState([])
-
-  // useEffect(()=>{
-  //   fetch("http://127.0.0.1:1000/MaghrebEvents")
-  //   .then(res => res.json())
-  //   .then(res => SetMagEvent(res))
-    
-  //   sessionStorage.setItem("EventBanner" , MagEvent.banner )
-  //   sessionStorage.setItem("EventLink" , MagEvent.link )
-  
-  // })
-
-
-  
-
-
-  const MagEvent = JSON.parse(sessionStorage.getItem("MagEvent"));
-  
-
+  const MagEvent = JSON.parse(sessionStorage.getItem("Events"));
 
   if(MagEvent == null){
     return (
@@ -68,6 +50,7 @@ function Event() {
                       <div>
                         <div className="Event-Container-Description-Links-save"><a href="#"><i class="fa-regular fa-bell"></i> Reminder</a></div>
                         <div className="Event-Container-Description-Links-view"><a href={item.link} target="blank"><i class="fa-regular fa-eye"></i> View</a></div>
+                        {/* <div className="Event-Container-Description-Links-roster"><a href={item.link} target="blank"><i class="fa-solid fa-list-ol"></i> Roster</a></div> */}
                       </div>
                     </div>
                   </div>

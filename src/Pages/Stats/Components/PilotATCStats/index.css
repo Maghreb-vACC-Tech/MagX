@@ -1,0 +1,60 @@
+.Statistic{
+    width: 90%;
+    height: 70%;
+    margin: auto;
+    border-radius: 15px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    animation-duration: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.PilotStatistic{
+    width: 45%;
+    height: 100%;
+    background-color: #0C0C0E ;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: -5px 15px 50px #000;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    animation-duration: 0.3s;
+
+}
+.PilotStatisticTitle{
+    width: 30%;
+    height: 10%;
+    margin: auto;
+}
+.PilotStatisticTitle h1{
+    font-size: 2vw;
+}
+.PilotStatisticBody{
+    width: 70%;
+    height: 90%;
+    margin: auto;
+}
+.PilotStatisticBody div{
+    /* display: flex; */
+    margin: auto;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.PilotStatisticBody div p{
+    text-align: center;
+    width: 50%;
+}
+.ATCStatistic{
+    width: 45%;
+    height: 100%;
+    background-color: #0C0C0E ;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: -5px 15px 50px #000;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    animation-duration: 0.3s;
+
+}

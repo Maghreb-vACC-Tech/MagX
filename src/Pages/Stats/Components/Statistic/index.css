@@ -1,0 +1,80 @@
+.DashboardStatistic{
+    width: 90%;
+    height: 50%;
+    background: rgb(12, 12, 14 , 0.9);
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: -5px 15px 50px #000;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    animation-duration: 0.3s;
+    backdrop-filter: blur(15px);
+}
+.DashboardStatisticTitle{
+    width: 100%;
+    height: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8vw;
+    font-style: normal;
+    line-height: normal;color: #5FBE3E;
+    /* font-family: Lexend; */
+    font-weight: 300;
+    line-height: normal;
+
+}
+.DashboardStatisticTitle:first-child{
+    height: 20%;
+    color: #DDD;
+}
+.DashboardStatisticTitle > div{
+    /* display: block; */
+    width: 100%;
+    text-align: center;
+}
+.DashboardStatisticATC , .DashboardStatisticPilot{
+    width: 50%;
+    height: 70%;
+    float: left;
+    translate: 0 5vh;
+}
+.DashboardStatisticATC{
+    width: calc(50% - 1px);
+}
+.DashboardStatisticATC > *{
+
+}
+.DashboardStatisticDIVTitle{
+    width: 100%;
+    height: 15%;
+    text-align: center;
+    font-size: 0.8vw;
+}
+.DashboardStatisticATCDiv {
+    text-align: center;
+    float: left;
+    width:33.3% ;
+    height: 85%;
+    translate: 0 7vh;
+  }
+.DashboardStatisticATCDiv h1{
+    translate: 0 -2vh;
+
+}
+.DashboardStatisticATCDiv h1,
+.DashboardStatisticATCDiv p {
+    display: block;
+    margin: 0 auto;
+  }
+.DashboardStatisticSeperation{
+    width: 1px;
+    background-color: #ddd;
+    height: 50%;
+    float: left;
+    translate: 0 10vh;
+}
+/* 1.5vw */
+.DashboardStatisticDIVLastPosition h1{
+    font-size: 1.6vw;
+}

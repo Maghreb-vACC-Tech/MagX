@@ -5,8 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+  background-image: url('./Ressources/BG.jpg');
+  background-size: 100%;
+  background-attachment: fixed;
+  /* background-repeat: repeat-y; */
   background-color: #0d0d0f;
+  overflow-x: hidden;
 }
 *{
   

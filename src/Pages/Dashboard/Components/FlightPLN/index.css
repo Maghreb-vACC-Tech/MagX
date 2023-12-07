@@ -1,7 +1,7 @@
 
 .FlightPLN{
     width: 90%;
-    height: 80%;
+    height: 49%;
     background-color: #0C0C0E;
     background-image: url('../../../../Ressources/FlightPlnIMG.jpg');
     background-attachment: fixed;
@@ -9,36 +9,73 @@
     margin: auto;
     border-radius: 15px;
     box-shadow: -5px 15px 50px #000;
-    float:left;
     margin-left: 5vw;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    animation-duration: 0.3s;
+}
+.FlightPLN > div{
+    width: 100%;
+    height: 100%;
+    
 }
 
 .FlightPLN > section{
     width: 100%;
     height: 100%;
-    background-color: transparent;
-    backdrop-filter: blur(2px) ;
+    background-color: rgb(12, 12, 14,0.7);
+    backdrop-filter: blur(15px) contrast(120%) saturate(150%);
     border-radius: 15px;
     margin: auto;
 }
 
-.FlightPLNtitle{
-    width:90%;
-    height: 10%;
+.FlightPLNTitle{
+    width: 30%;
     text-align: center;
     margin: auto;
+    padding-top: 1vh;
 }
-.FlightPLNtitle h1{
-    font-size: 2vw;
 
+.FlightPLNTitle p{
+    color: #5FBE3E;
+    text-align: center;
+    font-family: Lexend;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
 }
-.FlightPLNtitle p{
-    color:#5FBE3E;
-    font-size: 1vw;
-}
+
 .FlightPLNBody{
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .FlightPLNBody div{
-    width: 50%;
+    width: 20%;
+    text-align: center;
+}
+
+.FlightPLNFoot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.FlightPLNFoot > a{
+    color: white;
+    text-decoration: none;
+    margin-top: 2vh;
+    background-color: rgb(24, 55, 122);
+    border-radius: 15px;
+    padding: 1vw;
+    box-shadow: 5px 15px 15px #00000010;
+}
+.FlightPLNFoot > a:hover{
+    color: white;
+    text-decoration: none;
+    margin-top: 2vh;
+    background-color: rgb(24, 55, 122);
+    border-radius: 15px;
+    padding: 1vw;
+    box-shadow: 0px 15px 20px #070707;
 }

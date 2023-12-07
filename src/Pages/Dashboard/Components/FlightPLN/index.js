@@ -1,25 +1,99 @@
+import { useEffect, useState } from "react"
 import "./index.css"
 
 function FlightPLN(){
+    const [FlightPlanData,SetFlightPlanData] = useState()
+    const [FlightPlanDataDeptime,SetFlightPlanDataDeptime] = useState()
+    const PlaneIcon = (
+        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
+            <path d="M32.1038 31.8517C32.8007 31.9937 33.5269 31.8665 34.1296 31.497C34.7324 31.1274 35.1648 30.5442 35.336 29.87V29.8683C35.4228 29.5262 35.4396 29.1708 35.3855 28.8223C35.3315 28.4739 35.2075 28.1392 35.0208 27.8376C34.834 27.5359 34.5881 27.273 34.2972 27.0641C34.0063 26.8552 33.676 26.7043 33.3252 26.62L25.5079 24.7317L16.6997 13.375L12.9004 13L17.9075 23.9817L10.3072 23.2333L6.3575 16.8517L4 17.3683L6.11833 26.5683L32.1038 31.8517ZM5.04037 36.3583H35.7904V39.6917H5.04037V36.3583Z" fill="white"/>
+        </svg>
+    )
+
+    function timeFormating(number){// from 1333 to 13:33
+        
+        const formattedTime = number.toString().slice(0,2) + ":" + number.toString().slice(2);
+        return formattedTime
+    } 
+
+    function arrivalTime(deptime,enroutetime){
+        
+        // Split times into hours and minutes
+        const [hours1, minutes1] = deptime.split(":");  
+        const [hours2, minutes2] = enroutetime.split(":");
+
+        // Convert to minutes
+        let totalMinutes1 = parseInt(hours1) * 60 + parseInt(minutes1);  
+        let totalMinutes2 = parseInt(hours2) * 60 + parseInt(minutes2);
+
+        // Add minutes
+        let totalMinutes = totalMinutes1 + totalMinutes2;
+
+        // Calculate hours and minutes 
+        let hours = Math.floor(totalMinutes / 60);
+        let minutes = totalMinutes % 60;
+
+        // Format output
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+
+        const result = hours + ":" + minutes;
+        
+        return result
+
+    }
+    
+   
+    useEffect(()=>{
+        fetch("http://127.0.0.1:1000/LastFlightPlan" , {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify({cid: 1674212})
+        })
+        .then(data => data.json())
+        .then(data => SetFlightPlanData(data))
+
+        
+    },[])
 
     return(
-        <div className="FlightPLN">
-           <div>
-                <section className="FlightPLNtitle">
-                    <h1>Latest Flight</h1>
-                    <p>RAM1438</p>
-                </section>
-                <section className="FlightPLNBody">
-                    <div>
+        <div className="FlightPLN animate__fadeIn">
+           {FlightPlanData && (
+            <section>
+                {/* {JSON.stringify(FlightPlanData)} */}
+                
+                <div className="FlightPLNTitle">
+                        <h1>Latest Flight</h1>
+                        <p>{FlightPlanData.callsign}</p>
+                    </div>
+                    
+                    <div className="FlightPLNBody">
                         <div>
-                            
+                            <h1>{FlightPlanData.dep}</h1>
+                            <p>{timeFormating(FlightPlanData.deptime)}</p>
+                        </div>
+                        <div>
+                            <p>{FlightPlanData.altitude}</p>
+                            {PlaneIcon}
+                            <p>{FlightPlanData.aircraft.split('/')[0]}</p>
+                        </div>
+                        <div>
+                            <h1>{FlightPlanData.arr}</h1>
+                            <p>{arrivalTime(timeFormating(FlightPlanData.deptime),`${FlightPlanData.hrsenroute}:${FlightPlanData.minenroute}`)}</p>
                         </div>
                     </div>
-                    <div>
-3
+                    
+                    
+                    
+    
+                    <div className="FlightPLNFoot">
+                        <a href="#">Get more</a>
                     </div>
-                </section>
-           </div>
+               </section>
+                )}
+           
         </div>
     )
 
