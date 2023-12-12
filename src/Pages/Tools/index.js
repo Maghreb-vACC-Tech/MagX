@@ -15,13 +15,13 @@ function Tools() {
             
             <div className="ToolsChoicePilotSection animate__fadeInLeft">
               <div>
-                <a href="#" className="animate__fadeIn">Pilot</a>
+                <a href="/PilotTools" className="animate__fadeIn">Pilot</a>
               </div>
             </div>
 
             <div className="ToolsChoiceATCSection animate__fadeInRight">
               <div>
-                <a href="#" className="animate__fadeIn">ATC</a>
+                <a href="/ATCTools" className="animate__fadeIn">ATC</a>
               </div>
             </div>
           </section>

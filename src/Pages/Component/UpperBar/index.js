@@ -20,7 +20,7 @@ function UpperBar(props){
                 </div>
                 <div className="UpperBarSettingsText">
                     <p>{props.Username}</p>
-                    <a href="#">Settings</a>
+                    <a href="/Settings">Settings</a>
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@ function DashboardEventsWeather(){
 
     return(
         <div className="dashboard-container">
-
+        {event && (  
             <div className="DashboardEvent animate__fadeIn">
                 <div>
                     <a href="/Event">
@@ -19,7 +19,7 @@ function DashboardEventsWeather(){
                     </a>
                 </div>
             </div>  
-
+            )}
             <div className="DashboardWeather animate__fadeIn">
                 <div>
                     <div>

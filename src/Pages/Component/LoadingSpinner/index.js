@@ -3,7 +3,8 @@ import "./index.css"
 function LoadingSpinner () {
     return(
         <div className='loader-container'>
-            <div className='spinner '></div>
+            <div><div className='spinner '></div></div>
+            
         </div>
     )
 }

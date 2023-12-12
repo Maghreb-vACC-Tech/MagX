@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import "./index.css"
+import VatsimLogo from "../../../../Ressources/VatsimLogo.png"
+import SimbriefLogo from "../../../../Ressources/simbriefLogo.png"
 
 function FlightPLN(){
     const [FlightPlanData,SetFlightPlanData] = useState()
@@ -45,17 +47,9 @@ function FlightPLN(){
     
    
     useEffect(()=>{
-        fetch("http://127.0.0.1:1000/LastFlightPlan" , {
-            method: "POST",
-            headers: {
-            "Content-Type": "application/json"
-            },
-            body: JSON.stringify({cid: 1674212})
-        })
+        fetch("http://127.0.0.1:1000/LastFlightPlan/IlyassBaba")
         .then(data => data.json())
         .then(data => SetFlightPlanData(data))
-
-        
     },[])
 
     return(
@@ -65,23 +59,23 @@ function FlightPLN(){
                 {/* {JSON.stringify(FlightPlanData)} */}
                 
                 <div className="FlightPLNTitle">
-                        <h1>Latest Flight</h1>
-                        <p>{FlightPlanData.callsign}</p>
+                        <h1>Latest Prefiled Flight</h1>
+                        <p>{FlightPlanData.general.icao_airline + FlightPlanData.general.flight_number}</p>
                     </div>
                     
                     <div className="FlightPLNBody">
                         <div>
-                            <h1>{FlightPlanData.dep}</h1>
-                            <p>{timeFormating(FlightPlanData.deptime)}</p>
+                            <h1>{FlightPlanData.origin.icao_code}</h1>
+                            <p>{FlightPlanData.origin.iata_code}</p>
                         </div>
                         <div>
-                            <p>{FlightPlanData.altitude}</p>
+                            <p>{FlightPlanData.general.initial_altitude}</p>
                             {PlaneIcon}
-                            <p>{FlightPlanData.aircraft.split('/')[0]}</p>
+                            <a target="blank" href={`https://www.simbrief.com/ofp/flightplans/${FlightPlanData.origin.icao_code + FlightPlanData.destination.icao_code}_PDF_${FlightPlanData.params.time_generated}.pdf`}>OFP</a>
                         </div>
                         <div>
-                            <h1>{FlightPlanData.arr}</h1>
-                            <p>{arrivalTime(timeFormating(FlightPlanData.deptime),`${FlightPlanData.hrsenroute}:${FlightPlanData.minenroute}`)}</p>
+                            <h1>{FlightPlanData.destination.icao_code}</h1>
+                            <p>{FlightPlanData.destination.iata_code}</p>
                         </div>
                     </div>
                     
@@ -89,7 +83,9 @@ function FlightPLN(){
                     
     
                     <div className="FlightPLNFoot">
-                        <a href="#">Get more</a>
+                        {/* <a href="#">Get more</a> */}
+                        <a href="#"><img src={VatsimLogo}></img> Vatsim</a>
+                        <a href="#"><img src={SimbriefLogo}></img> Simbrief</a>
                     </div>
                </section>
                 )}

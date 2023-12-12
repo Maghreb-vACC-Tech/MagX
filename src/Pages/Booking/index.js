@@ -9,6 +9,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function Booking() {
+
+  
+
   const notify = (e) => toast( e , {
     position: "top-right",
     autoClose: 5000,
@@ -35,8 +38,16 @@ function Booking() {
     MaghrebFetching()
   }, []);
   
-  const data = sessionStorage.getItem("MagEvent")
-  const vatsimEvents = JSON.parse(data)
+const vatsimEvents = (() => {
+
+  if (JSON.parse(sessionStorage.getItem("MagEvent")) == null)
+    return []
+  else
+    return JSON.parse(sessionStorage.getItem("MagEvent")); 
+
+  })();
+
+  // alert(`vatsimEvents : ${vatsimEvents}`)
 
   const allEvents = [
     ...vatsimEvents.map(event => ({
@@ -48,6 +59,8 @@ function Booking() {
       type: 'booking'
     }))
   ];
+
+  // alert(`ALL EVENTS : ${allEvents}`)
 
 
   function AddBooking(){
@@ -82,7 +95,7 @@ function Booking() {
     
   }
 
-
+  // const formattedEvents = ['']
 
   const formattedEvents = allEvents.reduce((acc, item) => {
     let date;
@@ -105,6 +118,7 @@ function Booking() {
   }, {});
 
 
+  // alert(`formattedEvents : ${formattedEvents}`)
 
   function DateGroup({ date, items }) {  
 
@@ -150,7 +164,8 @@ function Booking() {
       .then(MaghrebFetching())
       .then(notify("Booking Deleted"))
       
-    }
+    } 
+    if(!items) return null;
 
     return (
       <div>
@@ -203,7 +218,8 @@ function Booking() {
     )
   }
 
-
+  
+  
   return (
     <>
       <SideBar />

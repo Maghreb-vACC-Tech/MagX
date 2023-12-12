@@ -1,7 +1,7 @@
 
 .FlightPLN{
     width: 90%;
-    height: 49%;
+    height: 59%;
     background-color: #0C0C0E;
     background-image: url('../../../../Ressources/FlightPlnIMG.jpg');
     background-attachment: fixed;
@@ -13,6 +13,7 @@
     margin-top: 5vh;
     margin-bottom: 5vh;
     animation-duration: 0.3s;
+    margin-bottom: 10vh;
 }
 .FlightPLN > div{
     width: 100%;
@@ -55,6 +56,12 @@
     width: 20%;
     text-align: center;
 }
+.FlightPLNBody div a{
+    display: block;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    color: white;
+}
 
 .FlightPLNFoot{
     display: flex;
@@ -64,17 +71,25 @@
 .FlightPLNFoot > a{
     color: white;
     text-decoration: none;
-    margin-top: 2vh;
-    background-color: rgb(24, 55, 122);
+    margin-top: 5vh;
+    margin-left: 2vh;
+    background-color: rgba(37, 141, 155, 0.411);
     border-radius: 15px;
     padding: 1vw;
     box-shadow: 5px 15px 15px #00000010;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.FlightPLNFoot > a > img{
+    width: 2vw;
+    margin-right: 1vw;
 }
 .FlightPLNFoot > a:hover{
     color: white;
     text-decoration: none;
     margin-top: 2vh;
-    background-color: rgb(24, 55, 122);
+    background-color: rgb(42, 72, 138);
     border-radius: 15px;
     padding: 1vw;
     box-shadow: 0px 15px 20px #070707;

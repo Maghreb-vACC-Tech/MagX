@@ -1,0 +1,50 @@
+.SettingsPersonal{
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    display: none;
+    overflow-y: auto;
+}
+
+.SettingsPersonalContainers{
+    width: 90%;
+    height: 40%;
+    background: rgb(12, 12, 14 , 0.7);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;   
+    animation-duration: 0.3s;
+}
+.SettingsPersonalContainers h1{
+    
+    display: block;
+    padding-left: 2vw;
+    padding-top: 2vw;
+}
+.SettingsPersonalContainers input{
+    
+    display: block;
+}
+.SettingsPersonalContainers label{
+    display: flex;
+    align-items: center;
+}
+.SettingsPersonalContainers p{
+    display: flex;
+    margin-left: 2vw;
+    font-size: 1vw;
+    font-weight: 300;
+    font-style: italic;
+    color: #838383;
+}
+.SettingsPersonalContainers input[type="text"] {
+    width: 90%;
+    height: 25%;
+    background: rgb(12, 12, 14 , 0.2);
+    border : 1px solid grey;
+    border-radius: 5px;
+    margin: auto;
+    padding-left: 1vw;
+    color: white;
+  }
+
+

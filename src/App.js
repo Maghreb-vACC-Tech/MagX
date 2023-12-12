@@ -7,8 +7,11 @@ import Booking from './Pages/Booking';
 import Event from './Pages/Event';
 import Stats from './Pages/Stats';
 import Tools from './Pages/Tools';
+import ATCTools from './Pages/Tools/Pages/ATC';
+import PilotTools from './Pages/Tools/Pages/Pilot';
 import Training from './Pages/Training';
 import LocationExtractor from './LocationExtractor';
+import Settings from './Pages/Settings';
 // import Roster from './Pages/Roster';
 import AdminPage from './Pages/Admin';
 import ModifyTrainee from './Pages/Admin/Pages/Training/Components/Training/ModifyTrainee';
@@ -37,7 +40,10 @@ function App() {
         <Route path="/Event" element={<Event />} />
         <Route path="/Stats" element={<Stats />} />
         <Route path="/Tools" element={<Tools />} />
+        <Route path="/PilotTools" element={<PilotTools />} />
+        <Route path="/ATCTools" element={<ATCTools />} />
         <Route path="/Training" element={<Training />} />
+        <Route path="/Settings" element={<Settings />} />
         <Route path="/extractor" element={<LocationExtractor />} />
         {/************************************ Admin Routing **********************************************/}
           {/* Training */}

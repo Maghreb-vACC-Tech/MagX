@@ -65,7 +65,6 @@ function ShowTrainee(){
             GetTraineeStats()
             
             
-            // 
     },[]) 
     getATCDays(Data.cid)
 
@@ -73,7 +72,7 @@ function ShowTrainee(){
         <>
         <SideBar />
         <div className="Training PagesContainer">
-            {JSON.stringify(TraineeStats)}
+            {/* {JSON.stringify(TraineeStats)} */}
             <UpperBar Username={sessionStorage.getItem("FullName")} />
 
             <div className="TrainingDiv animate__fadeIn">
@@ -83,10 +82,11 @@ function ShowTrainee(){
                 Position = {Data.Position}
                 Mentor = {Data.Mentor}
                 Status = {Data.Status}
-                CID = {Data.cid}
+                CID = {CID}
                 Name = {Data.Name}
             
             />
+
             </div>
 
             <div className="TrainingDiv animate__fadeIn">
