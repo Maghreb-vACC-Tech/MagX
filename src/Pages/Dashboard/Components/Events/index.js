@@ -1,7 +1,7 @@
 import { useState } from "react"
 import WeatherIMG from "../../../../Ressources/weather.jpg"
 import "./index.css"
-
+import NoEventPNG from "../../../../Ressources/No Events Loaded.png"
 
 function DashboardEventsWeather(){
 
@@ -13,13 +13,22 @@ function DashboardEventsWeather(){
         <div className="dashboard-container">
         
             <div className="DashboardEvent animate__fadeIn">
-            {MaghrebEvents && (  
+            {MaghrebEvents ? (  
                 <div>
                     <a href="/Event">
                         <img src={MaghrebEvents[Math.floor(Math.random() * MaghrebEvents.length) ].banner}></img>
                     </a>
                 </div>
-                 )}
+                 ):(
+
+                <div>
+                    <a href="/Event">
+                        <img src={NoEventPNG}></img>
+                    </a>
+                </div>
+                 )
+                 
+            }
             </div>  
            
             <div className="DashboardWeather animate__fadeIn">
