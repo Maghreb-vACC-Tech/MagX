@@ -32,13 +32,25 @@
 }
 .Event-Container div img{
     margin: auto;
-    
 }
 
-.Event-Title{
+.Event-More{
     width: 100%;
     text-align: center;
     height: 15%;
+}
+.Event-More > h1 > a {
+    color: white;
+}
+
+.Other-Events-Title{
+    display: none;
+}
+.Event-Title{
+    width: 100%;
+    height: 15%;
+    align-items: center;
+    justify-content: center;
 }
 .Event-Container-IMG{
     width: 50%;

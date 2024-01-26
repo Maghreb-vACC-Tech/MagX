@@ -46,11 +46,11 @@ function FlightPLN(){
     }
     
    
-    useEffect(()=>{
-        fetch("http://127.0.0.1:1000/LastFlightPlan/IlyassBaba")
-        .then(data => data.json())
-        .then(data => SetFlightPlanData(data))
-    },[])
+    // useEffect(()=>{
+    //     fetch("http://127.0.0.1:1000/LastFlightPlan/IlyassBaba")
+    //     .then(data => data.json())
+    //     .then(data => SetFlightPlanData(data))
+    // },[])
 
     return(
         <div className="FlightPLN animate__fadeIn">

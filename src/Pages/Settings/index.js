@@ -3,6 +3,7 @@ import UpperBar from "../Component/UpperBar"
 import "./index.css"
 import SettingsPersonal from "./Pages/Personal"
 import SettingsAppearance from "./Pages/Appearance"
+import { useEffect } from "react"
 
 function Settings(){
 
@@ -15,7 +16,9 @@ function Settings(){
         document.querySelector(".SettingsAppearance").style.display = "block"
         document.querySelector(".SettingsPersonal").style.display = "none"
     }
-
+    useEffect(()=>{
+        SettingsNavigatorPersonal()
+    },[])
     return(
         <>
             <SideBar />

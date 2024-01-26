@@ -19,6 +19,7 @@ import ModifyTrainee from './Pages/Admin/Pages/Training/Components/Training/Modi
 import StaffTrainingPage from './Pages/Admin/Pages/Training';
 import StaffDeleteTrainee from './Pages/Admin/Pages/Training/DeleteTrainee';
 import ShowTrainee from './Pages/Admin/Pages/Training/Components/Training/ShowTrainee';
+import EventManagerPage from './Pages/Admin/Pages/EventManager';
 
 // Membership
 import ShowMember from './Pages/Admin/Pages/Membership/Component/showMember';
@@ -59,8 +60,10 @@ function App() {
           <Route path="/ShowMemberLogMore" element={<ShowMemberLogConnectionMore/>}/>
           {/* Booking */}
           <Route path="/StaffBooking" element={<AdminPage/>}/>
+          {/* Events */}
+          <Route path="/EventManager" element={<EventManagerPage/>}/>
           {/* Announcement */}
-          <Route path="/StaffAnnouncement" element={<AdminPage/>}/>
+          {/* <Route path="/StaffAnnouncement" element={<AdminPage/>}/> */}
       </Routes>
     </Router>
   );

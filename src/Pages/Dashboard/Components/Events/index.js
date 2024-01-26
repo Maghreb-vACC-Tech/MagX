@@ -6,20 +6,22 @@ import "./index.css"
 function DashboardEventsWeather(){
 
     // Rest of your component code
-    const event = JSON.parse(sessionStorage.getItem("Events"));
-    console.log(`Events : ${JSON.stringify(event)}`)
+    const MaghrebEvents = JSON.parse(sessionStorage.getItem("MaghrebEvents"));
+    console.log(`Events : ${JSON.stringify(MaghrebEvents)}`)
 
     return(
         <div className="dashboard-container">
-        {event && (  
+        
             <div className="DashboardEvent animate__fadeIn">
+            {MaghrebEvents && (  
                 <div>
                     <a href="/Event">
-                        <img src={event[Math.floor(Math.random() * event.length) + 1].banner}></img>
+                        <img src={MaghrebEvents[Math.floor(Math.random() * MaghrebEvents.length) ].banner}></img>
                     </a>
                 </div>
+                 )}
             </div>  
-            )}
+           
             <div className="DashboardWeather animate__fadeIn">
                 <div>
                     <div>
