@@ -51,6 +51,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    animation-duration: 0.5s;
 }
 .FlightPLNBody div{
     width: 20%;

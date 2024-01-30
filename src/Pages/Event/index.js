@@ -18,7 +18,7 @@ function Event() {
 
   if(MaghrebEvents){
     return (
-      <>
+      <>  
         <SideBar />
         <div className="Event PagesContainer">
           <UpperBar Username={sessionStorage.getItem("FullName")} />

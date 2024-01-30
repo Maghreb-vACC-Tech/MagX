@@ -57,7 +57,7 @@
     align-items: center;
     margin: auto;
     animation-duration: 0.5s;
-    background-image: url("../../../../Ressources/weather.jpg");
+    /* background-image: url("../../../../Ressources/weather.jpg"); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom;
@@ -78,9 +78,11 @@
     font-size: 1.2vw;
     padding-bottom: 1vh;
     padding-bottom: 2vh;
+    animation-duration: 0.3s;
 }
 .DashboardWeather > div > div > h1 {
     font-size: 2.5vw;
+    animation-duration: 0.3s;
 }
 .DashboardWeather > div > div > a {
     padding: 1vw;

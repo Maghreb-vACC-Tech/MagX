@@ -3,6 +3,9 @@ import SideBar from "../Component/SideBar";
 import UpperBar from "../Component/UpperBar";
 import "./index.css"
 
+import TimeDropdown from "../Component/TimeDropdown";
+import AirportPositionDropdown from "../Component/AirportSelection";
+
 // Toatstify ( for notification )
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -237,7 +240,9 @@ const vatsimEvents = (() => {
             <div className="Bookings-Add-Inputs">
               <div>
                 <p>CallSign</p>
-                <input className="Callsign-Booking" type="text" placeholder="Callsign"></input>
+                <AirportPositionDropdown
+                  class = ".Callsign-Booking"
+                />
               </div>
               <div>
                 <p>Day</p>
@@ -245,18 +250,23 @@ const vatsimEvents = (() => {
               </div>
               <div>
                 <p>Start</p>
-                <input className="Start-Booking" type="time" placeholder="start"></input>
+                
+                <TimeDropdown
+                  class = ".Start-Booking"
+                />
               </div>
               <div>
                 <p>End</p>
-                <input className="End-Booking" type="time" placeholder="end"></input>
+                <TimeDropdown
+                  class = ".End-Booking"
+                />
+                
               </div>
               <div>
                 <p>Type</p>
                 <select className="Type-Booking">
                   <option>booking</option>
                 </select>
-                {/* <input type="text" placeholder="type"></input> */}
               </div>
               <div>
                 <p>CID</p>

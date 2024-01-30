@@ -1,0 +1,70 @@
+.Metar_Taf{
+    width: 90vw;
+    height: 40vh;
+}
+.Container{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+/* METAR STYLINH */
+.Tools-METAR{
+    width: 40vw;
+    height: 30vh;
+    margin: auto;
+    background: rgb(12, 12, 14 , 0.5);
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+}
+.Metar_Taf > section{
+    display: flex;
+}
+.Metar_Taf_SYNC {
+    width: 90vw;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    margin: 1vw;
+}
+.Metar_Taf_SYNC button{
+    border: none;
+    background: rgb(12, 12, 14 , 0.5);
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    width: 20vw;
+}
+.Metar_Taf_SYNC button:hover{
+    border: none;
+    background: rgba(129, 30, 39, 0.5);
+    backdrop-filter: blur(50px);
+    border-radius: 30px;
+    color: white;
+}
+.Tools-METAR-Title{
+    display: flex;
+    justify-content: center;
+}
+.Tools-METAR-Content{
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+}
+
+
+
+
+
+.Tools-TAF{
+    width: 40vw;
+    height: 40vh;
+    margin: auto;
+    background: rgb(12, 12, 14 , 0.5);
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+}

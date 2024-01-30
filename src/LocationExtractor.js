@@ -11,6 +11,15 @@ function LocationExtractor() {
   const jsonData = JSON.parse(decodeURIComponent(encodedData || ''));
   const Data = JSON.parse(jsonData).data;
 
+  // function ImportFromSimbrief(User){
+    
+  //   fetch(`http://127.0.0.1:1000/LastFlightPlan/${User}`)
+  //   .then(data => data.json())
+  //   .then(data => {
+  //       sessionStorage.setItem("Simbrief" , JSON.parse(data))
+  //   })
+
+  // }
 
   function SavePersonalData(){
 
@@ -181,6 +190,7 @@ function LocationExtractor() {
     SavePersonalData()
     SavePersonalStats()
     GetStats()
+    // ImportFromSimbrief("IlyassBaba")
     GetLastFlightTime()
     StoreEventsSession()
     Redirect()
