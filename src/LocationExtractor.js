@@ -122,8 +122,11 @@ function LocationExtractor() {
             sessionStorage.setItem("PilotStat" , pilothours )
             sessionStorage.setItem("ATCStat" , atchours )
 
-            
       })
+
+    fetch("http://127.0.0.1:1000/MembersGetConnectionLog/1674212")
+    .then(res => res.json())
+    .then(res => sessionStorage.setItem("UserControllerLog" , res ))
   }
 
   function GetLastFlightTime(){

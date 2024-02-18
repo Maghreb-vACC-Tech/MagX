@@ -17,7 +17,7 @@ function AirportPositionDropdown(props) {
       positions.forEach(position => {
 
         options.push({
-          value: `${airport.code}-${position}`,
+          value: `${airport.code}_${position}`,
           label: `${country.name} -  ${airport.name}_${position}`
         });
 

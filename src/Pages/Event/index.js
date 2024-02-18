@@ -100,11 +100,32 @@ function Event() {
             <h1>Events</h1>
           </div>
   
-          <div className="Events">
-            <div className="Event-Container">
-              <h1>Something Bad Happenned ,Contact Ilyass B. - ACCMA8</h1>
+          <h1> No Maghreb events for the moment</h1>
+
+          {
+            VatsimEvents.map((event) => (
+              <div className="Events">
+              <div className="Event-Container">
+                <div className="Event-Container-IMG animate__fadeInLeft">
+                  <img src={event.banner}></img>
+                </div>
+                <div className="Event-Container-Description animate__fadeIn" >
+                  <div className="Event-Container-Description-text" dangerouslySetInnerHTML={{__html: event.description}}></div>
+                  <div className="Event-Container-Description-Links">
+                    <div>
+                      <div className="Event-Container-Description-Links-save"><a href="#"><i class="fa-regular fa-bell"></i> Reminder</a></div>
+                      <div className="Event-Container-Description-Links-view"><a href={event.link} target="blank"><i class="fa-regular fa-eye"></i> View</a></div>
+                      {/* <div className="Event-Container-Description-Links-roster"><a href={item.link} target="blank"><i class="fa-solid fa-list-ol"></i> Roster</a></div> */}
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
             </div>
-          </div>
+            ))
+          }
+
+
         </div>
       </>
     );

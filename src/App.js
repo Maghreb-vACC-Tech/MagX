@@ -55,7 +55,7 @@ function App() {
           {/* Membership Routing */}
           <Route path="/StaffMembership" element={<StaffMembershipPage/>}/>
           <Route path="/StaffShowMember" element={<ShowMember/>}/>
-          <Route path="/ShowMemberLog" element={<ShowMemberConnectionLog/>}/>
+          {/* <Route path="/ShowMemberLog" element={<ShowMemberConnectionLog/>}/> */}
           <Route path="/ShowMemberLog" element={<ShowMemberConnectionLog/>}/>
           <Route path="/ShowMemberLogMore" element={<ShowMemberLogConnectionMore/>}/>
           {/* Booking */}

@@ -29,6 +29,12 @@ function Booking() {
     
   const [maghrebBookings, setmaghrebBookings] = useState([]);
 
+  function handleReload() {
+    window.location.reload()
+  }
+  
+
+
   function MaghrebFetching(){
     fetch("http://127.0.0.1:1000/MaghrebBooking")
       .then((response) => response.json())
@@ -65,11 +71,21 @@ const vatsimEvents = (() => {
 
   // alert(`ALL EVENTS : ${allEvents}`)
 
-
+  //TODO: Add change when typing handler to handle the entries espacially timings and show errors when time is occupied 
+  function CheckIfTimeIsOccupiedHandler(){
+    const Bookings = maghrebBookings
+    
+  }
+  
   function AddBooking(){
 
-    const Start =  document.querySelector(".Date-Booking").value + " " + document.querySelector(".Start-Booking").value + ":00"
-    const End =  document.querySelector(".Date-Booking").value + " " + document.querySelector(".End-Booking").value + ":00"
+
+    const Start = document.querySelector(".Date-Booking").value + " " + document.querySelector(".Start-Booking").value + ":00"
+    const End = document.querySelector(".Date-Booking").value + " " + document.querySelector(".End-Booking").value + ":00"// const Start =  document.querySelector(".Date-Booking") + " " + document.querySelector(".Start-Booking") + ":00"
+    // const End =  document.querySelector(".Date-Booking").value + " " + document.querySelector(".End-Booking").value + ":00"
+    
+    // alert(`Start : ${Start} ;; End : ${End}`)
+    
     const Data = {
       "callsign" : document.querySelector(".Callsign-Booking").value,
       // "cid" : sessionStorage.getItem("CID"),
@@ -81,7 +97,7 @@ const vatsimEvents = (() => {
       "subdivision": "MAG"
     }
 
-    // alert(JSON.stringify(Data))
+    alert(JSON.stringify(Data))
 
     fetch('http://127.0.0.1:1000/AddMaghrebBooking', {
       method: 'POST',
@@ -92,9 +108,12 @@ const vatsimEvents = (() => {
         Data
       })
     })
-    .then(MaghrebFetching())
-    // .then(res => res.json())
-    .then(notify("Booking Added"))
+    .then(handleReload())
+    .then(res => {
+      if(res == "Error")
+        alert("error")
+    })
+    // .then(notify("Booking Added"))
     
   }
 
@@ -153,7 +172,7 @@ const vatsimEvents = (() => {
 
     function DeleteBooking(id){
 
-      // alert(id)
+      alert(id)
 
       fetch("http://127.0.0.1:1000/DeleteMaghrebBooking" , {
         method: 'DELETE',
@@ -164,8 +183,8 @@ const vatsimEvents = (() => {
           id: id,
         })
       })
-      .then(MaghrebFetching())
-      .then(notify("Booking Deleted"))
+      .then(handleReload())
+      // .then(notify("Booking Deleted"))
       
     } 
     if(!items) return null;
@@ -241,7 +260,7 @@ const vatsimEvents = (() => {
               <div>
                 <p>CallSign</p>
                 <AirportPositionDropdown
-                  class = ".Callsign-Booking"
+                  class = "Callsign-Booking"
                 />
               </div>
               <div>
@@ -252,13 +271,15 @@ const vatsimEvents = (() => {
                 <p>Start</p>
                 
                 <TimeDropdown
-                  class = ".Start-Booking"
+                  handler = "CheckIfTimeIsOccupiedHandler"
+                  class = "Start-Booking"
                 />
               </div>
               <div>
                 <p>End</p>
                 <TimeDropdown
-                  class = ".End-Booking"
+                  handler = "CheckIfTimeIsOccupiedHandler"
+                  class = "End-Booking"
                 />
                 
               </div>

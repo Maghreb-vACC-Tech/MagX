@@ -12,17 +12,23 @@ import Night from '../../../../Ressources/SkyImages/Night.jpg';
 
 function DashboardEventsWeather(){
     const [Metar , setMetar] = useState()
-    const [MaghrebEvents , setMaghrebEvents] = useState()
+    const [Events , setEvents] = useState()
 
-    function SetWeatherFunction(){
-        
-    }
 
     useEffect(()=>{
 
 
         // Rest of your component code
-        setMaghrebEvents(JSON.parse(sessionStorage.getItem("MaghrebEvents")));
+        if (JSON.parse(sessionStorage.getItem("MaghrebEvents")) == null){
+            setEvents(JSON.parse(sessionStorage.getItem("VatsimEvents")))
+            console.log("NO MAGHREB EVENT")
+        }else{
+            setEvents(JSON.parse(sessionStorage.getItem("MaghrebEvents")))
+
+            console.log("MAGHREB EVENT EXISTS")
+        }
+
+        // setMaghrebEvents(JSON.parse(sessionStorage.getItem("MaghrebEvents")));
         // console.log(`Events : ${JSON.stringify(MaghrebEvents)}`)
         const GetAirportWeatherArray = ["gmmn","daag","dtta","gmad","gmff"]
         var i = 0
@@ -47,7 +53,7 @@ function DashboardEventsWeather(){
                     setMetar(data)
                 })
                 .catch((err)=>{
-                    alert("check console there is an error")
+                    // alert("check console there is an error")
                     console.log(`Error from alert : ${err}`)
                 })
                                 
@@ -77,7 +83,7 @@ function DashboardEventsWeather(){
                     setMetar(data)
                 })
                 .catch((err)=>{
-                    alert("check console there is an error")
+                    // alert("check console there is an error")
                     console.log(`Error from alert : ${err}`)
                 })
                 i++
@@ -93,11 +99,11 @@ function DashboardEventsWeather(){
     return(
         <div className="dashboard-container">
         
-            {MaghrebEvents ? (  
+            {Events ? (  
                 <div className="DashboardEvent animate__fadeIn">
                     <div>
                         <a href="/Event">
-                            <img src={MaghrebEvents[Math.floor(Math.random() * MaghrebEvents.length) ].banner}></img>
+                            <img src={Events[Math.floor(Math.random() * Events.length) ].banner}></img>
                         </a>
                     </div>
                 </div>  
