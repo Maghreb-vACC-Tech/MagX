@@ -17,6 +17,7 @@ function StaffMembershipPage(){
         setMemberFetched(res)
       })
     }
+
     useEffect(()=>{
       FetchMembershipData()
     },[])

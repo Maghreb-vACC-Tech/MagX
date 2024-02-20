@@ -17,19 +17,17 @@ function Stats() {
   if(!LastPositionData) {
     return <p>No last position data</p> 
   }
-  // setLastPosition(LastPositionData.items[0].connection_id.callsign)
 
   console.log(LastPositionData.items[0].connection_id.callsign)
 
 
-// const callsign = LastPostion?.items[0]?.connection_id?.callsign;
 
 
     return(
       <>
         <SideBar />
         <div className="Stats PagesContainer">
-          {/* <UpperBar Username={callsign} /> */}
+          <UpperBar Username={sessionStorage.getItem("FullName")} />
       
           <StatisticComponent
           Name = { sessionStorage.getItem("FullName") }
@@ -45,9 +43,6 @@ function Stats() {
     
         />
           {/* {JSON.stringify(LastPostion.items[0].connection_id.callsign)} */}
-          <PilotATCStats
-
-          />
 
           <ATCLog
             Log = {sessionStorage.getItem("UserControllerLog")}

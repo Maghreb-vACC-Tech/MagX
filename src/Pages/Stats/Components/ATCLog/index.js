@@ -3,8 +3,14 @@ import { useState, useEffect } from "react";
 
 function ATCLog(props) {
 
-    const [Log , setLog] = useState(props.Log)
+    const [Log , setLog] = useState([JSON.parse(props.Log)])
 
+    // setLog(JSON.parse(props.Log))
+
+    console.log( typeof props.Log )
+
+
+    console.log(Log)
 
     function formatDate(date){
 
@@ -61,13 +67,19 @@ function ATCLog(props) {
             document.querySelector(".class"+LogAnimationid).style.display= "flex"
             // alert("open Before:" + index)
             index = true;}
-        }
+    }
 
+    
     return (
-      <div>
-        {Log && Log.map(log => (
-                    <>
-                    <div key={log.id} className="MemberLog" onClick={()=>{animation(log.connection_id.id)}}>
+      <div className="MemberLogContainer">
+        <div className="MemberLogContainerTitle">
+            <h1>ATC Logs</h1>
+        </div>
+        
+        <div className="MemberLogContainerContent">
+            {Log && Log[0].map(log => (
+                <>
+                    <div className="MemberLog" onClick={()=>{animation(log.connection_id.id)}}>
                         <div>{log.connection_id.id}</div> 
                         <div>{log.connection_id.callsign}</div> 
                         <div>{formatDate(log.connection_id.start)}</div> 
@@ -81,12 +93,22 @@ function ATCLog(props) {
                         <div>seen :{log.aircraftseen}</div> 
                         <div>refused :{log.handoffsrefused}</div> 
                     </div>
-                    </>
+                </>
                     
-                ))}
+            ))}
+        </div>
+        
+
+
+            {/* <div>
+                <p>-------------------</p>
+                {JSON.stringify(Log[0])}
+            </div> */}
+                    
       </div>
     );
 }
 
 
 export default ATCLog;
+

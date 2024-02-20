@@ -12,7 +12,7 @@ function TimeDropdown(props) {
   }
 
   return (
-    <select className={props.class} onChange={props.handler}>
+    <select className={props.class}>
       {times.map(time => (
         <option key={time.value} value={time.value}>
           {time.label}

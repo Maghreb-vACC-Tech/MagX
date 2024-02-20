@@ -56,7 +56,6 @@ const vatsimEvents = (() => {
 
   })();
 
-  // alert(`vatsimEvents : ${vatsimEvents}`)
 
   const allEvents = [
     ...vatsimEvents.map(event => ({
@@ -69,7 +68,6 @@ const vatsimEvents = (() => {
     }))
   ];
 
-  // alert(`ALL EVENTS : ${allEvents}`)
 
   //TODO: Add change when typing handler to handle the entries espacially timings and show errors when time is occupied 
   function CheckIfTimeIsOccupiedHandler(){
@@ -82,9 +80,7 @@ const vatsimEvents = (() => {
 
     const Start = document.querySelector(".Date-Booking").value + " " + document.querySelector(".Start-Booking").value + ":00"
     const End = document.querySelector(".Date-Booking").value + " " + document.querySelector(".End-Booking").value + ":00"// const Start =  document.querySelector(".Date-Booking") + " " + document.querySelector(".Start-Booking") + ":00"
-    // const End =  document.querySelector(".Date-Booking").value + " " + document.querySelector(".End-Booking").value + ":00"
-    
-    // alert(`Start : ${Start} ;; End : ${End}`)
+
     
     const Data = {
       "callsign" : document.querySelector(".Callsign-Booking").value,
@@ -97,7 +93,6 @@ const vatsimEvents = (() => {
       "subdivision": "MAG"
     }
 
-    alert(JSON.stringify(Data))
 
     fetch('http://127.0.0.1:1000/AddMaghrebBooking', {
       method: 'POST',
@@ -113,11 +108,9 @@ const vatsimEvents = (() => {
       if(res == "Error")
         alert("error")
     })
-    // .then(notify("Booking Added"))
     
   }
 
-  // const formattedEvents = ['']
 
   const formattedEvents = allEvents.reduce((acc, item) => {
     let date;
@@ -140,7 +133,6 @@ const vatsimEvents = (() => {
   }, {});
 
 
-  // alert(`formattedEvents : ${formattedEvents}`)
 
   function DateGroup({ date, items }) {  
 
@@ -172,7 +164,7 @@ const vatsimEvents = (() => {
 
     function DeleteBooking(id){
 
-      alert(id)
+      // alert(id)
 
       fetch("http://127.0.0.1:1000/DeleteMaghrebBooking" , {
         method: 'DELETE',

@@ -126,7 +126,7 @@ function LocationExtractor() {
 
     fetch("http://127.0.0.1:1000/MembersGetConnectionLog/1674212")
     .then(res => res.json())
-    .then(res => sessionStorage.setItem("UserControllerLog" , res ))
+    .then(res => sessionStorage.setItem("UserControllerLog" ,JSON.stringify(res) ))
   }
 
   function GetLastFlightTime(){
