@@ -36,3 +36,14 @@
   align-items: center;
 }
 
+
+
+.BannerAlert{
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(141, 9, 9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}

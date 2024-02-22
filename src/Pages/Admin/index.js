@@ -3,11 +3,14 @@ import SideBar from "../Component/SideBar";
 import UpperBar from "../Component/UpperBar";
 
 import Navigator from "./Navigator";
+import AdminStats from "./Stats";
 import "./index.css"
 
 function AdminPage() {
 
-  if(sessionStorage.getItem("CID") == "10000008") {
+const StaffList  = require('./Pages/Staff/Setup.json');
+
+  if(StaffList.StaffList.includes(sessionStorage.getItem("CID"))) {
     fetch("http://localhost:1000/MembershipDBRefresh")
     return (
       <>
@@ -15,6 +18,7 @@ function AdminPage() {
         <div className="AdminPage PagesContainer">
           <UpperBar Username={sessionStorage.getItem("FullName")} />
           <Navigator/>
+          <AdminStats/>
         </div>
       </>
     );

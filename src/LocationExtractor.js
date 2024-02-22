@@ -1,6 +1,6 @@
 import { useEffect , useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-
+import "./App.css"
 import LoadingSpinner from './Pages/Component/LoadingSpinner';
 
 function LocationExtractor() {
@@ -187,16 +187,29 @@ function LocationExtractor() {
   }
 
   // GetEventsAndRedirect 
-  
-  useEffect(() => {
+  const BanList  = require('./Pages/Admin/Pages/Staff/Setup.json');
 
-    SavePersonalData()
-    SavePersonalStats()
-    GetStats()
-    // ImportFromSimbrief("IlyassBaba")
-    GetLastFlightTime()
-    StoreEventsSession()
-    Redirect()
+  if(BanList.BanList.includes(Data.cid)){
+    return(
+      <div className="BannerAlert"><p>It seems that there is a problem .Please speak to maghreb staff for more information</p></div>
+      
+    )
+  
+  }
+  useEffect(() => {
+    
+
+
+      
+      SavePersonalData()
+      SavePersonalStats()
+      GetStats()
+      // ImportFromSimbrief("IlyassBaba")
+      GetLastFlightTime()
+      StoreEventsSession()
+      Redirect()
+  
+
 
   }, [Data]);
 

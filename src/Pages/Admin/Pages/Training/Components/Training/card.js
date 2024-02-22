@@ -11,7 +11,7 @@ function Cards(props){
             </section1>
             <section>
                 <line>
-                    <div><p>Rating : </p></div>
+                    <div><p>For Rating : </p></div>
                     <div><p>{props.rating}</p></div>
                 </line>
                 <line>
@@ -28,7 +28,7 @@ function Cards(props){
                 </line>
                 <line>
                     <div><p>Status : </p></div>
-                    <div><p>{props.mentor}</p></div>
+                    <div><p>{props.status}</p></div>
                 </line>
                 <line1>
                     <div><p>Comment : </p></div>

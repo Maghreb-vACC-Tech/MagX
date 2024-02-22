@@ -349,68 +349,57 @@ nav > div > a{
   .addTrainee section section button:hover{
     background-color: #0fc3ff;
   }
-/* .addTrainee  */
 
-/* .addTrainee section div {
-    width: 33%;
-    height: 20vh;
-    display: flex;
-    float: left;
-    flex-direction: column;
-    align-items: center; 
-  }
   
-.addTrainee section div p {
-    float: left;
+.MembersStatsCount{
+    background: rgb(12, 12, 14 , 0.2);
+    background: rgb(12, 12, 14 , 0.5);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    color: #DDD;
+    border-radius: 15px;
+    padding: 1vw;
 }
-  
-.addTrainee section div input {
-    width: 80%;
-    height: 5vh;
-    border-radius: 5px;
-    color: white;
-    background-color: #121216;
-    border: none;
-    padding-left: 1vw;
-    display: block;
-  }
-  .addTrainee section div select {
-    width: 80%;
-    height: 5vh;
-    border-radius: 5px;
-    color: white;
-    background-color: #121216;
-    border: none;
-    padding-left: 1vw;
-    display: block;
-  }
-  .addTrainee section footer {
-    text-align: center;
+.MembersStatsCountTitle{
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-  }
-  .addTrainee section footer button{
-    background-color: #0c8eb9;
-    color: white;
-    border: none;
+}
+.MembersStatsCountTitle > h1{
+    font-size: 2vw;
+    font-weight: 600;
+}
+.MembersStatsCountContainer{
+    display: flex;
+    justify-content: center;
+}
+.MembersStatsCountContainer > div{
     width: 10vw;
-    height: 5vh;
-    border-radius: 50px;
-    cursor: pointer;
-  }
-  .addTrainee section footer button{
-    background-color: #0c8eb9;
+    text-align: center;
+    font-size: 1vw;
+}
+
+
+
+
+
+.AddMoreTrainee a{
+    /* background: rgb(12, 12, 14 , 0.9); */
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
     color: white;
+    padding: 1vw;
     border: none;
-    width: 10vw;
-    height: 5vh;
-    border-radius: 50px;
-    cursor: pointer;
-  }
-  .addTrainee section footer button:hover{
-    background-color: #0fc3ff;
-  } */
+    text-decoration: none;
+}
+
+.AddMoreTrainee a:hover{
+    background: rgb(12, 12, 14 , 0.3);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    color: white;
+    padding: 1vw;
+    border: none;
+    text-decoration: none;
+}

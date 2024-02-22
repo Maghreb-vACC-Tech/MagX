@@ -29,16 +29,17 @@ function TrainingAdmin(){
     )
 
 
-    // Fetching Data
 
-    fetch("http://127.0.0.1:1000/GetTrainee")
-        .then(res => res.json())
-        .then(res => {
-            setTraineeData(res)
+
+    useEffect(()=>{
+        fetch("http://127.0.0.1:1000/GetTrainee")
+        .then( res => res.json() )
+        .then( res => {
+            // setTraineeData(res)
+            
             setTraineeDataFetched(res)
         })
-        .catch(err => console.log(err))
-
+    },[])
 
     const TraineeLookupCallback = (e) => {
         const value = e.target.value;
@@ -58,11 +59,14 @@ function TrainingAdmin(){
     return(
         <all className="TrainingAdmin animate__fadeIn">
             <section className="TrainingTopBar">
-                <div className="TrainingSearch">
+                {/* <div className="TrainingSearch">
                     <input type="text" placeholder="CID" onChange={TraineeLookupCallback}></input>
                 </div>
                 <div className="TrainingSearchBTN">
                     <button>{SearchIcon}</button>
+                </div> */}
+                <div className="AddMoreTrainee">
+                    <a href="/AddVisitor"><i class="fa-solid fa-person-circle-plus"></i> Visitors</a>
                 </div>
             </section> 
             <section className="TrainingMainContainer">
@@ -76,6 +80,7 @@ function TrainingAdmin(){
                         facility={trainee.Facility} 
                         position={trainee.Position}
                         mentor={trainee.Mentor}
+                        status={trainee.Status}
                         comment={trainee.comment}
                     />
                 ))}

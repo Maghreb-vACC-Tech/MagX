@@ -62,7 +62,7 @@ function ModifyTrainee(){
         <>
         <SideBar></SideBar>
         <div className="addTrainee animate__fadeIn" id="AddTrainee">
-        <UpperBar></UpperBar>
+        <UpperBar  Username={sessionStorage.getItem("FullName")}></UpperBar>
         {/* {JSON.stringify(TrainneModify)} */}
             <div className="addTraineeTitle"><h1>{`${TrainneModify.Name} ( ${TrainneModify.cid} )`}</h1></div>
             <section>
@@ -102,10 +102,14 @@ function ModifyTrainee(){
                     <div><p>Status  : </p></div>
                     
                     <select id="AddTraineeStatus" defaultValue={TrainneModify.Status}>
-                        <option selected>Theory</option>
+                        <option selected>STBY</option>
                         <option>SweatBox</option>
-                        <option>Online Sessions</option>
+                        <option>Theory</option>
                         <option>Solo</option>
+                        <option>Checkout</option>
+                        <option>CPT</option>
+                        <option>Visitor</option>
+                        <option>Take-off</option>
                     </select>
                 </div>
 

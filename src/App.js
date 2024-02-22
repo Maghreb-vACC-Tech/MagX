@@ -20,6 +20,8 @@ import StaffTrainingPage from './Pages/Admin/Pages/Training';
 import StaffDeleteTrainee from './Pages/Admin/Pages/Training/DeleteTrainee';
 import ShowTrainee from './Pages/Admin/Pages/Training/Components/Training/ShowTrainee';
 import EventManagerPage from './Pages/Admin/Pages/EventManager';
+import AddVisitor from './Pages/Admin/Pages/Training/Components/Training/AddVisitor';
+
 
 // Membership
 import ShowMember from './Pages/Admin/Pages/Membership/Component/showMember';
@@ -27,6 +29,8 @@ import StaffMembershipPage from './Pages/Admin/Pages/Membership';
 import ShowMemberConnectionLog from './Pages/Admin/Pages/Membership/Component/showMemberConnectionLog';
 import ShowMemberLogConnectionMore from './Pages/Admin/Pages/Membership/Component/ShowMemberLogConnectionMore';
 
+// Staff 
+import StaffPage from "./Pages/Admin/Pages/Staff"
 
 function App() {
 
@@ -52,6 +56,7 @@ function App() {
           <Route path="/StaffDeleteTrainee" element={<StaffDeleteTrainee/>}/>
           <Route path="/ModifyTrainee" element={<ModifyTrainee/>}/>
           <Route path="/StaffShowTrainee" element={<ShowTrainee/>}/>
+          <Route path="/AddVisitor" element={<AddVisitor/>}/>
           {/* Membership Routing */}
           <Route path="/StaffMembership" element={<StaffMembershipPage/>}/>
           <Route path="/StaffShowMember" element={<ShowMember/>}/>
@@ -62,6 +67,8 @@ function App() {
           <Route path="/StaffBooking" element={<AdminPage/>}/>
           {/* Events */}
           <Route path="/EventManager" element={<EventManagerPage/>}/>
+          {/* Staff */}
+          <Route path="/StaffPage" element={<StaffPage/>}/>
           {/* Announcement */}
           {/* <Route path="/StaffAnnouncement" element={<AdminPage/>}/> */}
       </Routes>
