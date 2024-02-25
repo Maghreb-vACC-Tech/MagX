@@ -1,12 +1,17 @@
 import "./index.css"
 // Import Logo
 import Logo from "../../../Ressources/Logo/logo.svg"
-
+import { useState, useEffect } from "react";
 // Import Component
 import SideBarLink from "./Components/Links"
 
 
 function SideBar(){
+
+    const [AdminRight , setAdminRight] = useState(false)
+
+    
+    const StaffList  = require('../../Admin/Pages/Staff/Setup.json');
 
     // ICONS
     const DashboardIcon = (
@@ -60,6 +65,63 @@ function SideBar(){
         </svg>
     )
 
+    if(StaffList.StaffList.includes(sessionStorage.getItem("CID"))) {
+        return(
+            <div className="SideBar">
+    
+                <div className="SideBar-Logo">
+                    <img src={Logo}></img>
+                </div>
+    
+                <div className="SideBar-Links">
+    
+                    <SideBarLink
+                        Link = "DashBoard"
+                        Icon = {DashboardIcon}
+                        LinkRedirect = "/Dashboard"
+                        QuerySelector = ".DashBoardClass"
+                        LinkClassName = "DashBoardClass"
+                    />
+                    <SideBarLink
+                        Link = "Event"
+                        Icon = {EventIcon}
+                        LinkRedirect = "/Event"
+                    />
+    
+                    <SideBarLink
+                        Link = "Booking"
+                        Icon = {BookingIcon}
+                        LinkRedirect = "/Booking"
+                    />
+    
+                    <SideBarLink
+                        Link = "Stats"
+                        Icon = {StatsIcon}
+                        LinkRedirect = "/Stats"
+                    />
+                    <SideBarLink
+                        Link = "Tools"
+                        Icon = {ToolsIcon}
+                        LinkRedirect = "/Tools"
+                    />
+                    <SideBarLink
+                        Link = "Training"
+                        Icon = {TrainingIcon}
+                        LinkRedirect = "/Training"
+                    />
+                    <SideBarLink
+                        Link = "Admin"
+                        Icon = {AdminIcon}
+                        LinkRedirect = "/Staff"
+                    />
+    
+    
+                </div>
+    
+            </div>
+        )
+    }
+
     return(
         <div className="SideBar">
 
@@ -103,11 +165,8 @@ function SideBar(){
                     Icon = {TrainingIcon}
                     LinkRedirect = "/Training"
                 />
-                <SideBarLink
-                    Link = "Admin"
-                    Icon = {AdminIcon}
-                    LinkRedirect = "/Staff"
-                />
+
+
 
             </div>
 

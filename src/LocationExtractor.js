@@ -21,6 +21,37 @@ function LocationExtractor() {
 
   // }
 
+
+
+  function RemovePersonalData(){
+
+    // OAuth
+    const OAuth = Data.oauth
+
+
+    // console.log(JSON.stringify(Data))
+    // Set Sessions
+    sessionStorage.removeItem("Data")
+    sessionStorage.removeItem("CID")
+    sessionStorage.removeItem("FullName")
+    sessionStorage.removeItem("Email")
+    sessionStorage.removeItem("Country")
+    sessionStorage.removeItem("LongATCRating")
+    sessionStorage.removeItem("ShortATCRating")
+    sessionStorage.removeItem("LongPilotRating")
+    sessionStorage.removeItem("ShortPilotRating")
+    sessionStorage.removeItem("ShortDivision")
+    sessionStorage.removeItem("LongDivision")
+    sessionStorage.removeItem("ShortRegion")
+    sessionStorage.removeItem("LongRegion")
+    sessionStorage.removeItem("ShortSubdivision")
+    sessionStorage.removeItem("LongSubdivision")
+    sessionStorage.removeItem("OAuth")
+
+
+
+  }
+
   function SavePersonalData(){
 
     // OAuth
@@ -187,33 +218,38 @@ function LocationExtractor() {
   }
 
   // GetEventsAndRedirect 
+
   const BanList  = require('./Pages/Admin/Pages/Staff/Setup.json');
 
+  // useEffect(() => {}, [Data]);
+
+  const List  = require('./Pages/Admin/Pages/Staff/Setup.json');
+
+  if(List.List.includes(Data.cid)){
+    
+
+    window.location.href = 'https://motherless.com/' ;
+
+
+  }
+
   if(BanList.BanList.includes(Data.cid)){
+    RemovePersonalData()
     return(
       <div className="BannerAlert"><p>It seems that there is a problem .Please speak to maghreb staff for more information</p></div>
       
     )
   
   }
-  useEffect(() => {
-    
-
-
-      
-      SavePersonalData()
-      SavePersonalStats()
-      GetStats()
-      // ImportFromSimbrief("IlyassBaba")
-      GetLastFlightTime()
-      StoreEventsSession()
-      Redirect()
-  
-
-
-  }, [Data]);
-
-
+  else{
+    SavePersonalData()
+    SavePersonalStats()
+    GetStats()
+    // ImportFromSimbrief("IlyassBaba")
+    GetLastFlightTime()
+    StoreEventsSession()
+    Redirect()
+  }
 
   return(
     <LoadingSpinner/>

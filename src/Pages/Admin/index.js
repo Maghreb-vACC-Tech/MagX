@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import SideBar from "../Component/SideBar";
 import UpperBar from "../Component/UpperBar";
 
+import Lost from "../Component/Lost"
 import Navigator from "./Navigator";
 import AdminStats from "./Stats";
 import "./index.css"
@@ -29,7 +30,12 @@ const StaffList  = require('./Pages/Staff/Setup.json');
       <SideBar />
       <div className="AdminPage PagesContainer">
         <UpperBar Username={sessionStorage.getItem("FullName")} />
-        <h1>U dont have access bro</h1>
+        <Lost
+          Error = "Permision Denied"
+          Message = "You are trying to access a ressource that you dont have the required permissions for or is outside of MAGX"
+          Solution = {["If you are lost you can come back to your dashboard " , <a href="/Dashboard">Dashboard</a>]}
+          Link = ""
+        />
       </div>
       </>
     )

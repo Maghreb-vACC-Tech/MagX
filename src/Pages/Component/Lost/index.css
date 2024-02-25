@@ -1,0 +1,22 @@
+.LostContainer{
+    width: 60vw;
+    /* height: 90vh; */
+    margin: auto;
+    background: rgb(12, 12, 14 , 0.5);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    padding: 5vw;
+    color: rgb(201, 201, 201);
+}
+.LostContainer>div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.LostContainer>div>svg{
+    font-size: 10vw;
+    color: rgb(214, 8, 8);
+}
+.LostContainer>div>p>a{
+    color: aliceblue;
+}

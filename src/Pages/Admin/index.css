@@ -403,3 +403,35 @@ nav > div > a{
     border: none;
     text-decoration: none;
 }
+
+
+.MembersStatsContainer{
+    display: flex;
+    overflow-x: auto;
+}
+.MemberContainer{
+    width: 20vw;
+    background-color: #0C0C0E;
+    padding: 1vw;
+    margin: 1vw;
+
+  flex-shrink: 0;
+}
+.MemberContainer > h3{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.MembersStatsContainerTitle{
+    padding-left: 5vw;
+}
+.MembersStatsContainerBar{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+.MembersStatsContainerBar > div {
+    background-color: rgb(175, 175, 175);
+    height: 1px;
+    width: 90%;
+    margin: auto;
+}

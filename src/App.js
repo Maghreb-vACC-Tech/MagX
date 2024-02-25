@@ -21,7 +21,7 @@ import StaffDeleteTrainee from './Pages/Admin/Pages/Training/DeleteTrainee';
 import ShowTrainee from './Pages/Admin/Pages/Training/Components/Training/ShowTrainee';
 import EventManagerPage from './Pages/Admin/Pages/EventManager';
 import AddVisitor from './Pages/Admin/Pages/Training/Components/Training/AddVisitor';
-
+import AdminTools from './Pages/Admin/Pages/AdminTools'
 
 // Membership
 import ShowMember from './Pages/Admin/Pages/Membership/Component/showMember';
@@ -31,6 +31,10 @@ import ShowMemberLogConnectionMore from './Pages/Admin/Pages/Membership/Componen
 
 // Staff 
 import StaffPage from "./Pages/Admin/Pages/Staff"
+
+
+// Lost
+import Lost from "./Pages/Component/Lost"
 
 function App() {
 
@@ -69,8 +73,18 @@ function App() {
           <Route path="/EventManager" element={<EventManagerPage/>}/>
           {/* Staff */}
           <Route path="/StaffPage" element={<StaffPage/>}/>
+          {/* Tools */}
+          <Route path="/AdminTools" element={<AdminTools/>}/>
+          
           {/* Announcement */}
           {/* <Route path="/StaffAnnouncement" element={<AdminPage/>}/> */}
+      
+          <Route path="*" element={<Lost
+                      Error = "Permision Denied"
+                      Message = "You are trying to access a ressource that you dont have the required permissions for or is outside of MAGX"
+                      Solution = {["If you are lost you can come back to your dashboard " , <a href="/Dashboard">Dashboard</a>]}
+                      Link = ""
+          />}/>
       </Routes>
     </Router>
   );

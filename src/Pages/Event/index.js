@@ -52,7 +52,9 @@ function Event() {
           
           
           <div className="Event-More">
-            <h1><a href="#" onClick={handleClick}>Want to see more Vatsim events ? </a></h1>
+            <h1><a href="https://vatsim.net/events/" 
+            // onClick={handleClick}
+            >Want to see more Vatsim events ? </a></h1>
           </div>
 
           
@@ -60,7 +62,7 @@ function Event() {
             <h1>Other Vatim Events</h1>
           </div>
 
-          {renderEvents && (
+          {/* {renderEvents && ( 
             
             VatsimEvents.map((item) => (
               <div className="Events">
@@ -74,7 +76,7 @@ function Event() {
                     <div>
                       <div className="Event-Container-Description-Links-save"><a href="#"><i class="fa-regular fa-bell"></i> Reminder</a></div>
                       <div className="Event-Container-Description-Links-view"><a href={item.link} target="blank"><i class="fa-regular fa-eye"></i> View</a></div>
-                      {/* <div className="Event-Container-Description-Links-roster"><a href={item.link} target="blank"><i class="fa-solid fa-list-ol"></i> Roster</a></div> */}
+                      <div className="Event-Container-Description-Links-roster"><a href={item.link} target="blank"><i class="fa-solid fa-list-ol"></i> Roster</a></div>
                     </div>
                   </div>
                 </div>
@@ -83,7 +85,7 @@ function Event() {
             </div>
             ))
 
-            )}
+            )} */}
           
         </div>
       </>
