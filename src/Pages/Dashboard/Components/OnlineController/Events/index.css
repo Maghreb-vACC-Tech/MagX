@@ -20,3 +20,15 @@
     font-weight: 700;
     line-height: normal;
 }
+.DashboardOnlineControllerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #641c1c;
+}
+.DashboardOnlineControllerContainer div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+}
