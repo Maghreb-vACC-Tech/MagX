@@ -68,47 +68,74 @@ const vatsimEvents = (() => {
     }))
   ];
 
-
-  //TODO: Add change when typing handler to handle the entries espacially timings and show errors when time is occupied 
-  function CheckIfTimeIsOccupiedHandler(){
-    const Bookings = maghrebBookings
-    
-  }
   
   function AddBooking(){
+    
 
+    // alert(document.querySelector(".Date-Booking").value)
+    if(document.querySelector(".Date-Booking").value == ""){
+        document.querySelector(".Date-Booking").style.color="#c90000"
+        notify(`No Date inserted format : mm/dd/yyyy`)
+      }
 
     const Start = document.querySelector(".Date-Booking").value + " " + document.querySelector(".Start-Booking").value + ":00"
     const End = document.querySelector(".Date-Booking").value + " " + document.querySelector(".End-Booking").value + ":00"// const Start =  document.querySelector(".Date-Booking") + " " + document.querySelector(".Start-Booking") + ":00"
 
-    
-    const Data = {
-      "callsign" : document.querySelector(".Callsign-Booking").value,
-      // "cid" : sessionStorage.getItem("CID"),
-      "cid" : "1674212",
-      "start" : Start,
-      "end" : End,
-      "type": document.querySelector(".Type-Booking").value,
-      "division": "MENA",
-      "subdivision": "MAG"
-    }
+    const StartFormating = new Date(Start);
+    const EndFormating = new Date(End);
+    const durationMs = EndFormating - StartFormating; 
+    const minutes = Math.floor(durationMs / 60000);
+
+    // alert(minutes)
+
+    if(minutes < 60 )
+        notify(`The duration of your session is < 60 minutes `)
 
 
-    fetch('http://127.0.0.1:1000/AddMaghrebBooking', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        Data
+    else if(minutes > 240)
+        notify(`The duration of your session is > 4 hours `)
+
+
+
+
+    // alert(Start)
+    else{
+      const Data = {
+        "callsign" : document.querySelector(".Callsign-Booking").value,
+        // "cid" : sessionStorage.getItem("CID"),
+        "cid" : "1674212",
+        "start" : Start,
+        "end" : End,
+        "type": document.querySelector(".Type-Booking").value,
+        "division": "MENA",
+        "subdivision": "MAG"
+      }
+  
+  
+      fetch('http://127.0.0.1:1000/AddMaghrebBooking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          Data
+        })
       })
-    })
-    .then(handleReload())
-    .then(res => {
-      if(res == "Error")
-        alert("error")
-    })
+      .then(res => res.json())
+      .then(res => {
+        // const ResState = res
+        // alert(JSON.stringify(ResState))
+        if(JSON.stringify(res).includes("Booking overlaps")){
+          notify(`Your Booking overlaps with others`);
+        }
+        else{
+            handleReload()
+        }
+
+      })
     
+    }
+ 
   }
 
 
@@ -245,6 +272,17 @@ const vatsimEvents = (() => {
 
 
         <div className="Bookings">
+          <div className="Bookings-Rules animate__fadeIn">
+            <div className="Bookings-Rules-Title"><h1>Rules and Notes</h1></div>
+
+            <div className="Bookings-Rules-Container">
+              <p>1. Check the bookings before you book your session so you wont overlap with other's bookings</p>
+              <p>2. Your session should be minimum of 1 hours and max of 4 hours</p>
+              <p>3. DO NOT BOOK IN EVENTS or your booking will be automatically removed</p>
+              <p>4. Keep in mind that the booking system is not perfect due to it state of devellopement , if you encounter any problems or have any questions feel free to ask Ilyass.B ACCMA8</p>
+            </div>
+          </div>
+          
           <div className="Bookings-Add animate__fadeIn">
             <div className="Bookings-Add-Title"><h1>New Booking</h1></div>
 
@@ -296,11 +334,6 @@ const vatsimEvents = (() => {
               <div className="Bookings-Add-Inputs-submit">
                 <input type="submit"  onClick={AddBooking}></input>
               </div>
-                
-                
-                
-               
-                
               
             </div>
           </div>

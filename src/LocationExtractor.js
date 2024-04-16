@@ -198,12 +198,12 @@ function LocationExtractor() {
     .then(res => sessionStorage.setItem("MaghrebEvents" , JSON.stringify(res)))
     
 
-    fetch("http://127.0.0.1:1000/VatsimEvents")
-      .then(res => res.json())
-      .then(res => {
-        // alert(JSON.stringify(res))
-        sessionStorage.setItem("VatsimEvents" , JSON.stringify(res) )
-      })
+    // fetch("http://127.0.0.1:1000/VatsimEvents")
+    //   .then(res => res.json())
+    //   .then(res => {
+    //     // alert(JSON.stringify(res))
+    //     sessionStorage.setItem("VatsimEvents" , JSON.stringify(res) )
+    //   })
       
   }
 

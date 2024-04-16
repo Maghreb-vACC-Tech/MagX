@@ -55,35 +55,10 @@ function AdminStats(){
         })
     }
 
-    // function GroupMembersByRating(){
-
-    //     fetch("http://127.0.0.1:1000/members")
-    //     .then(res => res.json())
-    //     .then(res => {
-    //         SetMembers(res)
-    //     })
-    //     const groupedByRating = Members.reduce((acc, member) => {
-    //         const rating = member.rating;
-            
-    //         if(!acc[rating]) {
-    //           acc[rating] = [];
-    //         }
-            
-    //         acc[rating].push(member);
-            
-    //         return acc;
-    //       }, {});
-
-          
-    // console.log(groupedByRating);
-
-    // }
-
 
 
     useEffect(()=>{
         GetMemberStats()
-        // GroupMembersByRating()
     },[])
     return(
         <>
@@ -92,7 +67,6 @@ function AdminStats(){
                     <h1>Members Stats</h1>
                 </div>
                 
-                {/* <h1>{MembersCount} Members</h1> */}
                 {DataState &&(
                     <>
                         <div className="MembersStatsCountContainer">  

@@ -5,7 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('./Ressources/BG.jpg');
+  background-image: url('./Ressources/Background/BG.jpg');
+  background-image: url('./Ressources/Background/BG1.jpg');
+  background-image: url('./Ressources/Background/BG2.jpg');
+  /* background-image: url('./Ressources/Background/BG3.jpg'); */
+  /* background-image: url('./Ressources/Background/BG4.jpg'); */
+  /* background-image: url('./Ressources/Background/BG5.jpg'); */
   background-size: 100%;
   background-attachment: fixed;
   /* background-repeat: repeat-y; */

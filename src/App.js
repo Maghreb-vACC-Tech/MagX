@@ -22,12 +22,16 @@ import ShowTrainee from './Pages/Admin/Pages/Training/Components/Training/ShowTr
 import EventManagerPage from './Pages/Admin/Pages/EventManager';
 import AddVisitor from './Pages/Admin/Pages/Training/Components/Training/AddVisitor';
 import AdminTools from './Pages/Admin/Pages/AdminTools'
-
 // Membership
 import ShowMember from './Pages/Admin/Pages/Membership/Component/showMember';
 import StaffMembershipPage from './Pages/Admin/Pages/Membership';
 import ShowMemberConnectionLog from './Pages/Admin/Pages/Membership/Component/showMemberConnectionLog';
 import ShowMemberLogConnectionMore from './Pages/Admin/Pages/Membership/Component/ShowMemberLogConnectionMore';
+
+// Operations
+import StaffOPSPage from './Pages/Admin/Pages/Operations/'
+import AddairportOPS from './Pages/Admin/Pages/Operations/Pages/Addairport'
+
 
 // Staff 
 import StaffPage from "./Pages/Admin/Pages/Staff"
@@ -49,18 +53,18 @@ function App() {
         <Route path="/Event" element={<Event />} />
         <Route path="/Stats" element={<Stats />} />
         <Route path="/Tools" element={<Tools />} />
-        <Route path="/PilotTools" element={<PilotTools />} />
+        {/* <Route path="/PilotTools" element={<PilotTools />} /> */}
         <Route path="/ATCTools" element={<ATCTools />} />
         <Route path="/Training" element={<Training />} />
         <Route path="/Settings" element={<Settings />} />
         <Route path="/extractor" element={<LocationExtractor />} />
         {/************************************ Admin Routing **********************************************/}
           {/* Training */}
-          <Route path="/StaffTraining" element={<StaffTrainingPage/>}/>
+          {/* <Route path="/StaffTraining" element={<StaffTrainingPage/>}/>
           <Route path="/StaffDeleteTrainee" element={<StaffDeleteTrainee/>}/>
           <Route path="/ModifyTrainee" element={<ModifyTrainee/>}/>
           <Route path="/StaffShowTrainee" element={<ShowTrainee/>}/>
-          <Route path="/AddVisitor" element={<AddVisitor/>}/>
+          <Route path="/AddVisitor" element={<AddVisitor/>}/> */}
           {/* Membership Routing */}
           <Route path="/StaffMembership" element={<StaffMembershipPage/>}/>
           <Route path="/StaffShowMember" element={<ShowMember/>}/>
@@ -68,22 +72,26 @@ function App() {
           <Route path="/ShowMemberLog" element={<ShowMemberConnectionLog/>}/>
           <Route path="/ShowMemberLogMore" element={<ShowMemberLogConnectionMore/>}/>
           {/* Booking */}
-          <Route path="/StaffBooking" element={<AdminPage/>}/>
+          {/* <Route path="/StaffBooking" element={<AdminPage/>}/> */}
           {/* Events */}
-          <Route path="/EventManager" element={<EventManagerPage/>}/>
+          {/* <Route path="/EventManager" element={<EventManagerPage/>}/> */}
           {/* Staff */}
           <Route path="/StaffPage" element={<StaffPage/>}/>
           {/* Tools */}
           <Route path="/AdminTools" element={<AdminTools/>}/>
-          
+          {/* OPS */}
+          {/* <Route path="/OPS" element={<StaffOPSPage/>}/>
+          <Route path="/AddairportOPS" element={<AddairportOPS/>}/> */}
           {/* Announcement */}
           {/* <Route path="/StaffAnnouncement" element={<AdminPage/>}/> */}
       
-          <Route path="*" element={<Lost
-                      Error = "Permision Denied"
-                      Message = "You are trying to access a ressource that you dont have the required permissions for or is outside of MAGX"
-                      Solution = {["If you are lost you can come back to your dashboard " , <a href="/Dashboard">Dashboard</a>]}
-                      Link = ""
+          <Route 
+            path="*" 
+            element={<Lost
+            Error = "Permision Denied"
+            Message = "You are trying to access a ressource that you dont have the required permissions for or is outside of MAGX"
+            Solution = {["If you are lost you can come back to your dashboard " , <a href="/Dashboard">Dashboard</a>]}
+            Link = ""
           />}/>
       </Routes>
     </Router>

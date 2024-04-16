@@ -12,24 +12,11 @@ import Night from '../../../../Ressources/SkyImages/Night.jpg';
 
 function DashboardEventsWeather(){
     const [Metar , setMetar] = useState()
-    const [Events , setEvents] = useState()
+    const [Events , setEvents] = useState([])
 
 
     useEffect(()=>{
 
-
-        // Rest of your component code
-        if (JSON.parse(sessionStorage.getItem("MaghrebEvents")) == null){
-            setEvents(JSON.parse(sessionStorage.getItem("VatsimEvents")))
-            console.log("NO MAGHREB EVENT")
-        }else{
-            setEvents(JSON.parse(sessionStorage.getItem("MaghrebEvents")))
-
-            console.log("MAGHREB EVENT EXISTS")
-        }
-
-        // setMaghrebEvents(JSON.parse(sessionStorage.getItem("MaghrebEvents")));
-        // console.log(`Events : ${JSON.stringify(MaghrebEvents)}`)
         const GetAirportWeatherArray = ["gmmn","daag","dtta","gmad","gmff"]
         var i = 0
 
@@ -37,8 +24,6 @@ function DashboardEventsWeather(){
                 .then(data => data.json())
                 .then(data => {
                     const state = (data.reportTime.split(" "))[1].split(":")[0]
-                    // console.log(`State : ${state} , time report : ${data.reportTime}`)
-                    // const state = 18
                     // alert(state)
                     if ( state > 0)
                         document.querySelector(".DashboardWeather > div ").style.backgroundImage = `url(${Night})`;
@@ -53,20 +38,17 @@ function DashboardEventsWeather(){
                     setMetar(data)
                 })
                 .catch((err)=>{
-                    // alert("check console there is an error")
                     console.log(`Error from alert : ${err}`)
                 })
                                 
 
+        
         setInterval(()=>{
             fetch(`http://127.0.0.1:1000/GetWeather/${GetAirportWeatherArray[i]}`)
                 .then(data => data.json())
                 .then(data => {
                     const DashboardWeather = document.querySelector(".DashboardWeather > div ")
                     const state = (data.reportTime.split(" "))[1].split(":")[0]
-                    // console.log(`State : ${state} , time report : ${data.reportTime}`)
-                    // const state = 6
-                    // alert(state)
                     if (DashboardWeather){
                         if ( state > 0)
                             DashboardWeather.style.backgroundImage = `url(${Night})`;
@@ -83,31 +65,40 @@ function DashboardEventsWeather(){
                     setMetar(data)
                 })
                 .catch((err)=>{
-                    // alert("check console there is an error")
                     console.log(`Error from alert : ${err}`)
                 })
                 i++
-                // console.log(`i = ${i} , ${GetAirportWeatherArray.length}`)
                 if ( i >= GetAirportWeatherArray.length )
                     i = 0
             },10000)
         
+
+            
+        if (JSON.parse(sessionStorage.getItem("MaghrebEvents")) == ""){
+            setEvents([])
+            console.log("NO MAGHREB EVENT")
+        }else{
+            setEvents(JSON.parse(sessionStorage.getItem("MaghrebEvents")))
+            console.log("MAGHREB EVENT EXISTS")
+        }
+
+
     },[])
 
-
-
-    return(
-        <div className="dashboard-container">
-        
-            {Events ? (  
+    function getEventDashboard(){
+        if( Events.length > 0 ){
+            return(
                 <div className="DashboardEvent animate__fadeIn">
                     <div>
                         <a href="/Event">
-                            <img src={Events[Math.floor(Math.random() * Events.length) ].banner}></img>
+                            <img src={Events[Math.floor(Math.random() * Events.length)].banner}></img>
                         </a>
                     </div>
                 </div>  
-                 ):(
+            )
+        }
+        else{
+            return(
                 <div className="DashboardEvent animate__fadeIn">
                     <div>
                         <a href="/Event">
@@ -115,9 +106,20 @@ function DashboardEventsWeather(){
                         </a>
                     </div>
                 </div>
-                 )
-                 
-            }
+            )
+        }
+    }
+
+
+    return(
+        <div className="dashboard-container">
+            
+            {Events && <>{getEventDashboard()}</>} 
+           
+           
+
+           
+           
            {
             Metar ? (
                 <div className="DashboardWeather animate__fadeIn">
@@ -144,12 +146,8 @@ function DashboardEventsWeather(){
             
             
         </div>
-        
-
 )
 
-
-   
 }
 
 export default DashboardEventsWeather

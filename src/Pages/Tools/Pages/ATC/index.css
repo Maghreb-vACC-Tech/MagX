@@ -1,0 +1,275 @@
+.ATC-Station-Page{
+    width: 80vw;
+    /* background: rgb(12, 12, 14, 0.2); */
+    background: rgb(12, 12, 14, 0.5);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    color: #DDD;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    margin: auto;
+    margin-bottom: 5vh;
+}
+
+/* .page1{
+    height: 150vh;
+
+} */
+
+/*  -------------- HEADER ---------------- */
+.ATC-Station-Page-header{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+.ATC-Station-Page-header > div{
+    width: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+}
+.ATC-Station-Page-header > div > h1{
+    font-size: 1.2vw;
+}
+.ATC-Station-Page-header > div > select{
+    font-size: 1.2vw;
+    background-color: transparent;
+    color: #DDD;
+    border: none;
+    width: 30%;
+}
+
+/*  -------------- TAGS ---------------- */
+.ATC-Station-Page-TAGS{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px #ddd solid;
+    margin: auto;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+.ATC-Station-Page-TAGS > div{
+    margin: auto;
+}
+.ATC-Station-Page-TAGS > div > h1{
+  font-size: 1vw;
+}
+.Icing-Tag{
+    color: white;
+    background-color: rgb(59, 206, 211);
+    width: 5vw;
+    text-align: center;
+    border-radius: 15px;
+}
+.Normal-Tag{
+    background-color: rgb(14, 138, 3);
+    width: 5vw;
+    text-align: center;
+    border-radius: 15px;
+    color: white;
+}
+.Attention-Tag{
+    background-color: rgb(255, 174, 0);
+    width: 5vw;
+    text-align: center;
+    border-radius: 15px;
+    color: white;
+}
+.Warning-Tag{
+    background-color: rgb(255, 0, 0);
+    width: 5vw;
+    text-align: center;
+    border-radius: 15px;
+    color: white;
+}
+.Cloudy-Tag{
+    background-color: rgb(116, 110, 110);
+    width: 5vw;
+    text-align: center;
+    border-radius: 15px;
+    color: white;
+}
+
+.Precep-Tag{
+    background-color: rgb(51, 82, 223);
+    width: 5vw;
+    text-align: center;
+    border-radius: 15px;
+    color: white;
+}
+
+/* .Clear-Tag{
+    background-color: rgb(32, 233, 14);
+    width: 5vw;
+    text-align: center;
+    border-radius: 15px;
+    color: white;
+} */
+/*  -------------- TAF ---------------- */
+.ATC-Station-Page-TAF{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px #ddd solid;
+    margin: auto;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+.ATC-Station-Page-TAF-Label{
+    width: 30%!important;
+    text-align: center;
+}
+.ATC-Station-Page-TAF > div > div > p{
+    font-size: 0.9vw;
+    font-weight: 400;
+}
+.ATC-Station-Page-TAF > div {
+    width: 70%;
+}
+.ATC-Station-Page-NOTAM > div > div > p{
+    font-size: 0.8vw;
+    font-weight: 400;
+}
+
+/*  -------------- METAR ---------------- */
+.ATC-Station-Page-METAR{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px #ddd solid;
+    margin: auto;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+.ATC-Station-Page-METAR-Label{
+    width: 30%!important;
+    text-align: center;
+}
+.ATC-Station-Page-METAR > div {
+    width: 70%;
+}
+.ATC-Station-Page-METAR > div > div > p{
+    font-size: 0.9vw;
+    font-weight: 400;
+}
+
+/*  -------------- METAR ---------------- */
+.ATC-Station-Page-INFO{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+.ATC-Station-Page-INFO-Label{
+    width: 30%!important;
+    text-align: center;
+}
+.ATC-Station-Page-INFO > div {
+    width: 70%;
+}
+.ATC-Station-Page-INFO > div > div {
+    /* display: flex; */
+}
+.ATC-Station-Page-INFO > div > div > div > h1{
+    font-size: 1.3vw;
+    /* font-weight: 400; */
+}
+.ATC-Station-Page-INFO > div > div > div > p{
+    font-size: 0.9vw;
+    font-weight: 400;
+}
+.ATC-Station-Page-INFO-Aiport{
+    width: 20vw;
+    height: 5vh;
+    background-color: black;
+    margin: 1vw;
+}
+.ATC-Station-Page-INFO-Aiport-runway-marking{    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ATC-Station-Page-INFO-Aiport-runway-marking >h1{    
+    text-align: center;
+}
+/* .ATC-Station-Page-INFO-Aiport-runway-marking-Right{
+
+} */
+
+/* 
+.ATC-Station-Page-INFO-Aiport-runway-marking > div{
+    width: 5vw;
+    display: block;
+    height: 1vh;
+    background-color: #ddd;
+    margin-top: 1vh; 
+}
+*/
+
+
+
+
+.page2 {
+    height: 30vh;
+    
+}
+.page2 > div{
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: 5vh;
+}
+.page2 > div > div{
+    /* padding: 1Svw; */
+    /* background-color: blue; */
+    width: 10vw;
+    margin: 1vw;
+    text-align: center;
+    border-radius: 30px;
+}
+.freq1{
+    background-color: #AB0F0F;
+}
+.freq2{
+    background-color: #4AAB0F;
+}
+.freq3{
+    background-color: #0FABAB;
+}
+.freq4{
+    background-color: #0F44AB;
+}
+.freq5{
+    background-color: #660FAB;
+}
+.freq6{
+    background-color: #A8AB0F;
+}
+
+
+
+.page3{
+
+}
+.page3-header {
+    display: flex;
+    height: 10vh;
+    justify-content: center;
+    align-items: baseline;
+}

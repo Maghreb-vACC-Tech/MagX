@@ -13,11 +13,11 @@ function Tools() {
           <UpperBar Username={sessionStorage.getItem("FullName")} />
           <section className="ToolsChoice">
             
-            <div className="ToolsChoicePilotSection animate__fadeInLeft">
+            {/* <div className="ToolsChoicePilotSection animate__fadeInLeft">
               <div>
                 <a href="/PilotTools" className="animate__fadeIn">Pilot</a>
               </div>
-            </div>
+            </div> */}
 
             <div className="ToolsChoiceATCSection animate__fadeInRight">
               <div>

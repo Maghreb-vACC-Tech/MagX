@@ -17,6 +17,7 @@ function StaffPage(){
       <SideBar />
       <div className="AdminPage PagesContainer">
         <UpperBar Username={sessionStorage.getItem("FullName")} />
+        
       </div>
     </>
   )

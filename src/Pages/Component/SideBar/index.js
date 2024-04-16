@@ -102,7 +102,7 @@ function SideBar(){
                     <SideBarLink
                         Link = "Tools"
                         Icon = {ToolsIcon}
-                        LinkRedirect = "/Tools"
+                        LinkRedirect = "/ATCTools"
                     />
                     <SideBarLink
                         Link = "Training"
