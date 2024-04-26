@@ -128,7 +128,7 @@ function DashboardEventsWeather(){
                             <h1 className=" animate__fadeIn">{Metar.icaoId}</h1>
                             <p className=" animate__fadeIn">{Metar.wdir}/{Metar.wspd} kts<br />{Metar.altim} QNH</p>
                             {/* {JSON.stringify(Metar)} */}
-                            <a href="#">See More</a>
+                            <a href="/ATCTools">See More</a>
                         </div>
                     </div>
                 </div>

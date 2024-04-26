@@ -9,9 +9,10 @@ import Stats from './Pages/Stats';
 import Tools from './Pages/Tools';
 import ATCTools from './Pages/Tools/Pages/ATC';
 import PilotTools from './Pages/Tools/Pages/Pilot';
-import Training from './Pages/Training';
+// import Training from './Pages/Training';
 import LocationExtractor from './LocationExtractor';
-import Settings from './Pages/Settings';
+// import Settings from './Pages/Settings';
+import Configurator from './Pages/Configurator';
 // import Roster from './Pages/Roster';
 import AdminPage from './Pages/Admin';
 import ModifyTrainee from './Pages/Admin/Pages/Training/Components/Training/ModifyTrainee';
@@ -47,6 +48,7 @@ function App() {
     <Router>
       <Routes>
         {/************************************ Client Routing **********************************************/}
+        <Route path="/Config" element={<Configurator />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/Staff" element={<AdminPage/>}/>
         <Route path="/Booking" element={<Booking />} />
@@ -55,8 +57,8 @@ function App() {
         <Route path="/Tools" element={<Tools />} />
         {/* <Route path="/PilotTools" element={<PilotTools />} /> */}
         <Route path="/ATCTools" element={<ATCTools />} />
-        <Route path="/Training" element={<Training />} />
-        <Route path="/Settings" element={<Settings />} />
+        {/* <Route path="/Training" element={<Training />} /> */}
+        {/* <Route path="/Settings" element={<Settings />} /> */}
         <Route path="/extractor" element={<LocationExtractor />} />
         {/************************************ Admin Routing **********************************************/}
           {/* Training */}

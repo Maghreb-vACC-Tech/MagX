@@ -15,12 +15,12 @@ function UpperBar(props){
                 <ZuluTimeComponent/>
             </div>
             <div className="UpperBarSettings">
-                <div className="UpperBarSettingsIcon">
+                {/* <div className="UpperBarSettingsIcon">
                     <img src={pdp}></img>
-                </div>
+                </div> */}
                 <div className="UpperBarSettingsText">
-                    <p>{props.Username}</p>
-                    <a href="/Settings">Settings</a>
+                    <a href="">{props.Username}</a>
+                    {/* <a href="/Settings">Settings</a> */}
                 </div>
             </div>
         </div>

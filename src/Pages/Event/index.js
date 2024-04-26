@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import SideBar from "../Component/SideBar";
 import UpperBar from "../Component/UpperBar";
 import "./index.css"
+import MagLogo from "../../Ressources/Logo/logo.svg"
 
 function Event() {
 
@@ -27,8 +28,11 @@ function Event() {
           <div className="Event-Title">
             <h1>Events</h1>
           </div>
-          <div className="Event-Title">
-            <h1>No Maghreb events for the moment</h1>
+          <div className="Event-Body animate__fadeIn">
+            <div>
+              <img className="EventMagLogo" src={MagLogo}></img>
+              <h1>No Maghreb events for the moment</h1>
+            </div>
           </div>
 
                
@@ -53,6 +57,11 @@ function Event() {
             <h1>Maghreb Events</h1>
           </div>
 
+          
+          
+
+
+
           {
             MaghrebEvents.map((event) => (
               <div className="Events">
@@ -64,9 +73,8 @@ function Event() {
                   <div className="Event-Container-Description-text" dangerouslySetInnerHTML={{__html: event.description}}></div>
                   <div className="Event-Container-Description-Links">
                     <div>
-                      <div className="Event-Container-Description-Links-save"><a href="#"><i class="fa-regular fa-bell"></i> Reminder</a></div>
+                      {/* <div className="Event-Container-Description-Links-save"><a href="#"><i class="fa-regular fa-bell"></i> Reminder</a></div> */}
                       <div className="Event-Container-Description-Links-view"><a href={event.link} target="blank"><i class="fa-regular fa-eye"></i> View</a></div>
-                      {/* <div className="Event-Container-Description-Links-roster"><a href={item.link} target="blank"><i class="fa-solid fa-list-ol"></i> Roster</a></div> */}
                     </div>
                   </div>
                 </div>
@@ -88,7 +96,7 @@ function Event() {
             <h1>Other Vatim Events</h1>
           </div>
 
-          {/* {renderEvents && ( 
+          {renderEvents && ( 
             
             VatsimEvents.map((item) => (
               <div className="Events">
@@ -111,7 +119,7 @@ function Event() {
             </div>
             ))
 
-            )} */}
+            )}
           
         </div>
       </>

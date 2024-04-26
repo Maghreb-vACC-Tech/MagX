@@ -11,15 +11,6 @@ function LocationExtractor() {
   const jsonData = JSON.parse(decodeURIComponent(encodedData || ''));
   const Data = JSON.parse(jsonData).data;
 
-  // function ImportFromSimbrief(User){
-    
-  //   fetch(`http://127.0.0.1:1000/LastFlightPlan/${User}`)
-  //   .then(data => data.json())
-  //   .then(data => {
-  //       sessionStorage.setItem("Simbrief" , JSON.parse(data))
-  //   })
-
-  // }
 
 
 
@@ -28,8 +19,6 @@ function LocationExtractor() {
     // OAuth
     const OAuth = Data.oauth
 
-
-    // console.log(JSON.stringify(Data))
     // Set Sessions
     sessionStorage.removeItem("Data")
     sessionStorage.removeItem("CID")
@@ -170,7 +159,6 @@ function LocationExtractor() {
         })
     .then(data => data.json())
     .then(data => {
-      console.log(data)
       const start = new Date(data.start);
       const end = new Date(data.end);
       
@@ -198,20 +186,28 @@ function LocationExtractor() {
     .then(res => sessionStorage.setItem("MaghrebEvents" , JSON.stringify(res)))
     
 
-    // fetch("http://127.0.0.1:1000/VatsimEvents")
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     // alert(JSON.stringify(res))
-    //     sessionStorage.setItem("VatsimEvents" , JSON.stringify(res) )
-    //   })
-      
   }
+
 
   function Redirect(){
 
 
       setTimeout(()=>{
+      // check if new user then redirect
+      fetch(`http://127.0.0.1:1000/Setting/${sessionStorage.getItem("CID")}`)
+      .then(res => res.json())
+      .then(res => {
+        // console.log(res)
         navigate('/dashboard');
+        // if(res.length > 0){
+        //   navigate('/dashboard');
+        // }
+        // else{
+        //   navigate('/Config');
+        // }
+      })
+
+        
       },100)
     
    
@@ -221,7 +217,6 @@ function LocationExtractor() {
 
   const BanList  = require('./Pages/Admin/Pages/Staff/Setup.json');
 
-  // useEffect(() => {}, [Data]);
 
   const List  = require('./Pages/Admin/Pages/Staff/Setup.json');
 
@@ -245,7 +240,6 @@ function LocationExtractor() {
     SavePersonalData()
     SavePersonalStats()
     GetStats()
-    // ImportFromSimbrief("IlyassBaba")
     GetLastFlightTime()
     StoreEventsSession()
     Redirect()

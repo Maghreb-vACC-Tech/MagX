@@ -3,7 +3,7 @@ import "./index.css"
 import VatsimLogo from "../../../../Ressources/VatsimLogo.png"
 import SimbriefLogo from "../../../../Ressources/simbriefLogo.png"
 
-function FlightPLN(){
+function FlightPLN(props){
     const [FlightPlanData,SetFlightPlanData] = useState()
     const [FlightPlanDataDeptime,SetFlightPlanDataDeptime] = useState()
 

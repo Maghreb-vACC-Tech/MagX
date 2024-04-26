@@ -104,11 +104,11 @@ function SideBar(){
                         Icon = {ToolsIcon}
                         LinkRedirect = "/ATCTools"
                     />
-                    <SideBarLink
+                    {/* <SideBarLink
                         Link = "Training"
                         Icon = {TrainingIcon}
                         LinkRedirect = "/Training"
-                    />
+                    /> */}
                     <SideBarLink
                         Link = "Admin"
                         Icon = {AdminIcon}

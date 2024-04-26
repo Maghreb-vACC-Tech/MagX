@@ -116,3 +116,16 @@
     background-color: #135861;
     transition: all 0.3s ease;
 }
+
+.EventMagLogo{
+    width: 10vw;
+}
+.Event-Body{
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    animation-duration: 0.3s;
+}
+.Event-Body>div{text-align: center;}

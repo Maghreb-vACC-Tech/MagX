@@ -3,7 +3,8 @@
     width: 100%;
     height: 100vh;
     position: fixed;
-    background-image: url('../../../Ressources/Background/BG.jpg');
+    /* background-image: url('../../../Ressources/Background/BG.jpg'); */
+    background-color: #3e4152;
     background-size: 100%;
     /* background: #121216; */
     z-index: 1;

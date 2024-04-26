@@ -1,0 +1,198 @@
+.MagLogo{
+    width: 10vw;
+    animation-duration: 1.5s;
+}
+.Config{
+    width: 100vw;
+    height: 100vh;
+}
+.Config-Body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+.Config-Body > div{
+    text-align: center;
+}
+.Config-Body > div > h1{
+    text-align: center;
+    display: none;
+}
+.Config-Body > div > p{
+    text-align: center;
+    display: none;
+}
+.Config-Body > div > div > h1{
+    animation-duration: 1s;
+}
+
+.Config-Body > div > div > p{
+    animation-duration: 1.2s;
+}
+.Config-Body > div > div{
+    padding-top: 1vh;
+}
+.Config-Body > div > div > a{
+    animation-duration: 1.4;
+    color: white;
+    background-color: rgb(0, 81, 255);
+    text-decoration: none;
+    padding: 1vw;
+    border-radius: 15px;
+}
+.NextBTN{
+    translate: 0 5vh;
+    display: block;
+}
+.NextBTN > a{
+    margin: 1vw!important;
+}
+.NextBTN > a:hover{
+    background-color: rgb(118, 153, 230);
+}
+
+.Config-Page2{
+    translate: 0vw;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    animation-duration: 1.2s;
+    transition: all 1s ease;
+}
+.Config-Page2 > div{
+    /* width: 20vw; */
+    display: block;
+    height: 10vh;
+    /* text-align: left; */
+    
+    
+}
+.Config-Page2 > div > img{
+    width: 20vw;
+    
+    
+}
+.Config-Page2 > div > input{
+    width: 10vw;
+    display: block;
+    height: 2vh;
+    /* background-color: rgba(0, 231, 50, 0); */
+    border: 1px solid rgb(109, 109, 109);
+    border-radius: 15px;
+    padding: 1vw;
+    color: white;
+    background: rgb(12, 12, 14, 0.5);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+}
+.Config-Page2 > div > *{
+    text-align: center;
+    margin: auto;
+    margin-top: 1vw;
+    
+}
+.Config-Page2 > div > *{
+    text-align: center;
+    margin: auto;
+    margin-top: 1vw;
+}
+.msgRed{
+    color: red;
+    translate: 0 5vh;
+}
+
+.Config-Page3{
+    display: none;
+}
+.Config-Page3 > div > input{
+    /* width: 10vw; */
+    width: 3vw;
+    height: 3vw;
+    padding: 0.5vw;
+    border: none;
+    border-radius:100px ;
+}
+.Config-Page3 > div > img{
+    /* width: 10vw; */
+    width: 20vw;
+    height: 10vw;
+    /* padding: 0.5vw; */
+    border: none;
+}
+.Config-Page4{
+    display: none;
+}
+.Config-Page4 > div > div{
+    /* display: none; */
+    background-size: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 1px;
+}
+.Config-Page4 > div > div:hover{
+    /* display: none; */
+    /* border: 1px solid blue; */
+    /* margin: 0px; */
+}
+.Config-Page4 > div > img{
+    /* width: 10vw; */
+    width:10vw;
+    height: 10vw;
+    /* padding: 0.5vw; */
+    border: none;
+}
+
+.Config-Page4-BG-Container{
+    display: flex;
+}
+.Config-Page4-BG-Container > div:hover{
+    transform: scale(1.2);
+}
+
+
+.Config-Page4-BG{
+    width: 10vw;
+    height: 10vh;
+    background-image: url('../../Ressources/Background/BG.jpg');
+}
+.Config-Page4-BG1{
+    width: 10vw;
+    height: 10vh;
+    background-image: url('../../Ressources/Background/BG1.jpg');
+}
+.Config-Page4-BG2{
+    width: 10vw;
+    height: 10vh;
+    background-image: url('../../Ressources/Background/BG2.jpg');
+}
+.Config-Page4-BG3{
+    width: 10vw;
+    height: 10vh;
+    background-image: url('../../Ressources/Background/BG3.jpg');
+}
+.Config-Page4-BG4{
+    width: 10vw;
+    height: 10vh;
+    background-image: url('../../Ressources/Background/BG4.jpg');
+}
+.Config-Page4-BG5{
+    width: 10vw;
+    height: 10vh;
+    background-image: url('../../Ressources/Background/BG5.jpg');
+}
+
+
+
+.Config-Page5{
+    display: none;
+}
+
+.Config-Page5 > div > img{
+    /* width: 10vw; */
+    width:10vw;
+    height: 10vw;
+    /* padding: 0.5vw; */
+    border: none;
+}

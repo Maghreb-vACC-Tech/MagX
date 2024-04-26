@@ -2,7 +2,14 @@ import './index.css';
 import { useState, useEffect } from "react";
 import SideBar from '../../../Component/SideBar';
 import UpperBar from '../../../Component/UpperBar';
-import VFRMap from '../../../../Ressources/VFR_MAP.png'
+import CasaVFRMap from '../../../../Ressources/VFR_Map/GMMN.png'
+import KechVFRMap from '../../../../Ressources/VFR_Map/GMMX.png'
+import AgadirVFRMap from '../../../../Ressources/VFR_Map/GMAD.png'
+import TangerVFRMap from '../../../../Ressources/VFR_Map/GMTT.png'
+import AlgerVFRMap from '../../../../Ressources/VFR_Map/DAAG.png'
+import HassiVFRMap from '../../../../Ressources/VFR_Map/DAUH.png'
+// import CasaVFRMap from '../../../../Ressources/VFR_MAP.png'
+import OranVFRMap from '../../../../Ressources/VFR_Map/DAOO.png'
 
 function ATCTools() {
   const [airportIndexLoading , SetairportIndexLoading] = useState(false)
@@ -10,17 +17,20 @@ function ATCTools() {
   const [airportTAF , SetairportTAF] = useState()
   const [airportInfo , SetairportInfo] = useState()
   const [ARPInfo , SetARPInfo] = useState()
+  const [Chart , SetChart] = useState()
+  // const [TL , SetTL] = useState()
 
+  
   function MakeApiCall(airportICAO){
     if(airportICAO == "NONE"){
       SetairportMetar("")
       SetairportTAF("")
       SetairportInfo("")
+      SetARPInfo("")
+      SetChart("")
+      // SetTL("")
     }
     else{
-      fetch(`http://127.0.0.1:1000/GetWeather/${airportICAO}`)
-      .then(res=>res.text())
-      .then(res => {SetairportInfo(JSON.parse(res))})
   
       fetch(`https://metar.vatsim.net/metar.php?id=${airportICAO}`)
       .then(res=>res.text())
@@ -28,28 +38,26 @@ function ATCTools() {
 
       fetch(`http://127.0.0.1:1000/GetARPInfo/${airportICAO}`)
       .then(res => res.json())
-      // .then (res => {
-      //   // console.log(res[0])
-      //   res.forEach(rny => {
-      //     console.log(rny)
-      //   });
-      // })
-      .then(res => SetARPInfo(res))
+      .then(res =>SetARPInfo(res))
+
+      fetch(`http://127.0.0.1:1000/GetWeather/${airportICAO}`)
+      .then(res=>res.text())
+      .then(res => {
+        SetairportInfo(JSON.parse(res))
+        // SetTL(ARPInfo.TA + (1013-JSON.parse(res.altim)) * 28)
+      })
   
       fetch(`http://127.0.0.1:1000/AGTAF/${airportICAO}`)
       .then(res=>res.json())
       .then(res => {
         SetairportTAF(res)
-        SetairportIndexLoading(true)
         RenderARPInfo(airportICAO)
+        SetChart(airportICAO)
+        SetairportIndexLoading(true)
       })
 
     }
   }
-
-
-
-
   function RenderVisibilityTags(){
     if(airportIndexLoading){
       if (airportInfo.visib === '6+') {
@@ -74,9 +82,7 @@ function ATCTools() {
         )
       }
           
-  }
-  }
-
+  }}
   function RenderWindTags(){
     if(airportIndexLoading){
         if (airportInfo.wspd <= 7) {
@@ -86,14 +92,14 @@ function ATCTools() {
             </div>
           )
         }
-        else if (airportInfo.wspd < 15){
+        else if (airportInfo.wspd < 20){
           return(
             <div className="Attention-Tag">
               <h1>a little Wind</h1>
             </div>
           )
         }
-        else if (airportInfo.wspd > 15){
+        else if (airportInfo.wspd > 20){
           return(
             <div className="Warning-Tag">
               <h1>Windy</h1>
@@ -103,7 +109,6 @@ function ATCTools() {
             
     }
   }
-
   function RenderTempTags(){
     if(airportIndexLoading){
         if (airportInfo.temp <= 0) {
@@ -130,27 +135,34 @@ function ATCTools() {
             
     }
   }
-
   function RenderGustTags(){
     if(airportIndexLoading){
-        if (airportInfo.wst < 5) {
+        // console.log(`Gust : ${airportInfo.wgst}`)
+        if (airportInfo.wgst == null ){
+          return(
+            <div className="Normal-Tag">
+              <h1>No Gust</h1>
+            </div>
+          )
+        }
+        else if (airportInfo.wgst < 5) {
           return (
             <div className="Attention-Tag">
               <h1>Gust</h1>  
             </div>
           )
         }
-        else if (airportInfo.wst > 5) {
+        else if (airportInfo.wgst > 9) {
           return(
             <div className="Warning-Tag">
               <h1>Strong Gust</h1>
             </div>
           )
         }
+         
             
     }
   }
-
   function RenderPrecepTags(){
     if(airportIndexLoading){
         if (airportInfo.precip != null) {
@@ -163,7 +175,6 @@ function ATCTools() {
             
     }
   }
-
   function RenderSnowTags(){
     if(airportIndexLoading){
         if (airportInfo.snow != null) {
@@ -176,80 +187,177 @@ function ATCTools() {
             
     }
   }
-
-  function RenderReportTimeTags(){
+  function RenderTL(){
     if(airportIndexLoading){
+          const ALTM = 1013 - airportInfo.altim
+          const ALTMUpdate = ( ALTM * 28) 
+          const TLInit = (ARPInfo.TA + ALTMUpdate) / 1000
+          const TL = Math.round(TLInit)
           return (
-            <>{airportInfo.reportTime}</>
+            <>TL : {TL*10}ft</>
           )
         
             
     }
   }
-  
-
-  function RenderARPInfo(){
-    // alert("hel")
+  function RenderInitialClimb(){
+    // alert(ARPInfo.InitialClimb)
     return(
-      <div>
-      <p>erfrwef</p>
-        <p>{ARPInfo}</p>
-        {/* {ARPInfo.map(runway => (
-          <div key={runway.name}>
-            <div className="ATC-Station-Page-INFO-Body-Rny">
-              <h1>{runway.name}</h1> 
-            </div>
-            
-            <div>
-              <p>{runway.info}</p>
-            </div>
-          </div>
-        ))} */}
-      </div>
+      // <>{ARPInfo.InitialClimb} | {TL}</>
+      <>{ARPInfo.InitialClimb}</>
     )
   }
-
-    // return(
-    //   <>
-    //     <div>
-    //       <div className="ATC-Station-Page-INFO-Body-Rny"><h1>35R</h1></div>
-    //       <div>
-    //         <p>
-    //           RWY 35 RIGHT IN USE. TRANSITION LEVEL FIVE ZERO. RISK OF CONFUSION BETWEEN RWY 35 RIGHT AND RWY 35 LEFT. RISK OF CONFUSION BETWEEN 35R AND TAXIWAY TANGO. AFTER VACATING 35R HOLD SHORT OF PARALLEL TAXIWAY TANGO.
-    //         </p>
-    //       </div>
-    //     </div>
-
-    //     <div>
-    //       <div className="ATC-Station-Page-INFO-Body-Rny"><h1>35L</h1></div>
-    //       <div>
-    //         <p>
-    //         RWY 35 LEFT IN USE. TRANSITION LEVEL FIVE ZERO. RISK OF CONFUSION BETWEEN RWY 35 RIGHT AND RWY 35 LEFT.
-    //         </p>
-    //       </div>
-    //     </div>
-
-    //     <div>
-    //       <div className="ATC-Station-Page-INFO-Body-Rny"><h1>17R</h1></div>
-    //       <div>
-    //         <p>
-    //         RWY 17 RIGHT IN USE. TRANSITION LEVEL FIVE ZERO. RISK OF CONFUSION BETWEEN RWY 17 RIGHT AND RWY 17 LEFT.
-    //         </p>
-    //       </div>
-    //     </div>
-
-    //     <div>
-    //       <div className="ATC-Station-Page-INFO-Body-Rny"><h1>17L</h1></div>
-    //       <div>
-    //         <p>
-    //           RWY 17 LEFT IN USE. TRANSITION LEVEL FIVE ZERO. RISK OF CONFUSION BETWEEN RWY 17 LEFT AND RWY 17 RIGHT. RISK OF CONFUSION BETWEEN 17L AND TAXIWAY TANGO. AFTER VACATING 17L HOLD SHORT OF PARALLEL TAXIWAY TANGO.
-    //         </p>
-    //       </div>
-    //     </div>
-    //   </>
-    // )
-      
+  function RenderARPInfo(){
+    if(ARPInfo){
+      try {
+        return(
+          <div>
+            {ARPInfo.runways.map(runway => (
+              <div key={runway.name}>
+                <div className="ATC-Station-Page-INFO-Body-Rny">
+                  <h1>{runway.name}</h1> 
+                </div>
+                
+                <div>
+                  <p>{runway.info}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )
+      } catch (error) {
+        return(
+          <div>
+          </div>
+        )
+      }
     
+  }}
+  function RenderARPFreqs(){
+    // alert(ARPInfo.Frequencies.ATIS)
+    return(
+      <>
+      <div className="ATC-Station-Page page2 animate__fadeIn">
+        <div><h1>Frequencies</h1></div>
+        <div>
+          <div className="freq1"><p>D-ATIS</p><p>{ARPInfo.Frequencies.ATIS}</p></div>
+          <div className="freq2"><p>GND</p><p>{ARPInfo.Frequencies.GND}</p></div>
+          <div className="freq3"><p>TWR</p><p>{ARPInfo.Frequencies.TWR}</p></div>
+          <div className="freq4"><p>APP</p><p>{ARPInfo.Frequencies.APP}</p></div>
+          <div className="freq5"><p>CTR_ALL</p><p>{ARPInfo.Frequencies.CTR_ALL}</p></div>
+          <div className="freq6"><p>GMAC</p><p>{ARPInfo.Frequencies.GMAC}</p></div>
+        </div>
+      </div>
+        
+      </>
+    )
+  }
+  function RenderChart(){
+    if(Chart == "GMMN"){return(<img className="Chart" src={CasaVFRMap}></img>)}
+    else if(Chart == "GMMX"){return(<img className="Chart" src={KechVFRMap}></img>)}
+    else if(Chart == "GMTT"){return(<img className="Chart" src={TangerVFRMap}></img>)}
+    else if(Chart == "GMAD"){return(<img className="Chart" src={AgadirVFRMap}></img>)}
+  }
+  function RenderChart(){
+    
+    if(Chart == "GMMN"){
+      return(
+      <div className="ATC-Station-Page page3 animate__fadeIn">
+      <div className="page3-header"><h1>VFR Charts</h1></div>
+        <div>
+          <center>
+            <img className="Chart" src={CasaVFRMap}></img>
+          </center>
+        </div>    
+      </div> 
+      )
+    }
+    else if(Chart == "GMMX"){
+      return(
+      <div className="ATC-Station-Page page3">
+      <div className="page3-header"><h1>VFR Charts</h1></div>
+        <div>
+          <center>
+            <img className="Chart" src={KechVFRMap}></img>
+          </center>
+        </div>    
+      </div> 
+    )
+   }
+    else if(Chart == "GMTT"){return(
+      <div className="ATC-Station-Page page3">
+      <div className="page3-header"><h1>VFR Charts</h1></div>
+        <div>
+          <center>
+            <img className="Chart" src={TangerVFRMap}></img>
+          </center>
+        </div>    
+      </div>       
+      )}
+    
+    else if(Chart == "GMAD"){return(
+      
+      <div className="ATC-Station-Page page3">
+      <div className="page3-header"><h1>VFR Charts</h1></div>
+        <div>
+          <center>
+          <img className="Chart" src={AgadirVFRMap}></img>
+          </center>
+        </div>    
+      </div>  
+    )}
+    else if (Chart == "DAAG"){
+    return(
+      
+      <div className="ATC-Station-Page page3">
+      <div className="page3-header"><h1>VFR Charts</h1></div>
+        <div>
+          <center>
+          <img className="Chart" src={AlgerVFRMap}></img>
+          </center>
+        </div>    
+      </div>  
+    )}
+    else if (Chart == "DAUH"){
+      return(
+        
+        <div className="ATC-Station-Page page3">
+        <div className="page3-header"><h1>VFR Charts</h1></div>
+          <div>
+            <center>
+            <img className="Chart" src={HassiVFRMap}></img>
+            </center>
+          </div>    
+        </div>  
+      )}
+        else if (Chart == "DAOO"){
+          return(
+            <div className="ATC-Station-Page page3">
+            <div className="page3-header"><h1>VFR Charts</h1></div>
+              <div>
+                <center>
+                <img className="Chart" src={OranVFRMap}></img>
+                </center>
+              </div>    
+            </div>  
+          )}
+  }
+  function RenderExtra(){
+    const url = `https://metar-taf.com/${Chart}`
+    return(
+    <div className="ATC-Station-Page page4 animate__fadeIn">
+      <div className="page3-header"><h1>Extra</h1></div>
+      <div>
+        <iframe
+        width="860"
+        height="484"
+        src={url}
+        id="metartaf-bpphN1ZY">METAR Mohammed V International Airport</iframe>
+      </div> 
+    </div>
+ 
+    )
+  }
 
   return (
     <>
@@ -259,24 +367,31 @@ function ATCTools() {
     
         <UpperBar username={sessionStorage.getItem("FullName")} />
     
-        <div className="ATC-Station-Page">
+        <div className="ATC-Station-Page animate__fadeIn">
           {/* --------------------------- HEADER --------------------------------- */}
             <div className="ATC-Station-Page-header">
-              <div><h1>{airportIndexLoading && <>{RenderReportTimeTags()}</>}</h1></div>
+              <div><h1>{airportIndexLoading && <>{RenderTL()}</>}</h1></div>
               <div>
                 <select onChange={e => MakeApiCall(e.target.value)}>
-                  <option selected>NONE</option>
-                  <option>GMMN</option>
-                  <option>GMMX</option>
-                  <option>GMAD</option>
-                  <option>DAAG</option>
-                  <option>DTTA</option>
+                  <option className="HeaderOptions" selected>NONE</option>
+                  <option className="HeaderOptions">GMMN</option>
+                  <option className="HeaderOptions">GMMX</option>
+                  <option className="HeaderOptions">GMAD</option>
+
+                  <option className="HeaderOptions">DAAG</option>
+                  <option className="HeaderOptions">DAUH</option>
+                  <option className="HeaderOptions">DAOO</option>
+
+                  <option className="HeaderOptions">DTTA</option>
+                  <option className="HeaderOptions">DTTJ</option>
+                  <option className="HeaderOptions">DTNH</option>
                   {/* For Testing */}
-                  <option>KJFK</option> 
-                  <option>LPMA</option> 
+                  {/* <option>KJFK</option>  */}
+                  {/* <option>LPMA</option> */}
                 </select>
               </div>
-              <div><h1>Inital climb FL50</h1></div>
+              <div><h1>Inital climb FL{ARPInfo && <>{RenderInitialClimb()}</>}</h1></div>
+              {/* <div><h1>Inital climb FL{RenderInitialClimb()}</h1></div> */}
             </div>
 
           {/* --------------------------- TAGS --------------------------------- */}
@@ -329,42 +444,19 @@ function ATCTools() {
           {/* --------------------------- INFO --------------------------------- */}
           <div className="ATC-Station-Page-INFO">
             <div className="ATC-Station-Page-INFO-Label"><h1>INFO</h1></div>
-            <div>
-                {ARPInfo &&(RenderARPInfo())}
+              <div>
+                  {ARPInfo &&(RenderARPInfo())}
+              </div>
             </div>
           </div>
-        </div>
         
-        <div className="ATC-Station-Page page2">
-          <div><h1>Frequencies</h1></div>
-          <div>
-            <div className="freq1"><p>D-ATIS</p><p>126.3</p></div>
-            <div className="freq2"><p>GND</p><p>130.6</p></div>
-            <div className="freq3"><p>TWR</p><p>118.5</p></div>
-            <div className="freq4"><p>APP</p><p>119.9</p></div>
-            <div className="freq5"><p>CTR_ALL</p><p>131.925</p></div>
-            <div className="freq6"><p>GMAC</p><p>131.925</p></div>
-          </div>
-        </div>
+        
+        {ARPInfo && <>{RenderARPFreqs()}</>}
+        
+        {ARPInfo &&RenderChart()}
 
-        <div className="ATC-Station-Page page3">
-          <div className="page3-header"><h1>Charts</h1></div>
-          <div>
-            <center>
-              <img src={VFRMap}></img>
-            </center>
-            {/* <iframe src="https://drive.google.com/drive/folders/1Rgb9Y8wad3s9LXL_iRosA2h3N5lgM9aB"></iframe>   */}
-          </div>  
+        {/* {ARPInfo &&RenderExtra()} */}
         
-        </div>
-
-        <div className="ATC-Station-Page page4">
-          <div className="page3-header"><h1>Notam</h1></div>
-          <div>
-            
-          </div>  
-        
-        </div>
             
       </div>
     
