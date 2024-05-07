@@ -20,7 +20,7 @@ function DashboardEventsWeather(){
         const GetAirportWeatherArray = ["gmmn","daag","dtta","gmad","gmff"]
         var i = 0
 
-        fetch(`http://127.0.0.1:1000/GetWeather/${GetAirportWeatherArray[i]}`)
+        fetch(`https://api.vatsim.ma/GetWeather/${GetAirportWeatherArray[i]}`)
                 .then(data => data.json())
                 .then(data => {
                     const state = (data.reportTime.split(" "))[1].split(":")[0]
@@ -44,7 +44,7 @@ function DashboardEventsWeather(){
 
         
         setInterval(()=>{
-            fetch(`http://127.0.0.1:1000/GetWeather/${GetAirportWeatherArray[i]}`)
+            fetch(`https://api.vatsim.ma/GetWeather/${GetAirportWeatherArray[i]}`)
                 .then(data => data.json())
                 .then(data => {
                     const DashboardWeather = document.querySelector(".DashboardWeather > div ")
@@ -76,10 +76,10 @@ function DashboardEventsWeather(){
             
         if (JSON.parse(sessionStorage.getItem("MaghrebEvents")) == ""){
             setEvents([])
-            console.log("NO MAGHREB EVENT")
+            // console.log("NO MAGHREB EVENT")
         }else{
             setEvents(JSON.parse(sessionStorage.getItem("MaghrebEvents")))
-            console.log("MAGHREB EVENT EXISTS")
+            // console.log("MAGHREB EVENT EXISTS")
         }
 
 
@@ -88,24 +88,20 @@ function DashboardEventsWeather(){
     function getEventDashboard(){
         if( Events.length > 0 ){
             return(
-                <div className="DashboardEvent animate__fadeIn">
                     <div>
                         <a href="/Event">
                             <img src={Events[Math.floor(Math.random() * Events.length)].banner}></img>
                         </a>
                     </div>
-                </div>  
             )
         }
         else{
             return(
-                <div className="DashboardEvent animate__fadeIn">
                     <div>
                         <a href="/Event">
                             <img src={NoEventPNG}></img>
                         </a>
                     </div>
-                </div>
             )
         }
     }
@@ -114,7 +110,9 @@ function DashboardEventsWeather(){
     return(
         <div className="dashboard-container">
             
-            {Events && <>{getEventDashboard()}</>} 
+            <div className="DashboardEvent animate__fadeIn">
+                {Events && <>{getEventDashboard()}</>} 
+            </div>  
            
            
 

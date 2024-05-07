@@ -15,41 +15,41 @@ function DashboardOnlineControllers(){
       
 //         return `${hours}:${minutes}:${seconds}`;
 // }
-    useEffect(()=>{
+    // useEffect(()=>{
 
-        function BuildOnlineControllerData(){
-            try {
-                fetch('https://data.vatsim.net/v3/vatsim-data.json', { timeout: 30000 })
-                  .then(data => data.json())
-                  .then(response => {
-                    if (response.controllers) { // check if the property exists
-                      const filteredResponse = response.controllers.filter(item =>
-                        /^(DAAA|DAAD|DAAE|DAAG|DAAJ|DAAK|DAAP|DAAS|DAAT|DAAV|DABB|DABC|DABS|DABT|DAOB|DAOF|DAOI|DAOL|DAON|DAOO|DAOR|DAOV|DAOY|DATG|DATM|DAUA|DAUB|DAUE|DAUG|DAUH|DAUI|DAUK|DAUO|DAUT|DAUU|DAUZ|DTTC|DTKA|DTMB|DTNH|DTTA|DTTB|DTTF|DTTG|DTTI|DTTJ|DTTX|DTTZ|GMMM|GMAC|GMAD|GMAG|GMAT|GMAZ|GMFB|GMFF|GMFI|GMFK|GMFM|GMFO|GMFZ|GMMA|GMMB|GMMD|GMME|GMMH|GMMI|GMML|GMMN|GMMT|GMMW|GMMX|GMMZ|GMTA|GMTN|GMTT)/.test(item.callsign)
-                      )
-                      const currentCallsigns = filteredResponse.map(item => ({
-                        callsigned: item.callsign,
-                        cid: item.cid,
-                        time: item.logon_time,
-                        frequency: item.frequency,
-                        user: item.name
-                      }));
+    //     function BuildOnlineControllerData(){
+    //         try {
+    //             fetch('https://data.vatsim.net/v3/vatsim-data.json', { timeout: 30000 })
+    //               .then(data => data.json())
+    //               .then(response => {
+    //                 if (response.controllers) { // check if the property exists
+    //                   const filteredResponse = response.controllers.filter(item =>
+    //                     /^(DAAA|DAAD|DAAE|DAAG|DAAJ|DAAK|DAAP|DAAS|DAAT|DAAV|DABB|DABC|DABS|DABT|DAOB|DAOF|DAOI|DAOL|DAON|DAOO|DAOR|DAOV|DAOY|DATG|DATM|DAUA|DAUB|DAUE|DAUG|DAUH|DAUI|DAUK|DAUO|DAUT|DAUU|DAUZ|DTTC|DTKA|DTMB|DTNH|DTTA|DTTB|DTTF|DTTG|DTTI|DTTJ|DTTX|DTTZ|GMMM|GMAC|GMAD|GMAG|GMAT|GMAZ|GMFB|GMFF|GMFI|GMFK|GMFM|GMFO|GMFZ|GMMA|GMMB|GMMD|GMME|GMMH|GMMI|GMML|GMMN|GMMT|GMMW|GMMX|GMMZ|GMTA|GMTN|GMTT)/.test(item.callsign)
+    //                   )
+    //                   const currentCallsigns = filteredResponse.map(item => ({
+    //                     callsigned: item.callsign,
+    //                     cid: item.cid,
+    //                     time: item.logon_time,
+    //                     frequency: item.frequency,
+    //                     user: item.name
+    //                   }));
 
-                      setControllersOnline(currentCallsigns)
+    //                   setControllersOnline(currentCallsigns)
 
-                    }
-                  })
-                  .catch(error => {
-                    console.error(error);
-                  });
-              } catch (error) {
-                console.error(error);
-              }
-        }
-        BuildOnlineControllerData()
+    //                 }
+    //               })
+    //               .catch(error => {
+    //                 console.error(error);
+    //               });
+    //           } catch (error) {
+    //             console.error(error);
+    //           }
+    //     }
+    //     BuildOnlineControllerData()
 
-        setInterval(()=>{
-        },5000)
-    })
+    //     setInterval(()=>{
+    //     },5000)
+    // })
 
 
 

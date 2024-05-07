@@ -50,7 +50,7 @@ function FlightPLN(props){
     
    
     useEffect(()=>{
-            fetch("http://127.0.0.1:1000/LastFlightPlan/IlyassBaba")
+            fetch("https://api.vatsim.ma/LastFlightPlan/IlyassBaba")
             .then(data => data.json())
             .then(data => {
                 SetFlightPlanData(data)

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 // import SideBar from "../Component/SideBar";
 
 function ATCLog(props) {
@@ -6,11 +6,12 @@ function ATCLog(props) {
     const [Log , setLog] = useState([JSON.parse(props.Log)])
 
     // setLog(JSON.parse(props.Log))
+    setLog(props.Log)
 
-    console.log( typeof props.Log )
+    // console.log( typeof props.Log )
 
 
-    console.log(Log)
+    console.table(Log)
 
     function formatDate(date){
 

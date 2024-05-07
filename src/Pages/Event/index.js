@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SideBar from "../Component/SideBar";
 import UpperBar from "../Component/UpperBar";
 import "./index.css"
@@ -11,14 +11,14 @@ function Event() {
 
 
   const [renderEvents, setRenderEvents] = useState(false);
-  const handleClick = () => {
-    setRenderEvents(true)
-    document.querySelector(".Event-More").style.display = "none"
-    document.querySelector(".Other-Events-Title").style.display = "flex"
-  }
+  // const handleClick = () => {
+  //   setRenderEvents(true)
+  //   document.querySelector(".Event-More").style.display = "none"
+  //   document.querySelector(".Other-Events-Title").style.display = "flex"
+  // }
   // console.log()
   
-  if(MaghrebEvents.length == 0){
+  if(MaghrebEvents.length === 0){
     return (
       <>
         <SideBar />
@@ -30,7 +30,7 @@ function Event() {
           </div>
           <div className="Event-Body animate__fadeIn">
             <div>
-              <img className="EventMagLogo" src={MagLogo}></img>
+              <img alt="" className="EventMagLogo" src={MagLogo}></img>
               <h1>No Maghreb events for the moment</h1>
             </div>
           </div>
@@ -67,7 +67,7 @@ function Event() {
               <div className="Events">
               <div className="Event-Container">
                 <div className="Event-Container-IMG animate__fadeInLeft">
-                  <img src={event.banner}></img>
+                  <img alt="" src={event.banner}></img>
                 </div>
                 <div className="Event-Container-Description animate__fadeIn" >
                   <div className="Event-Container-Description-text" dangerouslySetInnerHTML={{__html: event.description}}></div>
@@ -102,15 +102,15 @@ function Event() {
               <div className="Events">
               <div className="Event-Container">
                 <div className="Event-Container-IMG animate__fadeInLeft">
-                  <img src={item.banner}></img>
+                  <img alt="" src={item.banner}></img>
                 </div>
                 <div className="Event-Container-Description animate__fadeIn" >
                   <div className="Event-Container-Description-text" dangerouslySetInnerHTML={{__html: item.description}}></div>
                   <div className="Event-Container-Description-Links">
                     <div>
-                      <div className="Event-Container-Description-Links-save"><a href="#"><i class="fa-regular fa-bell"></i> Reminder</a></div>
+                      {/* <div className="Event-Container-Description-Links-save"><a href="#"><i class="fa-regular fa-bell"></i> Reminder</a></div> */}
                       <div className="Event-Container-Description-Links-view"><a href={item.link} target="blank"><i class="fa-regular fa-eye"></i> View</a></div>
-                      <div className="Event-Container-Description-Links-roster"><a href={item.link} target="blank"><i class="fa-solid fa-list-ol"></i> Roster</a></div>
+                      {/* <div className="Event-Container-Description-Links-roster"><a href={item.link} target="blank"><i class="fa-solid fa-list-ol"></i> Roster</a></div> */}
                     </div>
                   </div>
                 </div>

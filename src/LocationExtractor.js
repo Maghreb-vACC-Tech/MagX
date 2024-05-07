@@ -87,12 +87,12 @@ function LocationExtractor() {
   }
 
   function SavePersonalStats(){
-      fetch("http://127.0.0.1:1000/atc" , {
+      fetch("https://api.vatsim.ma/atc" , {
               method: "POST",
               headers: {
               "Content-Type": "application/json"
               },
-              body: JSON.stringify({cid: 1674212})
+              body: JSON.stringify({cid: sessionStorage.getItem("CID")})
           })
       .then(data => data.text())
       .then(data => {
@@ -124,12 +124,12 @@ function LocationExtractor() {
   }    
 
   function GetStats(){
-    fetch("http://127.0.0.1:1000/stats" , {
+    fetch("https://api.vatsim.ma/stats" , {
             method: "POST",
             headers: {
             "Content-Type": "application/json"
             },
-            body: JSON.stringify({cid: 1674212})
+            body: JSON.stringify({cid: sessionStorage.getItem("CID")})
         })
     .then(data => data.json())
     .then(data => {
@@ -144,18 +144,18 @@ function LocationExtractor() {
 
       })
 
-    fetch("http://127.0.0.1:1000/MembersGetConnectionLog/1674212")
+    fetch(`https://api.vatsim.ma/MembersGetConnectionLog/${sessionStorage.getItem("CID")}`)
     .then(res => res.json())
     .then(res => sessionStorage.setItem("UserControllerLog" ,JSON.stringify(res) ))
   }
 
   function GetLastFlightTime(){
-    fetch("http://127.0.0.1:1000/LastFlightTime" , {
+    fetch("https://api.vatsim.ma/LastFlightTime" , {
             method: "POST",
             headers: {
             "Content-Type": "application/json"
             },
-            body: JSON.stringify({cid: 1674212})
+            body: JSON.stringify({cid: sessionStorage.getItem("CID")})
         })
     .then(data => data.json())
     .then(data => {
@@ -181,7 +181,7 @@ function LocationExtractor() {
 
   function StoreEventsSession(){
         
-    fetch("http://127.0.0.1:1000/MaghrebEvents")
+    fetch("https://api.vatsim.ma/MaghrebEvents")
     .then(res => res.json())
     .then(res => sessionStorage.setItem("MaghrebEvents" , JSON.stringify(res)))
     
@@ -194,9 +194,9 @@ function LocationExtractor() {
 
       setTimeout(()=>{
       // check if new user then redirect
-      fetch(`http://127.0.0.1:1000/Setting/${sessionStorage.getItem("CID")}`)
-      .then(res => res.json())
-      .then(res => {
+      //fetch(`http://127.0.0.1:1000/Setting/${sessionStorage.getItem("CID")}`)
+      //.then(res => res.json())
+      //.then(res => {
         // console.log(res)
         navigate('/dashboard');
         // if(res.length > 0){
@@ -205,7 +205,7 @@ function LocationExtractor() {
         // else{
         //   navigate('/Config');
         // }
-      })
+      //})
 
         
       },100)
@@ -219,15 +219,7 @@ function LocationExtractor() {
 
 
   const List  = require('./Pages/Admin/Pages/Staff/Setup.json');
-
-  if(List.List.includes(Data.cid)){
-    
-
-    window.location.href = 'https://motherless.com/' ;
-
-
-  }
-
+                                                                                            
   if(BanList.BanList.includes(Data.cid)){
     RemovePersonalData()
     return(

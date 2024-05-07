@@ -55,7 +55,7 @@ function Dashboard(){
     const location = useLocation();
     const stateData = location.state;
         
-    console.log("DATA : " , sessionStorage.getItem("Data"))
+    // console.log("DATA : " , sessionStorage.getItem("Data"))
     // notify(`Hello ${sessionStorage.getItem("FullName")} `)
     return(
         <>

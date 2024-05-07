@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SideBar from "../Component/SideBar";
 import UpperBar from "../Component/UpperBar";
 
@@ -18,7 +18,7 @@ function Stats() {
     return <p>No last position data</p> 
   }
 
-  console.log(LastPositionData.items[0].connection_id.callsign)
+  console.table(LastPositionData)
 
 
 
@@ -44,9 +44,10 @@ function Stats() {
         />
           {/* {JSON.stringify(LastPostion.items[0].connection_id.callsign)} */}
 
-          <ATCLog
+          {/* <ATCLog
             Log = {sessionStorage.getItem("UserControllerLog")}
-          />
+          /> */}
+          {/* {JSON.stringify(sessionStorage.getItem("UserControllerLog"))} */}
 
         </div>
       </>

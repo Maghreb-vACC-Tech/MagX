@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 function AnnouncementComponent(){
     const [Announcement , setAnnouncement] = useState()
     useEffect(()=>{
-        // fetch("http://127.0.0.1:1000/GetLastAnnouncement")
-        // .then(res=>res.json())
-        // // .then(res=> alert(res))
-        // .then(res=> setAnnouncement(res))
+        fetch("https://api.vatsim.ma/GetLastAnnouncement")
+         .then(res=>res.json())
+         // .then(res=> alert(res))
+         .then(res=> setAnnouncement(res))
 
     })
 

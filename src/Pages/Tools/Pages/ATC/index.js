@@ -1,5 +1,5 @@
 import './index.css';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SideBar from '../../../Component/SideBar';
 import UpperBar from '../../../Component/UpperBar';
 import CasaVFRMap from '../../../../Ressources/VFR_Map/GMMN.png'
@@ -22,7 +22,7 @@ function ATCTools() {
 
   
   function MakeApiCall(airportICAO){
-    if(airportICAO == "NONE"){
+    if(airportICAO === "NONE"){
       SetairportMetar("")
       SetairportTAF("")
       SetairportInfo("")
@@ -36,18 +36,18 @@ function ATCTools() {
       .then(res=>res.text())
       .then(res => {SetairportMetar(res)})
 
-      fetch(`http://127.0.0.1:1000/GetARPInfo/${airportICAO}`)
+      fetch(`https://api.vatsim.ma/GetARPInfo/${airportICAO}`)
       .then(res => res.json())
       .then(res =>SetARPInfo(res))
 
-      fetch(`http://127.0.0.1:1000/GetWeather/${airportICAO}`)
+      fetch(`https://api.vatsim.ma/GetWeather/${airportICAO}`)
       .then(res=>res.text())
       .then(res => {
         SetairportInfo(JSON.parse(res))
         // SetTL(ARPInfo.TA + (1013-JSON.parse(res.altim)) * 28)
       })
   
-      fetch(`http://127.0.0.1:1000/AGTAF/${airportICAO}`)
+      fetch(`https://api.vatsim.ma/AGTAF/${airportICAO}`)
       .then(res=>res.json())
       .then(res => {
         SetairportTAF(res)
@@ -253,90 +253,90 @@ function ATCTools() {
     )
   }
   function RenderChart(){
-    if(Chart == "GMMN"){return(<img className="Chart" src={CasaVFRMap}></img>)}
-    else if(Chart == "GMMX"){return(<img className="Chart" src={KechVFRMap}></img>)}
-    else if(Chart == "GMTT"){return(<img className="Chart" src={TangerVFRMap}></img>)}
-    else if(Chart == "GMAD"){return(<img className="Chart" src={AgadirVFRMap}></img>)}
+    if(Chart === "GMMN"){return(<img alt="" className="Chart" src={CasaVFRMap}></img>)}
+    else if(Chart === "GMMX"){return(<img alt="" className="Chart" src={KechVFRMap}></img>)}
+    else if(Chart === "GMTT"){return(<img alt="" className="Chart" src={TangerVFRMap}></img>)}
+    else if(Chart === "GMAD"){return(<img alt="" className="Chart" src={AgadirVFRMap}></img>)}
   }
   function RenderChart(){
     
-    if(Chart == "GMMN"){
+    if(Chart === "GMMN"){
       return(
       <div className="ATC-Station-Page page3 animate__fadeIn">
       <div className="page3-header"><h1>VFR Charts</h1></div>
         <div>
           <center>
-            <img className="Chart" src={CasaVFRMap}></img>
+            <img alt="" className="Chart" src={CasaVFRMap}></img>
           </center>
         </div>    
       </div> 
       )
     }
-    else if(Chart == "GMMX"){
+    else if(Chart === "GMMX"){
       return(
       <div className="ATC-Station-Page page3">
       <div className="page3-header"><h1>VFR Charts</h1></div>
         <div>
           <center>
-            <img className="Chart" src={KechVFRMap}></img>
+            <img alt="" className="Chart" src={KechVFRMap}></img>
           </center>
         </div>    
       </div> 
     )
    }
-    else if(Chart == "GMTT"){return(
+    else if(Chart === "GMTT"){return(
       <div className="ATC-Station-Page page3">
       <div className="page3-header"><h1>VFR Charts</h1></div>
         <div>
           <center>
-            <img className="Chart" src={TangerVFRMap}></img>
+            <img alt="" className="Chart" src={TangerVFRMap}></img>
           </center>
         </div>    
       </div>       
       )}
     
-    else if(Chart == "GMAD"){return(
+    else if(Chart === "GMAD"){return(
       
       <div className="ATC-Station-Page page3">
       <div className="page3-header"><h1>VFR Charts</h1></div>
         <div>
           <center>
-          <img className="Chart" src={AgadirVFRMap}></img>
+          <img alt="" className="Chart" src={AgadirVFRMap}></img>
           </center>
         </div>    
       </div>  
     )}
-    else if (Chart == "DAAG"){
+    else if (Chart === "DAAG"){
     return(
       
       <div className="ATC-Station-Page page3">
       <div className="page3-header"><h1>VFR Charts</h1></div>
         <div>
           <center>
-          <img className="Chart" src={AlgerVFRMap}></img>
+          <img alt="" className="Chart" src={AlgerVFRMap}></img>
           </center>
         </div>    
       </div>  
     )}
-    else if (Chart == "DAUH"){
+    else if (Chart === "DAUH"){
       return(
         
         <div className="ATC-Station-Page page3">
         <div className="page3-header"><h1>VFR Charts</h1></div>
           <div>
             <center>
-            <img className="Chart" src={HassiVFRMap}></img>
+            <img alt="" className="Chart" src={HassiVFRMap}></img>
             </center>
           </div>    
         </div>  
       )}
-        else if (Chart == "DAOO"){
+        else if (Chart === "DAOO"){
           return(
             <div className="ATC-Station-Page page3">
             <div className="page3-header"><h1>VFR Charts</h1></div>
               <div>
                 <center>
-                <img className="Chart" src={OranVFRMap}></img>
+                <img alt="" className="Chart" src={OranVFRMap}></img>
                 </center>
               </div>    
             </div>  
@@ -415,7 +415,7 @@ function ATCTools() {
               <div>
 
                 {
-                  airportIndexLoading == true &&(
+                  airportIndexLoading === true &&(
                   <p>{airportMetar}</p>
                   )
                 }
@@ -430,7 +430,7 @@ function ATCTools() {
             <div>
               <div>
                 {
-                  airportIndexLoading == true &&(
+                  airportIndexLoading === true &&(
                     // <p>{airportTAF.rawTAF}</p>
 
                     <p>{airportTAF.rawTAF}</p>
@@ -455,7 +455,7 @@ function ATCTools() {
         
         {ARPInfo &&RenderChart()}
 
-        {/* {ARPInfo &&RenderExtra()} */}
+        {ARPInfo &&RenderExtra()}
         
             
       </div>

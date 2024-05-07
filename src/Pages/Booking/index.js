@@ -36,7 +36,7 @@ function Booking() {
 
 
   function MaghrebFetching(){
-    fetch("http://127.0.0.1:1000/MaghrebBooking")
+    fetch("https://api.vatsim.ma/MaghrebBooking")
       .then((response) => response.json())
       .then((response) => {
         setmaghrebBookings(response)
@@ -112,7 +112,7 @@ const vatsimEvents = (() => {
       }
   
   
-      fetch('http://127.0.0.1:1000/AddMaghrebBooking', {
+      fetch('https://api.vatsim.ma/AddMaghrebBooking', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -193,7 +193,7 @@ const vatsimEvents = (() => {
 
       // alert(id)
 
-      fetch("http://127.0.0.1:1000/DeleteMaghrebBooking" , {
+      fetch("https://api.vatsim.ma/DeleteMaghrebBooking" , {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
