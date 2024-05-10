@@ -9,20 +9,37 @@ function StaffMembershipPage(){
     const [MembershipRes , setMembershipRes] = useState([])
     const [MemberFetched , setMemberFetched] = useState([])
 
+    // const StaffList  = require('./Pages/Staff/Setup.json');
+    const StaffList  = require('../Staff/Setup.json');
+
+
     function FetchMembershipData(){
-      fetch("http://127.0.0.1:1000/MembersGetDB")
-      .then(res => res.json())
-      .then(res => {
-        setMembershipRes(res)
-        setMemberFetched(res)
-      })
+
+      fetch("https://api.vatsim.ma/MembersGetDB")
+        .then(res => res.json())
+        .then(res => {
+          setMembershipRes(res)
+          setMemberFetched(res)
+        })
+
+      // try {
+        
+      // } catch (error) {
+      //   fetch("http://127.0.0.1:1000/MembersGetDB")
+      //   .then(res => res.json())
+      //   .then(res => {
+      //     setMembershipRes(res)
+      //     setMemberFetched(res)
+      //   })
+      // }
+      
     }
 
     useEffect(()=>{
       FetchMembershipData()
     },[])
 
-    if(sessionStorage.getItem("CID") == "10000008") {
+    if(StaffList.StaffList.includes(sessionStorage.getItem("CID"))) {
 
     const CIDLookupCallback = (e) => {
       const value = e.target.value;
@@ -46,7 +63,7 @@ function StaffMembershipPage(){
                     </div>
                     <div className="MembersContrainerHeaderSearch">
                       <input placeholder="CID" onChange={CIDLookupCallback} ></input>
-                      <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                      {/* <button><i class="fa-solid fa-magnifying-glass"></i></button> */}
                     </div>
                   </section>
                   <section className="MembersContrainerHeaderBar"></section>

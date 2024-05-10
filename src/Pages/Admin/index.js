@@ -12,7 +12,7 @@ function AdminPage() {
 const StaffList  = require('./Pages/Staff/Setup.json');
 
   if(StaffList.StaffList.includes(sessionStorage.getItem("CID"))) {
-    fetch("http://localhost:1000/MembershipDBRefresh")
+    fetch("https://api.vatsim.ma/MembershipDBRefresh")
     return (
       <>
         <SideBar />

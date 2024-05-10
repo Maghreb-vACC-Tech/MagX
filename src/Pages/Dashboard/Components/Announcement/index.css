@@ -50,11 +50,18 @@
 
 }
 .DashboardAnnouncementMessage p{
-    width: 90%;
+    /* width: 90%;
     height: 50%;
     margin: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 
+
+    display: flex;
+    height: 80%;
+    justify-content: center;
+    margin: auto;
+    width: 90%;
+    overflow-y: auto;
 }

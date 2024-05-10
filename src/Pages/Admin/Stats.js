@@ -18,7 +18,7 @@ function AdminStats(){
     let groupedByRating
     function GetMemberStats(){
 
-        fetch("http://127.0.0.1:1000/members")
+        fetch("https://api.vatsim.ma/members")
         .then(res => res.json())
         .then(res => {
 
@@ -66,6 +66,7 @@ function AdminStats(){
                 <div className="MembersStatsCountTitle">
                     <h1>Members Stats</h1>
                 </div>
+
                 
                 {DataState &&(
                     <>
