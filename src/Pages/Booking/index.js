@@ -11,7 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-function Booking() {
+function Booking(props) {
 
   
 
@@ -33,10 +33,10 @@ function Booking() {
     window.location.reload()
   }
   
-
+  const BookingURL = (props.APILink) ? "http://localhost:1000/"  : "https://api.vatsim.ma/"
 
   function MaghrebFetching(){
-    fetch("https://api.vatsim.ma/MaghrebBooking")
+    fetch(`${BookingURL}MaghrebBooking`)
       .then((response) => response.json())
       .then((response) => {
         setmaghrebBookings(response)
@@ -112,7 +112,7 @@ const vatsimEvents = (() => {
       }
   
   
-      fetch('https://api.vatsim.ma/AddMaghrebBooking', {
+      fetch(`${BookingURL}AddMaghrebBooking`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -161,7 +161,7 @@ const vatsimEvents = (() => {
 
 
 
-  function DateGroup({ date, items }) {  
+  function DateGroup({ date, items ,cid}) {  
 
     const bookingPositions = {
       TWR: 'twr',
@@ -193,7 +193,7 @@ const vatsimEvents = (() => {
 
       // alert(id)
 
-      fetch("https://api.vatsim.ma/DeleteMaghrebBooking" , {
+      fetch(`${BookingURL}/DeleteMaghrebBooking` , {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -242,11 +242,20 @@ const vatsimEvents = (() => {
                     <div className="Booking-container-Booking-Seperation"><p> - </p></div>
                     <div className="Booking-container-Booking-End"><p>{formatTime(new Date(item.end))}</p></div>
                     {/* <div className="Booking-container-Booking-Action"><a>{TrashIcon}</a></div> */}
-                    {item.cid == "1674212" && (//sessionStorage.getItem("CID")
+                    
+                    {props.APILink ? (
                       <div className="Booking-container-Booking-Action">
                         <a onClick={() => {DeleteBooking(item.id)}}>{TrashIcon}</a>  
                       </div>
+                    ) : (
+                      
+                      (item.cid == sessionStorage.getItem("CID")) && (
+                        <div className="Booking-container-Booking-Action">
+                          <a onClick={() => {DeleteBooking(item.id)}}>{TrashIcon}</a>  
+                        </div>
+                      )
                     )}
+                    
                 </div>
               }
               

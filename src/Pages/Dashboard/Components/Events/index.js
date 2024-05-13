@@ -8,9 +8,8 @@ import Dawn from '../../../../Ressources/SkyImages/Dawn.jpg';
 import Day from '../../../../Ressources/SkyImages/Day.jpg';
 import Sunset from '../../../../Ressources/SkyImages/Sunset.jpg';
 import Night from '../../../../Ressources/SkyImages/Night.jpg';
-// import Dawn from "../../../../../public/SkyImages/Dawn.jpg"
 
-function DashboardEventsWeather(){
+function DashboardEventsWeather(props){
     const [Metar , setMetar] = useState()
     const [Events , setEvents] = useState([])
 
@@ -20,7 +19,9 @@ function DashboardEventsWeather(){
         const GetAirportWeatherArray = ["gmmn","daag","dtta","gmad","gmff"]
         var i = 0
 
-        fetch(`https://api.vatsim.ma/GetWeather/${GetAirportWeatherArray[i]}`)
+        const WeatherURL = (props.APILink) ? "http://localhost:1000/" : "https://api.vatsim.ma/"
+
+        fetch(`${WeatherURL}GetWeather/${GetAirportWeatherArray[i]}`)
                 .then(data => data.json())
                 .then(data => {
                     const state = (data.reportTime.split(" "))[1].split(":")[0]
@@ -44,7 +45,7 @@ function DashboardEventsWeather(){
 
         
         setInterval(()=>{
-            fetch(`https://api.vatsim.ma/GetWeather/${GetAirportWeatherArray[i]}`)
+            fetch(`${WeatherURL}GetWeather/${GetAirportWeatherArray[i]}`)
                 .then(data => data.json())
                 .then(data => {
                     const DashboardWeather = document.querySelector(".DashboardWeather > div ")
@@ -76,10 +77,8 @@ function DashboardEventsWeather(){
             
         if (JSON.parse(sessionStorage.getItem("MaghrebEvents")) == ""){
             setEvents([])
-            // console.log("NO MAGHREB EVENT")
         }else{
             setEvents(JSON.parse(sessionStorage.getItem("MaghrebEvents")))
-            // console.log("MAGHREB EVENT EXISTS")
         }
 
 

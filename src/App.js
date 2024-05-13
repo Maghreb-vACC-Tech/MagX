@@ -1,6 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
+
+
 // Import Pages
 import Dashboard from './Pages/Dashboard';
 import Booking from './Pages/Booking';
@@ -34,12 +36,28 @@ import StaffOPSPage from './Pages/Admin/Pages/Operations/'
 import AddairportOPS from './Pages/Admin/Pages/Operations/Pages/Addairport'
 
 
+
 // Staff 
 import StaffPage from "./Pages/Admin/Pages/Staff"
 
 
 // Lost
 import Lost from "./Pages/Component/Lost"
+
+
+// Import Dev Environement
+import Data from "./MaghrebSetup.json"
+
+let APILINK="http://localhost:1000/"
+if (Data.dev){
+  APILINK="http://localhost:1000/"
+}
+else{
+  APILINK="https://api.vatsim.ma/"  
+}
+
+
+
 
 function App() {
 
@@ -49,14 +67,14 @@ function App() {
       <Routes>
         {/************************************ Client Routing **********************************************/}
         <Route path="/Config" element={<Configurator />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
-        <Route path="/Staff" element={<AdminPage/>}/>
-        <Route path="/Booking" element={<Booking />} />
+        <Route path="/Dashboard" element={<Dashboard APILink = {APILINK} />} />
+        <Route path="/Staff" element={<AdminPage APILink = {APILINK} />}/>
+        <Route path="/Booking" element={<Booking APILink = {APILINK} />} />
         <Route path="/Event" element={<Event />} />
         <Route path="/Stats" element={<Stats />} />
         <Route path="/Tools" element={<Tools />} />
         {/* <Route path="/PilotTools" element={<PilotTools />} /> */}
-        <Route path="/ATCTools" element={<ATCTools />} />
+        <Route path="/ATCTools" element={<ATCTools APILink = {APILINK} />} />
         {/* <Route path="/Training" element={<Training />} /> */}
         {/* <Route path="/Settings" element={<Settings />} /> */}
         <Route path="/extractor" element={<LocationExtractor />} />
@@ -68,7 +86,7 @@ function App() {
           <Route path="/StaffShowTrainee" element={<ShowTrainee/>}/>
           <Route path="/AddVisitor" element={<AddVisitor/>}/> */}
           {/* Membership Routing */}
-          <Route path="/StaffMembership" element={<StaffMembershipPage/>}/>
+          <Route path="/StaffMembership" element={<StaffMembershipPage  APILink = {APILINK} />}/>
           <Route path="/StaffShowMember" element={<ShowMember/>}/>
           {/* <Route path="/ShowMemberLog" element={<ShowMemberConnectionLog/>}/> */}
           <Route path="/ShowMemberLog" element={<ShowMemberConnectionLog/>}/>

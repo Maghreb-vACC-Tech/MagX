@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function AdminStats(){
+function AdminStats(props){
     const [MembersCount , SetMembersCount] = useState()
     const [Members , SetMembers] = useState()
     const [OBS , SetOBS] = useState()
@@ -16,9 +16,12 @@ function AdminStats(){
     const [DataState , SetDataState] = useState(false)
 
     let groupedByRating
+
+    const AdminAPIURL = (props.APILink) ? "http://localhost:1000/"  : "https://api.vatsim.ma/"
+
     function GetMemberStats(){
 
-        fetch("https://api.vatsim.ma/members")
+        fetch(`${AdminAPIURL}members`)
         .then(res => res.json())
         .then(res => {
 

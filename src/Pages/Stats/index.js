@@ -9,16 +9,16 @@ import ATCLog from "./Components/ATCLog";
 
 import "./index.css"
 
-function Stats() {
+function Stats(props) {
   const [LastPosition , setLastPosition] = useState("")
 
   const LastPositionData = JSON.parse(sessionStorage.getItem("LastPosition"))
-
+  // console.table(LastPositionData)
   if(!LastPositionData) {
     return <p>No last position data</p> 
   }
 
-  console.table(LastPositionData)
+  // console.table(LastPositionData)
 
 
 
@@ -44,9 +44,9 @@ function Stats() {
         />
           {/* {JSON.stringify(LastPostion.items[0].connection_id.callsign)} */}
 
-          {/* <ATCLog
-            Log = {sessionStorage.getItem("UserControllerLog")}
-          /> */}
+        <ATCLog
+          Log = {sessionStorage.getItem("UserControllerLog")}
+        />
           {/* {JSON.stringify(sessionStorage.getItem("UserControllerLog"))} */}
 
         </div>

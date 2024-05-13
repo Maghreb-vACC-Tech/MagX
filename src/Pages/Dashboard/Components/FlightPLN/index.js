@@ -9,6 +9,7 @@ function FlightPLN(props){
 
 
 
+
     const PlaneIcon = (
         <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
             <path d="M32.1038 31.8517C32.8007 31.9937 33.5269 31.8665 34.1296 31.497C34.7324 31.1274 35.1648 30.5442 35.336 29.87V29.8683C35.4228 29.5262 35.4396 29.1708 35.3855 28.8223C35.3315 28.4739 35.2075 28.1392 35.0208 27.8376C34.834 27.5359 34.5881 27.273 34.2972 27.0641C34.0063 26.8552 33.676 26.7043 33.3252 26.62L25.5079 24.7317L16.6997 13.375L12.9004 13L17.9075 23.9817L10.3072 23.2333L6.3575 16.8517L4 17.3683L6.11833 26.5683L32.1038 31.8517ZM5.04037 36.3583H35.7904V39.6917H5.04037V36.3583Z" fill="white"/>
@@ -47,10 +48,10 @@ function FlightPLN(props){
         return result
 
     }
-    
+    const apiurl = (props.APILink)? "http://localhost:1000/" : "https://api.vatsim.ma/"
    
     useEffect(()=>{
-            fetch("https://api.vatsim.ma/LastFlightPlan/IlyassBaba")
+            fetch(`${apiurl}LastFlightPlan/IlyassBaba`)
             .then(data => data.json())
             .then(data => {
                 SetFlightPlanData(data)

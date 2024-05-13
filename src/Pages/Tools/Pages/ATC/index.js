@@ -11,7 +11,8 @@ import HassiVFRMap from '../../../../Ressources/VFR_Map/DAUH.png'
 // import CasaVFRMap from '../../../../Ressources/VFR_MAP.png'
 import OranVFRMap from '../../../../Ressources/VFR_Map/DAOO.png'
 
-function ATCTools() {
+function ATCTools(props) {
+  const ATCToolsURL = (props.APILink) ? "http://localhost:1000/"  : "https://api.vatsim.ma/"
   const [airportIndexLoading , SetairportIndexLoading] = useState(false)
   const [airportMetar , SetairportMetar] = useState()
   const [airportTAF , SetairportTAF] = useState()
@@ -36,18 +37,17 @@ function ATCTools() {
       .then(res=>res.text())
       .then(res => {SetairportMetar(res)})
 
-      fetch(`https://api.vatsim.ma/GetARPInfo/${airportICAO}`)
+      fetch(`${ATCToolsURL}GetARPInfo/${airportICAO}`)
       .then(res => res.json())
       .then(res =>SetARPInfo(res))
 
-      fetch(`https://api.vatsim.ma/GetWeather/${airportICAO}`)
+      fetch(`${ATCToolsURL}GetWeather/${airportICAO}`)
       .then(res=>res.text())
       .then(res => {
         SetairportInfo(JSON.parse(res))
-        // SetTL(ARPInfo.TA + (1013-JSON.parse(res.altim)) * 28)
       })
   
-      fetch(`https://api.vatsim.ma/AGTAF/${airportICAO}`)
+      fetch(`${ATCToolsURL}AGTAF/${airportICAO}`)
       .then(res=>res.json())
       .then(res => {
         SetairportTAF(res)

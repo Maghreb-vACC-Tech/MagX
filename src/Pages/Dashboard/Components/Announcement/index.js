@@ -1,10 +1,12 @@
 import "./index.css"
 
 import { useEffect, useState } from "react";
-function AnnouncementComponent(){
+function AnnouncementComponent(props){
+    const apiurl = props.APILink
     const [Announcement , setAnnouncement] = useState()
+    
     useEffect(()=>{
-        fetch("https://api.vatsim.ma/GetLastAnnouncement")
+        fetch(`${apiurl}GetLastAnnouncement`)
          .then(res=>res.json())
          // .then(res=> alert(res))
          .then(res=> setAnnouncement(res))

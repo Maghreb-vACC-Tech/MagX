@@ -2,6 +2,7 @@ import { useEffect , useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import "./App.css"
 import LoadingSpinner from './Pages/Component/LoadingSpinner';
+import Data from "./MaghrebSetup.json"
 
 function LocationExtractor() {
 
@@ -87,12 +88,13 @@ function LocationExtractor() {
   }
 
   function SavePersonalStats(){
-      fetch("https://api.vatsim.ma/atc" , {
+      const url = (Data.dev) ? "https://api.vatsim.ma/atc" : "http://localhost:1000/atc"
+      fetch(url , {
               method: "POST",
               headers: {
               "Content-Type": "application/json"
               },
-              body: JSON.stringify({cid: sessionStorage.getItem("CID")})
+              body: JSON.stringify({cid: (Data.dev) ? sessionStorage.getItem("CID") : "1674212"})
           })
       .then(data => data.text())
       .then(data => {
@@ -124,12 +126,14 @@ function LocationExtractor() {
   }    
 
   function GetStats(){
-    fetch("https://api.vatsim.ma/stats" , {
+    
+    let url = (Data.dev) ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    fetch(`${url}stats` , {
             method: "POST",
             headers: {
             "Content-Type": "application/json"
             },
-            body: JSON.stringify({cid: sessionStorage.getItem("CID")})
+            body: JSON.stringify({cid: (Data.dev) ? sessionStorage.getItem("CID") : "1674212"})
         })
     .then(data => data.json())
     .then(data => {
@@ -144,18 +148,22 @@ function LocationExtractor() {
 
       })
 
-    fetch(`https://api.vatsim.ma/MembersGetConnectionLog/${sessionStorage.getItem("CID")}`)
+    
+    url = (Data.dev) ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    fetch(`${url}MembersGetConnectionLog/${(Data.dev) ? sessionStorage.getItem("CID") : "1674212"}`)
     .then(res => res.json())
     .then(res => sessionStorage.setItem("UserControllerLog" ,JSON.stringify(res) ))
   }
 
   function GetLastFlightTime(){
-    fetch("https://api.vatsim.ma/LastFlightTime" , {
+    
+    const url = (Data.dev) ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    fetch(`${url}LastFlightTime` , {
             method: "POST",
             headers: {
             "Content-Type": "application/json"
             },
-            body: JSON.stringify({cid: sessionStorage.getItem("CID")})
+            body: JSON.stringify({cid: (Data.dev) ? sessionStorage.getItem("CID") : "1674212"})
         })
     .then(data => data.json())
     .then(data => {
@@ -174,14 +182,14 @@ function LocationExtractor() {
       const minutes = Math.floor(duration / 1000 / 60) % 60; 
       const seconds = Math.floor(duration / 1000) % 60;
 
-      // setLastHoursFlown(`${hours}h ${minutes}m`)
       sessionStorage.setItem("LastHoursFlown" , `${hours}h ${minutes}m` )
       })
   }
 
   function StoreEventsSession(){
         
-    fetch("https://api.vatsim.ma/MaghrebEvents")
+    const url = (Data.dev) ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    fetch(`${url}MaghrebEvents`)
     .then(res => res.json())
     .then(res => sessionStorage.setItem("MaghrebEvents" , JSON.stringify(res)))
     

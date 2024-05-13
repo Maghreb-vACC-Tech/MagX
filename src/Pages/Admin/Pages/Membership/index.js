@@ -5,7 +5,7 @@ import UpperBar from "../../../Component/UpperBar";
 import MemberComponent from "./Component/MemberComponent";
 import { useEffect, useState } from "react";
 
-function StaffMembershipPage(){
+function StaffMembershipPage(props){
     const [MembershipRes , setMembershipRes] = useState([])
     const [MemberFetched , setMemberFetched] = useState([])
 
@@ -14,8 +14,8 @@ function StaffMembershipPage(){
 
 
     function FetchMembershipData(){
-
-      fetch("https://api.vatsim.ma/MembersGetDB")
+      const url = (props.APILink) ? "http://localhost:1000/"  : "https://api.vatsim.ma/"
+      fetch(`${url}MembersGetDB`)
         .then(res => res.json())
         .then(res => {
           setMembershipRes(res)

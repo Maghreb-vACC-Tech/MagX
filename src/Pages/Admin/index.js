@@ -7,19 +7,22 @@ import Navigator from "./Navigator";
 import AdminStats from "./Stats";
 import "./index.css"
 
-function AdminPage() {
+function AdminPage(props) {
 
 const StaffList  = require('./Pages/Staff/Setup.json');
 
+
+const AdminAPIURL = (props.APILink) ? "http://localhost:1000/"  : "https://api.vatsim.ma/"
+
   if(StaffList.StaffList.includes(sessionStorage.getItem("CID"))) {
-    fetch("https://api.vatsim.ma/MembershipDBRefresh")
+    fetch(`${AdminAPIURL}MembershipDBRefresh`)
     return (
       <>
         <SideBar />
         <div className="AdminPage PagesContainer">
           <UpperBar Username={sessionStorage.getItem("FullName")} />
           <Navigator/>
-          <AdminStats/>
+          <AdminStats APILink = {props.APILink}/>
         </div>
       </>
     );
