@@ -77,6 +77,31 @@ function ATCLog(props) {
             index = true;}
     }
 
+    function returnLogJSX() {
+  return (
+    <>
+      {Log.map((item, index) => (
+        <>
+          <div className="MemberLog" onClick={() => { animation(item.connection_id.id) }}>
+            <div>{item.connection_id.id}</div>
+            <div>{item.connection_id.callsign}</div>
+            <div>{formatDate(item.connection_id.start)}</div>
+            <div>{formatDate(item.connection_id.end)}</div>
+            <div>{DurationCalculation(item.connection_id.start, item.connection_id.end)}</div>
+          </div>
+
+          <div className={`MemberLogStats animate__fadeIn class${item.connection_id.id}`}>
+            <h1>aircraft</h1>
+            <div>tracked: {item.aircrafttracked}</div>
+            <div>initiated: {item.handoffsinitiated}</div>
+            <div>seen: {item.aircraftseen}</div>
+            <div>refused: {item.handoffsrefused}</div>
+          </div>
+        </>
+      ))}
+    </>
+  );
+}
     
     return (
       <div className="MemberLogContainer">
@@ -85,26 +110,7 @@ function ATCLog(props) {
         </div>
         
         <div className="MemberLogContainerContent">
-            {Log && Log.map((item, index) => (
-                <>
-                    <div className="MemberLog" onClick={()=>{animation(item.connection_id.id)}}>
-                        <div>{item.connection_id.id}</div> 
-                        <div>{item.connection_id.callsign}</div> 
-                        <div>{formatDate(item.connection_id.start)}</div> 
-                        <div>{formatDate(item.connection_id.end)}</div> 
-                        <div>{DurationCalculation(item.connection_id.start,item.connection_id.end)}</div>
-                    </div>
-                    
-                    <div className={"MemberLogStats animate__fadeIn class" +item.connection_id.id}>
-                        <h11>aircraft</h11>
-                        <div>tracked :{item.aircrafttracked}</div> 
-                        <div>initiated :{item.handoffsinitiated}</div> 
-                        <div>seen :{item.aircraftseen}</div> 
-                        <div>refused :{item.handoffsrefused}</div> 
-                    </div>
-                </>
-                
-            ))}
+            {Log && <returnLOGJSX/>}
         </div>
         
         <div>

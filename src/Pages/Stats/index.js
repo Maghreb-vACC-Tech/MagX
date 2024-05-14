@@ -19,10 +19,10 @@ function Stats(props) {
   }
 
   // console.table(LastPositionData)
+  // console.table(sessionStorage.getItem("LastPosition"))
 
-
-
-
+  // console.log(LastPositionData)
+  console.log(LastPositionData.items[0].connection_id.callsign)
     return(
       <>
         <SideBar />
@@ -35,6 +35,7 @@ function Stats(props) {
           // ATC PROPS
           ShortAtcRating = {sessionStorage.getItem("ShortATCRating")}
           ATCTime = {sessionStorage.getItem("ATCStat")}
+          // LastPosition = {LastPositionData[0].connection_id.callsign}
           LastPosition = {LastPositionData.items[0].connection_id.callsign}
           // PilotProps
           PilotTime = {sessionStorage.getItem("PilotStat")}
@@ -44,9 +45,9 @@ function Stats(props) {
         />
           {/* {JSON.stringify(LastPostion.items[0].connection_id.callsign)} */}
 
-        <ATCLog
+        {/* <ATCLog
           Log = {sessionStorage.getItem("UserControllerLog")}
-        />
+        /> */}
           {/* {JSON.stringify(sessionStorage.getItem("UserControllerLog"))} */}
 
         </div>

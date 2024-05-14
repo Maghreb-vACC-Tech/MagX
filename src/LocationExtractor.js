@@ -96,11 +96,11 @@ function LocationExtractor() {
               },
               body: JSON.stringify({cid: (Data.dev) ? sessionStorage.getItem("CID") : "1674212"})
           })
-      .then(data => data.text())
+      .then(data => data.json())
       .then(data => {
         
-        // alert(data.items.callsign)
-        sessionStorage.setItem("LastPosition" , data)
+        console.log(data)
+        sessionStorage.setItem("LastPosition" , JSON.stringify(data))
         })
       .catch(e=>console.log(e))
 
