@@ -1,6 +1,7 @@
 import SideBar from "../Component/SideBar"
 import UpperBar from "../Component/UpperBar";
 
+import Tips from "./Components/Tips";
 import ControllerOfMonth from "./Components/Scoreboard/ControllerOfMonth";
 import TopAirports from "./Components/Scoreboard/TopAirports";
 import TopPilots from "./Components/Scoreboard/TopPilots";
@@ -44,12 +45,13 @@ function Dashboard(props){
             <div className="Dashboard PagesContainer">
                 <UpperBar
                     Username = { sessionStorage.getItem("FullName")}
-                    />            
-                <div className="ScoreboardContainer animate__fadeIn">
+                    />
+                <Tips/>
+                {/* <div className="ScoreboardContainer animate__fadeIn">
                     <ControllerOfMonth/>
                     <TopAirports/>
                     <TopPilots/>
-                </div>
+                </div> */}
                  
                 <AnnouncementComponent
                     APILink = {props.APILink}
@@ -63,7 +65,7 @@ function Dashboard(props){
 
 
                 {/* <BookingComponent/> */}
-                {/* <DashboardOnlineControllers/> */}
+                <DashboardOnlineControllers/>
             </div>
          <ToastContainer />
 

@@ -16,7 +16,7 @@ function Training() {
         
         <UpperBar Username={sessionStorage.getItem("FullName")} />
 
-        <div className="TrainingDiv animate__fadeIn">
+        {/* <div className="TrainingDiv animate__fadeIn">
           <Cards/>
         </div>
 
@@ -38,7 +38,21 @@ function Training() {
           <div className="TrainingDivSecondLink">
             <div><a href="">Book Session</a></div>
           </div>
+        </div> */}
+      <div className="TrainingVideos">
+        
+        <div>
+          <iframe width="70%" height="90%" src="https://www.youtube.com/embed/JMvuYple0Q0?si=3VKDC3fdyU2EXdIP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
+        
+        
+        {/* <div>
+        <iframe width="70%" height="90%" src="https://www.youtube.com/embed/JMvuYple0Q0?si=3VKDC3fdyU2EXdIP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div> */}
+        
+        
+      </div>
+      
 
       </div>
     </>

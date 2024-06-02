@@ -51,10 +51,14 @@ function FlightPLN(props){
     const apiurl = (props.APILink)? "http://localhost:1000/" : "https://api.vatsim.ma/"
    
     useEffect(()=>{
-            fetch(`${apiurl}LastFlightPlan/IlyassBaba`)
+            fetch(`${apiurl}LastFlightPlan/Gothamx94`)
             .then(data => data.json())
             .then(data => {
+                // alert(JSON.stringify(data.fetch))
                 SetFlightPlanData(data)
+            })
+            .catch(err =>{
+                
             })
     },[])
 
@@ -86,7 +90,6 @@ function FlightPLN(props){
                         </div>
             
                         <div className="FlightPLNFoot">
-                            {/* <a href="#">Get more</a> */}
                             <a href={FlightPlanData.prefile.vatsim.link}><img src={VatsimLogo}></img> Vatsim</a>
                             <a href="https://dispatch.simbrief.com/briefing/latest"><img src={SimbriefLogo}></img> Simbrief</a>
                         </div>

@@ -11,7 +11,7 @@ import Stats from './Pages/Stats';
 import Tools from './Pages/Tools';
 import ATCTools from './Pages/Tools/Pages/ATC';
 import PilotTools from './Pages/Tools/Pages/Pilot';
-// import Training from './Pages/Training';
+import Training from './Pages/Training';
 import LocationExtractor from './LocationExtractor';
 // import Settings from './Pages/Settings';
 import Configurator from './Pages/Configurator';
@@ -75,7 +75,7 @@ function App() {
         <Route path="/Tools" element={<Tools />} />
         {/* <Route path="/PilotTools" element={<PilotTools />} /> */}
         <Route path="/ATCTools" element={<ATCTools APILink = {APILINK} />} />
-        {/* <Route path="/Training" element={<Training />} /> */}
+        <Route path="/Training" element={<Training />} />
         {/* <Route path="/Settings" element={<Settings />} /> */}
         <Route path="/extractor" element={<LocationExtractor />} />
         {/************************************ Admin Routing **********************************************/}

@@ -12,12 +12,14 @@ body {
   /* background-image: url('./Ressources/Background/BG4.jpg'); */
   /* background-image: url('./Ressources/Background/BG5.jpg'); */
   /* background-image: url('./Ressources/Background/BG6.jpg'); */
-  background-image: url('./Ressources/Background/BG7.jpg');
+  /* background-image: url('./Ressources/Background/BG7.jpg'); */
+  background-image: url('./Ressources/Background/TowerBG.jpg');
   background-size: 100%;
   background-attachment: fixed;
   /* background-repeat: repeat-y; */
   background-color: #0d0d0f;
   overflow-x: hidden;
+
 }
 *{
   

@@ -1,0 +1,22 @@
+.Tips{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    color : rgb(5,29,75);
+}
+.Tips-Container{
+    width: 90%;
+    height: 20vh;
+    border-radius: 15px;
+    background-color: rgba(240, 255, 255, 0.705);
+    backdrop-filter: blur(15px);
+    display: flex;
+}
+.Tips-Container-Icon{
+    width:10vw;
+    font-size: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

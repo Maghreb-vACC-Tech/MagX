@@ -1,3 +1,6 @@
+import "../index.css"
+
+
 function ShowMemberCard(props){
     return(
         <div className="Card">

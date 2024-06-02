@@ -99,7 +99,7 @@ function LocationExtractor() {
       .then(data => data.json())
       .then(data => {
         
-        console.log(data)
+        // console.log(data)
         sessionStorage.setItem("LastPosition" , JSON.stringify(data))
         })
       .catch(e=>console.log(e))
