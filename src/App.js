@@ -49,7 +49,7 @@ import Lost from "./Pages/Component/Lost"
 import Data from "./MaghrebSetup.json"
 
 let APILINK="http://localhost:1000/"
-if (Data.dev){
+if (process.env.REACT_APP_APP_ENV=="DEV"){
   APILINK="http://localhost:1000/"
 }
 else{
