@@ -13,7 +13,7 @@ import ATCTools from './Pages/Tools/Pages/ATC';
 import PilotTools from './Pages/Tools/Pages/Pilot';
 import Training from './Pages/Training';
 import LocationExtractor from './LocationExtractor';
-// import Settings from './Pages/Settings';
+import Settings from './Pages/Settings';
 import Configurator from './Pages/Configurator';
 // import Roster from './Pages/Roster';
 import AdminPage from './Pages/Admin';
@@ -46,9 +46,8 @@ import Lost from "./Pages/Component/Lost"
 
 
 // Import Dev Environement
-import Data from "./MaghrebSetup.json"
 
-let APILINK="http://localhost:1000/"
+let APILINK
 if (process.env.REACT_APP_APP_ENV=="DEV"){
   APILINK="http://localhost:1000/"
 }
@@ -76,7 +75,7 @@ function App() {
         {/* <Route path="/PilotTools" element={<PilotTools />} /> */}
         <Route path="/ATCTools" element={<ATCTools APILink = {APILINK} />} />
         <Route path="/Training" element={<Training />} />
-        {/* <Route path="/Settings" element={<Settings />} /> */}
+        <Route path="/Settings" element={<Settings APILink = {APILINK} />} />
         <Route path="/extractor" element={<LocationExtractor />} />
         {/************************************ Admin Routing **********************************************/}
           {/* Training */}

@@ -51,7 +51,7 @@ function FlightPLN(props){
     const apiurl = (props.APILink)? "http://localhost:1000/" : "https://api.vatsim.ma/"
    
     useEffect(()=>{
-            fetch(`${apiurl}LastFlightPlan/Gothamx94`)
+            fetch(`${apiurl}LastFlightPlan/${JSON.parse(sessionStorage.getItem("UserSimbriefData"))[0].SimbriefAlias}`)
             .then(data => data.json())
             .then(data => {
                 // alert(JSON.stringify(data.fetch))
@@ -62,44 +62,72 @@ function FlightPLN(props){
             })
     },[])
 
-    return(
-        <div className="FlightPLN animate__fadeIn">
+    console.table(FlightPlanData)
 
-            <section>
-            {FlightPlanData && (
-                    <>
-                        <div className="FlightPLNTitle">
-                                <h1>Latest Simbrief Flight</h1>
-                                <p>{FlightPlanData.general.icao_airline + FlightPlanData.general.flight_number}</p>
-                        </div>
-                            
-                        <div className="FlightPLNBody animate__fadeIn">
-                            <div>
-                                <h1>{FlightPlanData.origin.icao_code}</h1>
-                                <p>{FlightPlanData.origin.iata_code}</p>
-                            </div>
-                            <div>
-                                <p>{FlightPlanData.general.initial_altitude}</p>
-                                {PlaneIcon}
-                                <a target="blank" href={`https://www.simbrief.com/ofp/flightplans/${FlightPlanData.origin.icao_code + FlightPlanData.destination.icao_code}_PDF_${FlightPlanData.params.time_generated}.pdf`}>OFP</a>
-                            </div>
-                            <div>
-                                <h1>{FlightPlanData.destination.icao_code}</h1>
-                                <p>{FlightPlanData.destination.iata_code}</p>
-                            </div>
-                        </div>
+    try { 
+        return (      
+          <div className="FlightPLN animate__fadeIn">
+              <section>
+                {FlightPlanData && (
+                  <>
+                    <div className="FlightPLNTitle">
+                      <h1>Latest Simbrief Flight</h1>
+                      <p>{FlightPlanData.general.icao_airline + FlightPlanData.general.flight_number}</p>
+                    </div>
             
-                        <div className="FlightPLNFoot">
-                            <a href={FlightPlanData.prefile.vatsim.link}><img src={VatsimLogo}></img> Vatsim</a>
-                            <a href="https://dispatch.simbrief.com/briefing/latest"><img src={SimbriefLogo}></img> Simbrief</a>
-                        </div>
-                    </>
+                    <div className="FlightPLNBody animate__fadeIn">
+                      <div>
+                        <h1>{FlightPlanData.origin.icao_code}</h1>
+                        <p>{FlightPlanData.origin.iata_code}</p>
+                      </div>
+                      <div>
+                        <p>{FlightPlanData.general.initial_altitude}</p>
+                        {PlaneIcon}
+                        <a
+                          target="blank"
+                          href={`https://www.simbrief.com/ofp/flightplans/${FlightPlanData.origin.icao_code + FlightPlanData.destination.icao_code}_PDF_${FlightPlanData.params.time_generated}.pdf`}
+                        >
+                          OFP
+                        </a>
+                      </div>
+                      <div>
+                        <h1>{FlightPlanData.destination.icao_code}</h1>
+                        <p>{FlightPlanData.destination.iata_code}</p>
+                      </div>
+                    </div>
+            
+                    <div className="FlightPLNFoot">
+                      <a href={FlightPlanData.prefile.vatsim.link}>
+                        <img src={VatsimLogo}></img> Vatsim
+                      </a>
+                      <a href="https://dispatch.simbrief.com/briefing/latest">
+                        <img src={SimbriefLogo}></img> Simbrief
+                      </a>
+                    </div>
+                  </>
+                )}
+              </section>
+          </div>
+        );
+      } catch (error) {
+        console.error('Error rendering FlightPlanData:', error);
+        return (
+            
+        <div className="FlightPLN animate__fadeIn">
+            <section>
+                
+            <>
+              <div className="FlightPLNBody animate__fadeIn">
+                <section>
+                  <h2>Something is gone wrong or you did put the wrong Alias in your settings,</h2>
+                </section>
+              </div>
+            </>
 
-                    )}
-          
-          </section> 
+            </section>
         </div>
-    )
+        );
+      }
 
 }
 

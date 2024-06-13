@@ -27,7 +27,7 @@ function Settings(){
                 <section className="SettingsParent">
                     <div className="SettingsNavigator animate__fadeIn">
                         <div onClick={SettingsNavigatorPersonal}> <i class="fa-regular fa-user"></i> <p>Personal</p></div>
-                        <div onClick={SettingsNavigatorAppearance}> <i class="fa-solid fa-pen"></i> <p>Apprearance</p></div>
+                        {/* <div onClick={SettingsNavigatorAppearance}> <i class="fa-solid fa-pen"></i> <p>Apprearance</p></div> */}
                     
                     </div>
                     <div className="SettingsContainer">

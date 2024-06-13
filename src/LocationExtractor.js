@@ -149,7 +149,7 @@ function LocationExtractor() {
       })
 
     
-    url = (Data.dev) ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    url = (Data.dev == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
     fetch(`${url}MembersGetConnectionLog/${(Data.dev) ? sessionStorage.getItem("CID") : "1674212"}`)
     .then(res => res.json())
     .then(res => sessionStorage.setItem("UserControllerLog" ,JSON.stringify(res) ))
@@ -196,6 +196,16 @@ function LocationExtractor() {
 
   }
 
+  function GetSimbriefInfo(){
+
+    let url = (Data.dev == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    const cid = (Data.dev == "PROD") ? Data.cid : 1674212
+    fetch(`${url}GetSetting/${cid}`)
+    .then(res => res.json())
+    // .then(res => console.log(res))
+    .then(res => sessionStorage.setItem("UserSimbriefData" ,JSON.stringify(res) ))
+    .catch(err=>console.log(err))
+  }
 
   function Redirect(){
 
@@ -227,6 +237,10 @@ function LocationExtractor() {
 
 
   const List  = require('./Pages/Admin/Pages/Staff/Setup.json');
+
+
+  // SavePersonalData() is called first for the ban list condition to work
+  SavePersonalData()
                                                                                             
   if(BanList.BanList.includes(Data.cid)){
     RemovePersonalData()
@@ -237,11 +251,11 @@ function LocationExtractor() {
   
   }
   else{
-    SavePersonalData()
     SavePersonalStats()
     GetStats()
     GetLastFlightTime()
     StoreEventsSession()
+    GetSimbriefInfo()
     Redirect()
   }
 

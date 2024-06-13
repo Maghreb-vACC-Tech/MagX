@@ -8,7 +8,7 @@
   }
   
   .UpperBarSettings {
-    width: 15vw;
+    width: 23vw;
     height: 15vh;
     display: flex;
     align-items: center;
@@ -54,6 +54,18 @@
     line-height: normal;
     text-decoration-line: underline;
   }
+.UpperBarSettingsTextChoice{
+  background-color: rgba(240, 255, 255, 0.705);;
+  padding: 1vw;
+  border-radius: 15px;
+}
+.UpperBarSettingsTextChoice > a{
+   color: rgb(0, 0, 112);
+   padding: 1vw;
+}
+
+
+
 
   .UpperBarMenu{
     width: 5%;

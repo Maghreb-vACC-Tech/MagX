@@ -9,18 +9,20 @@ function UpperBar(props){
     return(
         <div className="UpperBar">
             <div className="UpperBarMenu">
-                {/* <MenuIconComponent/> */}
             </div>
             <div className="UpperBarZuluTime">
                 <ZuluTimeComponent/>
             </div>
             <div className="UpperBarSettings">
-                {/* <div className="UpperBarSettingsIcon">
-                    <img src={pdp}></img>
-                </div> */}
-                <div className="UpperBarSettingsText">
+                {/* <div className="UpperBarSettingsText">
                     <a href="">{props.Username}</a>
-                    {/* <a href="/Settings">Settings</a> */}
+                </div> */}
+                
+                <div className="UpperBarSettingsTextChoice">
+                    <a href="#"><i class="fa-solid fa-bell"></i></a>
+                    <a href="/Settings"><i class="fa-solid fa-gear"></i></a>
+                    <a href="https://stats.vatsim.net/dashboard"><i class="fa-solid fa-user"></i></a>
+                    <a href="http://localhost:3001"><i class="fa-solid fa-door-open"></i></a>
                 </div>
             </div>
         </div>
