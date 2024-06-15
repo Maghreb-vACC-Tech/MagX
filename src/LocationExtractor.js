@@ -211,19 +211,7 @@ function LocationExtractor() {
 
 
       setTimeout(()=>{
-      // check if new user then redirect
-      //fetch(`http://127.0.0.1:1000/Setting/${sessionStorage.getItem("CID")}`)
-      //.then(res => res.json())
-      //.then(res => {
-        // console.log(res)
         navigate('/dashboard');
-        // if(res.length > 0){
-        //   navigate('/dashboard');
-        // }
-        // else{
-        //   navigate('/Config');
-        // }
-      //})
 
         
       },100)
