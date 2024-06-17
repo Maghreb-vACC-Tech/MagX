@@ -12,7 +12,7 @@ function LocationExtractor() {
   const jsonData = JSON.parse(decodeURIComponent(encodedData || ''));
   const Data = JSON.parse(jsonData).data;
 
-
+  // console.table(encodedData)
 
 
   function RemovePersonalData(){
@@ -64,7 +64,7 @@ function LocationExtractor() {
       LongRegion: Data.vatsim.subdivision.name
     }
 
-    // console.log(JSON.stringify(Data))
+    console.log(JSON.stringify(Data))
     // Set Sessions
     sessionStorage.setItem("Data" , Person.Data)
     sessionStorage.setItem("CID" , Person.CID)
@@ -88,13 +88,17 @@ function LocationExtractor() {
   }
 
   function SavePersonalStats(){
-      const url = (Data.dev) ? "https://api.vatsim.ma/atc" : "http://localhost:1000/atc"
+      
+    
+    
+    const url = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/atc" : "http://localhost:1000/atc"
+      
       fetch(url , {
               method: "POST",
               headers: {
               "Content-Type": "application/json"
               },
-              body: JSON.stringify({cid: (Data.dev) ? sessionStorage.getItem("CID") : "1674212"})
+              body: JSON.stringify({cid: (process.env.REACT_APP_APP_ENV == "PROD") ? sessionStorage.getItem("CID") : "1674212"})
           })
       .then(data => data.json())
       .then(data => {
@@ -127,13 +131,13 @@ function LocationExtractor() {
 
   function GetStats(){
     
-    let url = (Data.dev) ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    let url = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
     fetch(`${url}stats` , {
             method: "POST",
             headers: {
             "Content-Type": "application/json"
             },
-            body: JSON.stringify({cid: (Data.dev) ? sessionStorage.getItem("CID") : "1674212"})
+            body: JSON.stringify({cid: (process.env.REACT_APP_APP_ENV == "PROD") ? sessionStorage.getItem("CID") : "1674212"})
         })
     .then(data => data.json())
     .then(data => {
@@ -149,21 +153,21 @@ function LocationExtractor() {
       })
 
     
-    url = (Data.dev == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
-    fetch(`${url}MembersGetConnectionLog/${(Data.dev) ? sessionStorage.getItem("CID") : "1674212"}`)
+    url = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    fetch(`${url}MembersGetConnectionLog/${(process.env.REACT_APP_APP_ENV == "PROD") ? sessionStorage.getItem("CID") : "1674212"}`)
     .then(res => res.json())
     .then(res => sessionStorage.setItem("UserControllerLog" ,JSON.stringify(res) ))
   }
 
   function GetLastFlightTime(){
     
-    const url = (Data.dev) ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    const url = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
     fetch(`${url}LastFlightTime` , {
             method: "POST",
             headers: {
             "Content-Type": "application/json"
             },
-            body: JSON.stringify({cid: (Data.dev) ? sessionStorage.getItem("CID") : "1674212"})
+            body: JSON.stringify({cid: (process.env.REACT_APP_APP_ENV == "PROD") ? sessionStorage.getItem("CID") : "1674212"})
         })
     .then(data => data.json())
     .then(data => {
@@ -188,7 +192,7 @@ function LocationExtractor() {
 
   function StoreEventsSession(){
         
-    const url = (Data.dev) ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    const url = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
     fetch(`${url}MaghrebEvents`)
     .then(res => res.json())
     .then(res => sessionStorage.setItem("MaghrebEvents" , JSON.stringify(res)))
@@ -197,9 +201,9 @@ function LocationExtractor() {
   }
 
   function GetSimbriefInfo(){
-
-    let url = (Data.dev == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
-    const cid = (Data.dev == "PROD") ? Data.cid : 1674212
+    console.log(sessionStorage.getItem("CID"))
+    let url = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    const cid = (process.env.REACT_APP_APP_ENV == "PROD") ? Data.cid : 1674212
     fetch(`${url}GetSetting/${cid}`)
     .then(res => res.json())
     // .then(res => console.log(res))
@@ -219,33 +223,38 @@ function LocationExtractor() {
    
   }
 
-  // GetEventsAndRedirect 
+  // // GetEventsAndRedirect 
 
-  const BanList  = require('./Pages/Admin/Pages/Staff/Setup.json');
+  // const BanList  = require('./Pages/Admin/Pages/Staff/Setup.json');
 
 
-  const List  = require('./Pages/Admin/Pages/Staff/Setup.json');
+  // const List  = require('./Pages/Admin/Pages/Staff/Setup.json');
 
 
   // SavePersonalData() is called first for the ban list condition to work
-  SavePersonalData()
                                                                                             
-  if(BanList.BanList.includes(Data.cid)){
-    RemovePersonalData()
-    return(
-      <div className="BannerAlert"><p>It seems that there is a problem .Please speak to maghreb staff for more information</p></div>
+  // if(BanList.BanList.includes(Data.cid)){
+  //   RemovePersonalData()
+  //   return(
+  //     <div className="BannerAlert"><p>It seems that there is a problem .Please speak to maghreb staff for more information</p></div>
       
-    )
+  //   )
   
-  }
-  else{
+  // }
+  // else{
+  // }
+  // alert(`|| ${Data.dev} `)
+
+  useEffect(()=>{
+    
+    SavePersonalData()
     SavePersonalStats()
     GetStats()
     GetLastFlightTime()
     StoreEventsSession()
     GetSimbriefInfo()
     Redirect()
-  }
+  },[])
 
   return(
     <LoadingSpinner/>
