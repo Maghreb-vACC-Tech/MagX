@@ -79,30 +79,16 @@ function App() {
         <Route path="/extractor" element={<LocationExtractor />} />
         {/************************************ Admin Routing **********************************************/}
           {/* Training */}
-          {/* <Route path="/StaffTraining" element={<StaffTrainingPage/>}/>
-          <Route path="/StaffDeleteTrainee" element={<StaffDeleteTrainee/>}/>
-          <Route path="/ModifyTrainee" element={<ModifyTrainee/>}/>
-          <Route path="/StaffShowTrainee" element={<ShowTrainee/>}/>
-          <Route path="/AddVisitor" element={<AddVisitor/>}/> */}
           {/* Membership Routing */}
           <Route path="/StaffMembership" element={<StaffMembershipPage  APILink = {APILINK} />}/>
           <Route path="/StaffShowMember" element={<ShowMember/>}/>
-          {/* <Route path="/ShowMemberLog" element={<ShowMemberConnectionLog/>}/> */}
           <Route path="/ShowMemberLog" element={<ShowMemberConnectionLog/>}/>
           <Route path="/ShowMemberLogMore" element={<ShowMemberLogConnectionMore/>}/>
-          {/* Booking */}
-          {/* <Route path="/StaffBooking" element={<AdminPage/>}/> */}
-          {/* Events */}
-          {/* <Route path="/EventManager" element={<EventManagerPage/>}/> */}
           {/* Staff */}
           <Route path="/StaffPage" element={<StaffPage/>}/>
           {/* Tools */}
           <Route path="/AdminTools" element={<AdminTools/>}/>
           {/* OPS */}
-          {/* <Route path="/OPS" element={<StaffOPSPage/>}/>
-          <Route path="/AddairportOPS" element={<AddairportOPS/>}/> */}
-          {/* Announcement */}
-          {/* <Route path="/StaffAnnouncement" element={<AdminPage/>}/> */}
       
           <Route 
             path="*" 
@@ -112,6 +98,9 @@ function App() {
             Solution = {["If you are lost you can come back to your dashboard " , <a href="/Dashboard">Dashboard</a>]}
             Link = ""
           />}/>
+
+
+
       </Routes>
     </Router>
   );

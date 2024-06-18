@@ -3,14 +3,15 @@ import { useEffect, useState } from "react";
 import "./index.css"
 
 
-function DashboardOnlineControllers(){
+function DashboardOnlineControllers(props){
 
 
 
     const [ ControllersOnline , setControllersOnline ] = useState();
 
     function ATCActivityAPICall(){
-        fetch('http://localhost:1000/AtcActivity')
+        const apiurl = props.APILink
+        fetch(`${apiurl}AtcActivity`)
         .then(res => res.json())
         // .then(res => console.table(JSON.stringify(res)))
         .then(res => setControllersOnline(res))

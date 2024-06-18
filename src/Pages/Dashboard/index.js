@@ -65,7 +65,9 @@ function Dashboard(props){
 
 
                 {/* <BookingComponent/> */}
-                <DashboardOnlineControllers/>
+                <DashboardOnlineControllers
+                    APILink = {props.APILink}
+                />
             </div>
          <ToastContainer />
 

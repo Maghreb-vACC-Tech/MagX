@@ -5,38 +5,42 @@ import LoadingSpinner from './Pages/Component/LoadingSpinner';
 import Data from "./MaghrebSetup.json"
 
 function LocationExtractor() {
+  let navigate, location, encodedData, jsonData, Data
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  const encodedData = new URLSearchParams(location.search).get('data');
-  const jsonData = JSON.parse(decodeURIComponent(encodedData || ''));
-  const Data = JSON.parse(jsonData).data;
-
-
-
+  function ExtractorInit(){
+    navigate = useNavigate();
+    location = useLocation();
+    encodedData = new URLSearchParams(location.search).get('data');
+    jsonData = JSON.parse(decodeURIComponent(encodedData || ''));
+    Data = JSON.parse(jsonData).data;
+  }
 
   function RemovePersonalData(){
 
-    // OAuth
-    const OAuth = Data.oauth
+    try {
+      const OAuth = Data.oauth
 
-    // Set Sessions
-    sessionStorage.removeItem("Data")
-    sessionStorage.removeItem("CID")
-    sessionStorage.removeItem("FullName")
-    sessionStorage.removeItem("Email")
-    sessionStorage.removeItem("Country")
-    sessionStorage.removeItem("LongATCRating")
-    sessionStorage.removeItem("ShortATCRating")
-    sessionStorage.removeItem("LongPilotRating")
-    sessionStorage.removeItem("ShortPilotRating")
-    sessionStorage.removeItem("ShortDivision")
-    sessionStorage.removeItem("LongDivision")
-    sessionStorage.removeItem("ShortRegion")
-    sessionStorage.removeItem("LongRegion")
-    sessionStorage.removeItem("ShortSubdivision")
-    sessionStorage.removeItem("LongSubdivision")
-    sessionStorage.removeItem("OAuth")
+      // Set Sessions
+      sessionStorage.removeItem("Data")
+      sessionStorage.removeItem("CID")
+      sessionStorage.removeItem("FullName")
+      sessionStorage.removeItem("Email")
+      sessionStorage.removeItem("Country")
+      sessionStorage.removeItem("LongATCRating")
+      sessionStorage.removeItem("ShortATCRating")
+      sessionStorage.removeItem("LongPilotRating")
+      sessionStorage.removeItem("ShortPilotRating")
+      sessionStorage.removeItem("ShortDivision")
+      sessionStorage.removeItem("LongDivision")
+      sessionStorage.removeItem("ShortRegion")
+      sessionStorage.removeItem("LongRegion")
+      sessionStorage.removeItem("ShortSubdivision")
+      sessionStorage.removeItem("LongSubdivision")
+      sessionStorage.removeItem("OAuth")
+    } catch (error) {
+      console.log(`Function RemovePersonalData() Failed with : ${error}`)
+    }
+    
 
 
 
@@ -45,43 +49,49 @@ function LocationExtractor() {
   function SavePersonalData(){
 
     // OAuth
-    const OAuth = Data.oauth
+    try {
+      const OAuth = Data.oauth
 
-    const Person = {
-      CID: Data.cid,
-      FullName: Data.personal.name_full,
-      Email: Data.personal.email,
-      Country: Data.personal.country.name,
-      LongATCRating: Data.vatsim.rating.long,
-      ShortATCRating: Data.vatsim.rating.short,
-      LongPilotRating: Data.vatsim.pilotrating.long,
-      ShortPilotRating: Data.vatsim.pilotrating.short,
-      ShortDivision: Data.vatsim.division.id,
-      LongDivision: Data.vatsim.division.name,
-      ShortSubdivision: Data.vatsim.subdivision.name,
-      LongSubdivision: Data.vatsim.region.name,
-      ShortRegion: Data.vatsim.subdivision.name,
-      LongRegion: Data.vatsim.subdivision.name
+      const Person = {
+        CID: Data.cid,
+        FullName: Data.personal.name_full,
+        Email: Data.personal.email,
+        Country: Data.personal.country.name,
+        LongATCRating: Data.vatsim.rating.long,
+        ShortATCRating: Data.vatsim.rating.short,
+        LongPilotRating: Data.vatsim.pilotrating.long,
+        ShortPilotRating: Data.vatsim.pilotrating.short,
+        ShortDivision: Data.vatsim.division.id,
+        LongDivision: Data.vatsim.division.name,
+        ShortSubdivision: Data.vatsim.subdivision.name,
+        LongSubdivision: Data.vatsim.region.name,
+        ShortRegion: Data.vatsim.subdivision.name,
+        LongRegion: Data.vatsim.subdivision.name
+      }
+
+      // console.log(JSON.stringify(Data))
+      // Set Sessions
+      sessionStorage.setItem("Data" , Person.Data)
+      sessionStorage.setItem("CID" , Person.CID)
+      sessionStorage.setItem("FullName" , Person.FullName)
+      sessionStorage.setItem("Email" , Person.Email)
+      sessionStorage.setItem("Country" , Person.Country)
+      sessionStorage.setItem("LongATCRating" , Person.LongATCRating)
+      sessionStorage.setItem("ShortATCRating" , Person.ShortATCRating)
+      sessionStorage.setItem("LongPilotRating" , Person.LongPilotRating)
+      sessionStorage.setItem("ShortPilotRating" , Person.ShortPilotRating)
+      sessionStorage.setItem("ShortDivision" , Person.ShortDivision)
+      sessionStorage.setItem("LongDivision" , Person.LongDivision)
+      sessionStorage.setItem("ShortRegion" , Person.ShortRegion)
+      sessionStorage.setItem("LongRegion" , Person.LongRegion)
+      sessionStorage.setItem("ShortSubdivision" , Person.ShortSubdivision)
+      sessionStorage.setItem("LongSubdivision" , Person.LongSubdivision)
+      sessionStorage.setItem("OAuth" , OAuth)
+
+    } catch (error) {
+      console.log(`Function SavePersonalData() Failed with : ${error}`)
     }
-
-    // console.log(JSON.stringify(Data))
-    // Set Sessions
-    sessionStorage.setItem("Data" , Person.Data)
-    sessionStorage.setItem("CID" , Person.CID)
-    sessionStorage.setItem("FullName" , Person.FullName)
-    sessionStorage.setItem("Email" , Person.Email)
-    sessionStorage.setItem("Country" , Person.Country)
-    sessionStorage.setItem("LongATCRating" , Person.LongATCRating)
-    sessionStorage.setItem("ShortATCRating" , Person.ShortATCRating)
-    sessionStorage.setItem("LongPilotRating" , Person.LongPilotRating)
-    sessionStorage.setItem("ShortPilotRating" , Person.ShortPilotRating)
-    sessionStorage.setItem("ShortDivision" , Person.ShortDivision)
-    sessionStorage.setItem("LongDivision" , Person.LongDivision)
-    sessionStorage.setItem("ShortRegion" , Person.ShortRegion)
-    sessionStorage.setItem("LongRegion" , Person.LongRegion)
-    sessionStorage.setItem("ShortSubdivision" , Person.ShortSubdivision)
-    sessionStorage.setItem("LongSubdivision" , Person.LongSubdivision)
-    sessionStorage.setItem("OAuth" , OAuth)
+    
 
 
 
@@ -102,7 +112,7 @@ function LocationExtractor() {
         // console.log(data)
         sessionStorage.setItem("LastPosition" , JSON.stringify(data))
         })
-      .catch(e=>console.log(e))
+      .catch(e=>`Function SavePersonalData() Failed with : ${e}`)
 
 
 
@@ -147,23 +157,25 @@ function LocationExtractor() {
             sessionStorage.setItem("ATCStat" , atchours )
 
       })
+    .catch(e=>console.log(`Function GetStats() Failed with : ${error}`))
 
     
     url = (Data.dev == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
     fetch(`${url}MembersGetConnectionLog/${(Data.dev) ? sessionStorage.getItem("CID") : "1674212"}`)
     .then(res => res.json())
     .then(res => sessionStorage.setItem("UserControllerLog" ,JSON.stringify(res) ))
+    .catch(e=>console.log(`Function GetStats() Failed with : ${error}`))
   }
 
   function GetLastFlightTime(){
     
-    const url = (Data.dev) ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    const url = (Data.dev == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
     fetch(`${url}LastFlightTime` , {
             method: "POST",
             headers: {
             "Content-Type": "application/json"
             },
-            body: JSON.stringify({cid: (Data.dev) ? sessionStorage.getItem("CID") : "1674212"})
+            body: JSON.stringify({cid: (Data.dev == "PROD") ? sessionStorage.getItem("CID") : "1674212"})
         })
     .then(data => data.json())
     .then(data => {
@@ -184,15 +196,17 @@ function LocationExtractor() {
 
       sessionStorage.setItem("LastHoursFlown" , `${hours}h ${minutes}m` )
       })
+      
+    .catch(e=>console.log(`Function GetLastFlightTime() Failed with : ${error}`))
   }
 
   function StoreEventsSession(){
         
-    const url = (Data.dev) ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    const url = (Data.dev == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
     fetch(`${url}MaghrebEvents`)
     .then(res => res.json())
     .then(res => sessionStorage.setItem("MaghrebEvents" , JSON.stringify(res)))
-    
+    .catch(e=>console.log(`Function StoreEventsSession() Failed with : ${error}`))
 
   }
 
@@ -204,7 +218,7 @@ function LocationExtractor() {
     .then(res => res.json())
     // .then(res => console.log(res))
     .then(res => sessionStorage.setItem("UserSimbriefData" ,JSON.stringify(res) ))
-    .catch(err=>console.log(err))
+    .catch(e=>console.log(`Function GetSimbriefInfo() Failed with : ${error}`))
   }
 
   function Redirect(){
@@ -227,26 +241,37 @@ function LocationExtractor() {
   const List  = require('./Pages/Admin/Pages/Staff/Setup.json');
 
 
-  // SavePersonalData() is called first for the ban list condition to work
-  SavePersonalData()
-                                                                                            
-  if(BanList.BanList.includes(Data.cid)){
-    RemovePersonalData()
-    return(
-      <div className="BannerAlert"><p>It seems that there is a problem .Please speak to maghreb staff for more information</p></div>
-      
-    )
+  ExtractorInit()
   
-  }
-  else{
-    SavePersonalStats()
-    GetStats()
-    GetLastFlightTime()
-    StoreEventsSession()
-    GetSimbriefInfo()
-    Redirect()
-  }
+  useEffect(()=>{
 
+    
+    SavePersonalData()
+
+    if(BanList.BanList.includes(Data.cid)){
+      RemovePersonalData()
+      return(
+        <div className="BannerAlert"><p>It seems that there is a problem .Please speak to maghreb staff for more information</p></div>
+        
+      )
+    
+    }
+    else{
+      SavePersonalStats()
+      GetStats()
+      GetLastFlightTime()
+      StoreEventsSession()
+      GetSimbriefInfo()
+      Redirect()
+    }
+  },[])
+
+  // SavePersonalData() is called first for the ban list condition to work
+                                                                                        
+  
+
+
+  
   return(
     <LoadingSpinner/>
   )

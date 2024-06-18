@@ -48,8 +48,9 @@ function FlightPLN(props){
         return result
 
     }
-    const apiurl = (props.APILink)? "http://localhost:1000/" : "https://api.vatsim.ma/"
-   
+
+    const apiurl = props.APILink
+    
     useEffect(()=>{
             fetch(`${apiurl}LastFlightPlan/${JSON.parse(sessionStorage.getItem("UserSimbriefData"))[0].SimbriefAlias}`)
             .then(data => data.json())
@@ -62,7 +63,7 @@ function FlightPLN(props){
             })
     },[])
 
-    console.table(FlightPlanData)
+    // console.table(FlightPlanData)
 
     try { 
         return (      
