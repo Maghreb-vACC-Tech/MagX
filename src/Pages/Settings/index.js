@@ -5,8 +5,8 @@ import SettingsPersonal from "./Pages/Personal"
 import SettingsAppearance from "./Pages/Appearance"
 import { useEffect } from "react"
 
-function Settings(){
-
+function Settings(props){
+    console.log(props.APILink)
     function SettingsNavigatorPersonal(){
         document.querySelector(".SettingsAppearance").style.display = "none"
         document.querySelector(".SettingsPersonal").style.display = "block"
@@ -16,9 +16,11 @@ function Settings(){
         document.querySelector(".SettingsAppearance").style.display = "block"
         document.querySelector(".SettingsPersonal").style.display = "none"
     }
+    
     useEffect(()=>{
         SettingsNavigatorPersonal()
     },[])
+
     return(
         <>
             <SideBar />
@@ -31,7 +33,9 @@ function Settings(){
                     
                     </div>
                     <div className="SettingsContainer">
-                        <SettingsPersonal/>
+                        <SettingsPersonal
+                            APILink = {props.APILink}
+                        />
                         <SettingsAppearance/>
                     </div>
                 </section>

@@ -98,13 +98,13 @@ function LocationExtractor() {
   }
 
   function SavePersonalStats(){
-      const url = (Data.dev) ? "https://api.vatsim.ma/atc" : "http://localhost:1000/atc"
+      const url = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/atc" : "http://localhost:1000/atc"
       fetch(url , {
               method: "POST",
               headers: {
               "Content-Type": "application/json"
               },
-              body: JSON.stringify({cid: (Data.dev) ? sessionStorage.getItem("CID") : "1674212"})
+              body: JSON.stringify({cid: (process.env.REACT_APP_APP_ENV == "PROD") ? sessionStorage.getItem("CID") : "1674212"})
           })
       .then(data => data.json())
       .then(data => {
@@ -137,13 +137,13 @@ function LocationExtractor() {
 
   function GetStats(){
     
-    let url = (Data.dev) ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    let url = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
     fetch(`${url}stats` , {
             method: "POST",
             headers: {
             "Content-Type": "application/json"
             },
-            body: JSON.stringify({cid: (Data.dev) ? sessionStorage.getItem("CID") : "1674212"})
+            body: JSON.stringify({cid: (process.env.REACT_APP_APP_ENV == "PROD") ? sessionStorage.getItem("CID") : "1674212"})
         })
     .then(data => data.json())
     .then(data => {
@@ -160,8 +160,8 @@ function LocationExtractor() {
     .catch(e=>console.log(`Function GetStats() Failed with : ${e}`))
 
     
-    url = (Data.dev == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
-    fetch(`${url}MembersGetConnectionLog/${(Data.dev) ? sessionStorage.getItem("CID") : "1674212"}`)
+    url = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    fetch(`${url}MembersGetConnectionLog/${(process.env.REACT_APP_APP_ENV == "PROD") ? sessionStorage.getItem("CID") : "1674212"}`)
     .then(res => res.json())
     .then(res => sessionStorage.setItem("UserControllerLog" ,JSON.stringify(res) ))
     .catch(e=>console.log(`Function GetStats() Failed with : ${e}`))
@@ -169,13 +169,13 @@ function LocationExtractor() {
 
   function GetLastFlightTime(){
     
-    const url = (Data.dev == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    const url = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
     fetch(`${url}LastFlightTime` , {
             method: "POST",
             headers: {
             "Content-Type": "application/json"
             },
-            body: JSON.stringify({cid: (Data.dev == "PROD") ? sessionStorage.getItem("CID") : "1674212"})
+            body: JSON.stringify({cid: (process.env.REACT_APP_APP_ENV == "PROD") ? sessionStorage.getItem("CID") : "1674212"})
         })
     .then(data => data.json())
     .then(data => {
@@ -202,7 +202,7 @@ function LocationExtractor() {
 
   function StoreEventsSession(){
         
-    const url = (Data.dev == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    const url = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
     fetch(`${url}MaghrebEvents`)
     .then(res => res.json())
     .then(res => sessionStorage.setItem("MaghrebEvents" , JSON.stringify(res)))
@@ -212,12 +212,23 @@ function LocationExtractor() {
 
   function GetSimbriefInfo(){
 
-    let url = (Data.dev == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
-    const cid = (Data.dev == "PROD") ? Data.cid : 1674212
+    let url = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+    // const cid = (process.env.REACT_APP_APP_ENV == "PROD") ? Data.cid : 1674212
+    const cid = Data.cid
     fetch(`${url}GetSetting/${cid}`)
     .then(res => res.json())
     // .then(res => console.log(res))
-    .then(res => sessionStorage.setItem("UserSimbriefData" ,JSON.stringify(res) ))
+    .then(res => {
+      console.log(res.length)
+      if(res.length > 0){
+        console.log("OLD")
+        sessionStorage.setItem("UserSimbriefData" ,JSON.stringify(res) )
+      }else{
+        console.log("NEW")
+        sessionStorage.setItem("UserSimbriefData" ,"New" )
+      }
+      // (res.length > 0) ?  : 
+    })
     .catch(e=>console.log(`Function GetSimbriefInfo() Failed with : ${e}`))
   }
 
@@ -266,7 +277,6 @@ function LocationExtractor() {
     }
   },[])
 
-  // SavePersonalData() is called first for the ban list condition to work
                                                                                         
   
 
