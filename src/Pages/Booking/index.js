@@ -32,15 +32,16 @@ function Booking(props) {
   function handleReload() {
     window.location.reload()
   }
-  
-  const BookingURL = (props.APILink) ? "http://localhost:1000/"  : "https://api.vatsim.ma/"
+  // alert(props.APILink)
+  const BookingURL = props.APILink
 
   function MaghrebFetching(){
     fetch(`${BookingURL}MaghrebBooking`)
       .then((response) => response.json())
       .then((response) => {
         setmaghrebBookings(response)
-      });
+      })
+      .catch(err=>console.log(`Function MaghrebFetching() Failed with : ${err}`))
   }
 
   useEffect(() => {
@@ -133,7 +134,8 @@ const vatsimEvents = (() => {
         }
 
       })
-    
+      
+      .catch(err=>console.log(`Function AddBooking() Failed with : ${err}`))
     }
  
   }
@@ -203,9 +205,13 @@ const vatsimEvents = (() => {
         })
       })
       .then(handleReload())
+      
+      .catch(err=>console.log(`Function DeleteBooking() Failed with : ${err}`))
       // .then(notify("Booking Deleted"))
       
     } 
+
+    
     if(!items) return null;
 
     return (

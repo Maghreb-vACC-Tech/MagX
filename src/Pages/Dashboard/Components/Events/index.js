@@ -18,10 +18,11 @@ function DashboardEventsWeather(props){
 
         const GetAirportWeatherArray = ["gmmn","daag","dtta","gmad","gmff"]
         var i = 0
+        
+        const apiurl = props.APILink
+        // const WeatherURL = (props.APILink) ? "http://localhost:1000/" : "https://api.vatsim.ma/"
 
-        const WeatherURL = (props.APILink) ? "http://localhost:1000/" : "https://api.vatsim.ma/"
-
-        fetch(`${WeatherURL}GetWeather/${GetAirportWeatherArray[i]}`)
+        fetch(`${apiurl}GetWeather/${GetAirportWeatherArray[i]}`)
                 .then(data => data.json())
                 .then(data => {
                     const state = (data.reportTime.split(" "))[1].split(":")[0]
@@ -45,7 +46,7 @@ function DashboardEventsWeather(props){
 
         
         setInterval(()=>{
-            fetch(`${WeatherURL}GetWeather/${GetAirportWeatherArray[i]}`)
+            fetch(`${apiurl}GetWeather/${GetAirportWeatherArray[i]}`)
                 .then(data => data.json())
                 .then(data => {
                     const DashboardWeather = document.querySelector(".DashboardWeather > div ")
