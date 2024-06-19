@@ -37,6 +37,7 @@ function LocationExtractor() {
       sessionStorage.removeItem("ShortSubdivision")
       sessionStorage.removeItem("LongSubdivision")
       sessionStorage.removeItem("OAuth")
+
     } catch (error) {
       console.log(`Function RemovePersonalData() Failed with : ${error}`)
     }
@@ -69,7 +70,6 @@ function LocationExtractor() {
         LongRegion: Data.vatsim.subdivision.name
       }
 
-      // console.log(JSON.stringify(Data))
       // Set Sessions
       sessionStorage.setItem("Data" , Person.Data)
       sessionStorage.setItem("CID" , Person.CID)
@@ -129,15 +129,16 @@ function LocationExtractor() {
     const mins = Math.floor(minutes % 60);
 
     if (minstate)
-        return `${hrs}h ${mins}m`;
+      return `${hrs}h ${mins}m`;
     else
-    return `${hrs}h`;
+      return `${hrs}h`;
 
   }    
 
   function GetStats(){
     
     let url = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+
     fetch(`${url}stats` , {
             method: "POST",
             headers: {
@@ -170,6 +171,7 @@ function LocationExtractor() {
   function GetLastFlightTime(){
     
     const url = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
+
     fetch(`${url}LastFlightTime` , {
             method: "POST",
             headers: {

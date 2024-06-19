@@ -12,7 +12,8 @@ import HassiVFRMap from '../../../../Ressources/VFR_Map/DAUH.png'
 import OranVFRMap from '../../../../Ressources/VFR_Map/DAOO.png'
 
 function ATCTools(props) {
-  const ATCToolsURL = (props.APILink) ? "http://localhost:1000/"  : "https://api.vatsim.ma/"
+  
+  const ATCToolsURL = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
   const [airportIndexLoading , SetairportIndexLoading] = useState(false)
   const [airportMetar , SetairportMetar] = useState()
   const [airportTAF , SetairportTAF] = useState()
@@ -58,6 +59,7 @@ function ATCTools(props) {
 
     }
   }
+
   function RenderVisibilityTags(){
     if(airportIndexLoading){
       if (airportInfo.visib === '6+') {
@@ -83,6 +85,7 @@ function ATCTools(props) {
       }
           
   }}
+
   function RenderWindTags(){
     if(airportIndexLoading){
         if (airportInfo.wspd <= 7) {
@@ -109,6 +112,7 @@ function ATCTools(props) {
             
     }
   }
+
   function RenderTempTags(){
     if(airportIndexLoading){
         if (airportInfo.temp <= 0) {
@@ -135,6 +139,7 @@ function ATCTools(props) {
             
     }
   }
+
   function RenderGustTags(){
     if(airportIndexLoading){
         // console.log(`Gust : ${airportInfo.wgst}`)
@@ -163,6 +168,7 @@ function ATCTools(props) {
             
     }
   }
+
   function RenderPrecepTags(){
     if(airportIndexLoading){
         if (airportInfo.precip != null) {
@@ -175,6 +181,7 @@ function ATCTools(props) {
             
     }
   }
+
   function RenderSnowTags(){
     if(airportIndexLoading){
         if (airportInfo.snow != null) {
@@ -187,6 +194,7 @@ function ATCTools(props) {
             
     }
   }
+
   function RenderTL(){
     if(airportIndexLoading){
           const ALTM = 1013 - airportInfo.altim
@@ -200,6 +208,7 @@ function ATCTools(props) {
             
     }
   }
+  
   function RenderInitialClimb(){
     // alert(ARPInfo.InitialClimb)
     return(
@@ -207,6 +216,7 @@ function ATCTools(props) {
       <>{ARPInfo.InitialClimb}</>
     )
   }
+
   function RenderARPInfo(){
     if(ARPInfo){
       try {
@@ -233,6 +243,7 @@ function ATCTools(props) {
       }
     
   }}
+
   function RenderARPFreqs(){
     // alert(ARPInfo.Frequencies.ATIS)
     return(
@@ -252,12 +263,14 @@ function ATCTools(props) {
       </>
     )
   }
+
   function RenderChart(){
     if(Chart === "GMMN"){return(<img alt="" className="Chart" src={CasaVFRMap}></img>)}
     else if(Chart === "GMMX"){return(<img alt="" className="Chart" src={KechVFRMap}></img>)}
     else if(Chart === "GMTT"){return(<img alt="" className="Chart" src={TangerVFRMap}></img>)}
     else if(Chart === "GMAD"){return(<img alt="" className="Chart" src={AgadirVFRMap}></img>)}
   }
+
   function RenderChart(){
     
     if(Chart === "GMMN"){
@@ -342,6 +355,7 @@ function ATCTools(props) {
             </div>  
           )}
   }
+
   function RenderExtra(){
     const url = `https://metar-taf.com/${Chart}`
     return(
