@@ -64,8 +64,8 @@ function FlightPLN(props) {
         });
     }
   }, [apiurl]);
-  console.log(JSON.parse(sessionStorage.getItem("UserSimbriefData"))[0].SimbriefAlias)
-  console.log(flightPlanData)
+  // console.log(JSON.parse(sessionStorage.getItem("UserSimbriefData"))[0].SimbriefAlias)
+  // console.log(flightPlanData)
   
   try {
     return (

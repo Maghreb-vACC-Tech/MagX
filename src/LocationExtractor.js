@@ -219,7 +219,7 @@ function LocationExtractor() {
     .then(res => res.json())
     // .then(res => console.log(res))
     .then(res => {
-      console.log(res.length)
+      // console.log(res.length)
       if(res.length > 0){
         console.log("OLD")
         sessionStorage.setItem("UserSimbriefData" ,JSON.stringify(res) )
