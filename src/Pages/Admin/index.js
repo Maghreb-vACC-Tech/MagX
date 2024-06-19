@@ -12,7 +12,7 @@ function AdminPage(props) {
 const StaffList  = require('./Pages/Staff/Setup.json');
 
 
-const AdminAPIURL = (props.APILink) ? "http://localhost:1000/"  : "https://api.vatsim.ma/"
+const AdminAPIURL = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
 
   if(StaffList.StaffList.includes(sessionStorage.getItem("CID"))) {
     fetch(`${AdminAPIURL}MembershipDBRefresh`)

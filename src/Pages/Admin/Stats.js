@@ -17,7 +17,7 @@ function AdminStats(props){
 
     let groupedByRating
 
-    const AdminAPIURL = (props.APILink) ? "http://localhost:1000/"  : "https://api.vatsim.ma/"
+    const AdminAPIURL = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
 
     function GetMemberStats(){
 
@@ -37,7 +37,7 @@ function AdminStats(props){
                 return acc;
               }, {});
             
-            console.log(groupedByRating);
+            // console.log(groupedByRating);
 
 
             SetOBS(groupedByRating[1]);

@@ -14,7 +14,7 @@ function StaffMembershipPage(props){
 
 
     function FetchMembershipData(){
-      const url = (props.APILink) ? "http://localhost:1000/"  : "https://api.vatsim.ma/"
+      const url = (process.env.REACT_APP_APP_ENV == "PROD") ? "https://api.vatsim.ma/" : "http://localhost:1000/"
       fetch(`${url}MembersGetDB`)
         .then(res => res.json())
         .then(res => {
